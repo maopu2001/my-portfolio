@@ -1,0 +1,10 @@
+* {
+  color: white;
+}
+body {
+  @apply text-lg;
+}
+
+header .menu {
+  @apply hover:underline cursor-pointer underline-offset-4 hover:text-blue-400;
+}
