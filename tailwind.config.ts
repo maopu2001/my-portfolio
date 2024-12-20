@@ -59,6 +59,15 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      keyframes: {
+        flow: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-50% - 0.5rem))' },
+        },
+      },
+      animation: {
+        flow: 'flow var(--duration, 20s) linear infinite',
+      },
     },
   },
   plugins: [tailwindcssAnimate, tailwindcssForms, tailwindcssTypography],
