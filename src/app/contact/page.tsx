@@ -21,7 +21,7 @@ export default function page() {
         <Link className="flex flex-col items-center justify-center" href="https://wa.me/+8801521712539">
           <div className="w-16 m-4">{icons.Whatsapp}</div>
           <span className="text-2xl font-bold">Whatsapp</span>
-          ma.opu.2001
+          +8801521712539
         </Link>
       </div>
     </div>
