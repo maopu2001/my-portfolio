@@ -13,6 +13,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        myprimary: '#000',
+        mysecondary: '#1f829a',
+        myborder: '#1f2937',
+        mytext: '#999',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {

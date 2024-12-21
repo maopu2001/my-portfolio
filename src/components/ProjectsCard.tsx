@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import getIcons from '@/lib/icons';
+import icons from '@/lib/icons';
 
 type ProjectInfoType = {
   techStack: string[];
@@ -12,7 +12,7 @@ type ProjectInfoType = {
 
 export default function ProjectsCard({ projectInfo }: { projectInfo: ProjectInfoType }) {
   return (
-    <div className="relative aspect-[1.5] p-4 rounded-2xl overflow-hidden group *:text-black">
+    <div className="relative aspect-[1.5] p-4 rounded-2xl overflow-hidden group *:text-black outline outline-myborder">
       <Image
         className="group-hover:scale-125 transform transition-transform duration-700 select-none -z-10 object-cover"
         src={projectInfo.coverSrc}
@@ -28,15 +28,15 @@ export default function ProjectsCard({ projectInfo }: { projectInfo: ProjectInfo
         </div>
         <div className="flex gap-2">
           {projectInfo.techStack.map((tech, i) => {
-            const info: [React.JSX.Element, string] | null = getIcons(tech);
-            if (!info) return null;
+            const info = icons[tech];
             return (
               <div
-                className="border p-1 rounded-md bg-black/30 flex gap-2 justify-center items-center"
+                className="border py-1 px-2 rounded-md bg-black/30 flex gap-2 justify-center items-center"
                 key={i}
-                id={info[1]}
+                id={tech}
               >
-                {info[0]} {info[1]}
+                <div className="w-6">{info}</div>
+                <span className="text-base">{tech}</span>
               </div>
             );
           })}

@@ -6,5 +6,5 @@ body {
 }
 
 header .menu {
-  @apply hover:underline cursor-pointer underline-offset-4 hover:text-blue-400;
+  @apply hover:underline cursor-pointer underline-offset-4 hover:text-mysecondary;
 }
