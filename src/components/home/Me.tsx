@@ -5,19 +5,22 @@ export default function Me() {
   return (
     <div className="border border-myborder rounded-2xl p-4 flex flex-col gap-4">
       <div className="flex gap-2 absolute right-4 top-4">
-        <Link href="mailto:maopu2001@gmail.com" className="block border border-gray-800 rounded-md p-2 w-6">
+        <Link
+          href="mailto:maopu2001@gmail.com"
+          className="block border border-gray-800 rounded-md p-1 w-10 hover:opacity-70"
+        >
           {icons.Email}
         </Link>
         <Link
           href="https://www.facebook.com/ma.opu.2001/"
-          className="block border border-gray-800 rounded-md p-2 w-6"
+          className="block border border-gray-800 rounded-md p-2 w-10 hover:opacity-70"
           target="blank"
         >
           {icons.Facebook}
         </Link>
         <Link
           href="https://github.com/maopu2001"
-          className="block border border-gray-800 rounded-md p-2 w-6"
+          className="block border border-gray-800 rounded-md p-2 w-10 hover:opacity-70"
           target="blank"
         >
           {icons.Github}

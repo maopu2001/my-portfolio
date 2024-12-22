@@ -2,10 +2,10 @@ import React from 'react';
 import icons from '@/lib/icons';
 
 export default function WorkWith() {
-  const FirstIconsArray = ['Html', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Vite', 'Tailwind CSS'];
+  const FirstIconsArray = ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Vite', 'Tailwind CSS'];
   const SecondIconsArray = [
     'Node.js',
-    'Express',
+    'Express.js',
     'MongoDB',
     'PostgreSQL',
     'Git',

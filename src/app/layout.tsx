@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import type { Metadata } from 'next';
 import './globals.css';
 import '@/components/header.css';
+import '@/components/sidebar.css';
 
 export const metadata: Metadata = {
   title: 'M. Aktaruzzman Opu',

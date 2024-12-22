@@ -1,0 +1,25 @@
+#sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  padding-top: 4rem;
+  flex-direction: column;
+  background: black;
+  min-height: 100vh;
+  align-items: center;
+  gap: 1rem;
+  font-weight: bold;
+  transition: right 500ms ease-out;
+}
+
+#menu-icon {
+  transition: transform 500ms ease-in-out;
+}
+
+#sidebar[open] {
+  right: 0;
+}
+
+#menu-icon[open] {
+  transform: rotate(180deg);
+}

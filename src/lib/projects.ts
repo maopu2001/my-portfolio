@@ -11,7 +11,7 @@ const questionVault: ProjectInfoType = {
   coverSrc: '/questionVault/cover.png',
   iconSrc: '/questionVault/logo.png',
   projectName: 'Question Vault',
-  projectDescription: 'A full stack web app for storing all previous questions of the university.',
+  projectDescription: 'A full stack web app for storing all previous questions of my university.',
 };
 
 const questionVaultApp: ProjectInfoType = {
@@ -19,7 +19,7 @@ const questionVaultApp: ProjectInfoType = {
   coverSrc: '/questionVaultApp/cover.jpg',
   iconSrc: '/questionVaultApp/logo.png',
   projectName: 'Question Vault App',
-  projectDescription: 'A simple app to search all previous questions of the university and filter them.',
+  projectDescription: 'A simple app to search all previous questions of my university and filter them.',
 };
 
 const wordle: ProjectInfoType = {
@@ -27,7 +27,7 @@ const wordle: ProjectInfoType = {
   coverSrc: '/wordle/cover.png',
   iconSrc: '/wordle/logo.svg',
   projectName: 'Wordle',
-  projectDescription: `A clone of the popular game Wordle with it's own dictionary`,
+  projectDescription: `A clone of the popular game Wordle with it's own dictionary.`,
 };
 
 const ticTacToe: ProjectInfoType = {
@@ -35,7 +35,7 @@ const ticTacToe: ProjectInfoType = {
   coverSrc: '/tic-tac-toe/cover.png',
   iconSrc: '/tic-tac-toe/logo.png',
   projectName: 'Tic Tac Toe',
-  projectDescription: 'A simple game of tic-tac-toe',
+  projectDescription: 'A simple game of tic-tac-toe.',
 };
 
 const projects = [questionVault, questionVaultApp, wordle, ticTacToe];
