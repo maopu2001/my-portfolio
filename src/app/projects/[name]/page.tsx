@@ -1,25 +1,21 @@
-import Image from 'next/image';
-import React from 'react';
 import icons from '@/lib/icons';
-import Link from 'next/link';
-import ProjectInfoType from '@/types/ProjectInfoType';
+import projects from '@/lib/projects';
+import Image from 'next/image';
 
-export default function ProjectsCard({ project }: { project: ProjectInfoType }) {
+export default async function Page({ params }: { params: Promise<{ name: string }> }) {
+  const { name } = await params;
+  const project = projects.find((obj) => obj.name === name);
+  if (!project) return null;
+
+  let text;
+  if (project.about) {
+    const res = await fetch(`${project.about}/master/README.md`);
+    text = await res.text();
+  }
+
   return (
-    <Link
-      href={`/projects/${project.name}`}
-      className="relative aspect-[0.95] sm:aspect-[1.5] p-4 rounded-2xl overflow-hidden w-full group *:text-black outline outline-myborder"
-    >
-      <Image
-        className="group-hover:scale-125 transform transition-transform duration-700 select-none -z-10 object-cover"
-        src={project.coverSrc}
-        fill
-        alt=""
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/40 select-none"></div>
-
-      <div className="flex flex-col gap-2 absolute bottom-4 left-4 right-4 sm:bottom-10 sm:left-10 sm:right-10">
+    <div className="p-4 rounded-2xl w-full group outline outline-myborder">
+      <div className="flex flex-col gap-2 ">
         <div className="flex items-center gap-4 pb-2">
           <Image src={project.iconSrc} width={50} height={50} alt="" />
           <h1 className="text-2xl font-bold">{project.title}</h1>
@@ -41,6 +37,7 @@ export default function ProjectsCard({ project }: { project: ProjectInfoType }) 
         </div>
         <p className="text-base sm:text-lg">{project.description}</p>
       </div>
-    </Link>
+      <p>{text}</p>
+    </div>
   );
 }

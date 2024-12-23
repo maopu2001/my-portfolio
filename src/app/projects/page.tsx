@@ -8,7 +8,7 @@ export default function page() {
       <h1 className="text-3xl font-bold pb-8">My Projects</h1>
       <div className="flex flex-col gap-10">
         {projects.map((project, i) => (
-          <ProjectsCard key={i} projectInfo={project} />
+          <ProjectsCard key={i} project={project} />
         ))}
       </div>
     </div>

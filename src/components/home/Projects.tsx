@@ -11,7 +11,7 @@ export default function Projects() {
       <h1 className="text-3xl font-bold py-8">My Projects</h1>
       <div className="flex flex-col gap-10">
         {myprojects.map((project, i) => (
-          <ProjectsCard key={i} projectInfo={project} />
+          <ProjectsCard key={i} project={project} />
         ))}
       </div>
 
