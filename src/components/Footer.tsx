@@ -4,8 +4,8 @@ import React from 'react';
 export default function Footer() {
   return (
     <footer className="absolute bottom-0 left-0 right-0">
-      <div className="h-[1] w-[55%] mx-auto rounded-2xl bg-slate-700 mb-2"></div>
-      <div className="text-center text-base text-mytext">
+      <div className="h-[1] md:w-[55%] w-[90%] mx-auto rounded-2xl bg-slate-700 mb-2"></div>
+      <div className="text-center md:text-base text-xs text-mytext">
         &copy; 2024 M. Aktaruzzaman Opu | Created in Bangladesh <br />
         Powered by{' '}
         <Link href="https://nextjs.org/" target="blank" className="text-mysecondary">

@@ -2,7 +2,7 @@
   color: white;
 }
 body {
-  @apply text-lg;
+  @apply sm:text-lg;
 }
 
 header .menu {

@@ -53,9 +53,12 @@ export default function Header() {
           {icons['menu']}
         </div>
         <nav id="sidebar" className="flex md:hidden w-full sm:w-[400px]">
+          <Link href="/" className="menu" onClick={toggleSidebar}>
+            Home
+          </Link>
           {menuInfo.map((info, i) => {
             return (
-              <Link href={info.url} className="menu" key={i}>
+              <Link href={info.url} className="menu" key={i} onClick={toggleSidebar}>
                 {info.title}
               </Link>
             );

@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-black relative pb-20 pt-24 min-h-screen">
         <Header />
-        <div className="w-[55%] max-w-[850px] mx-auto">{children}</div>
+        <div className="md:w-[55%] w-[90%] max-w-[850px] mx-auto">{children}</div>
         <footer>
           <Footer />
         </footer>
