@@ -5,7 +5,9 @@ type ProjectInfoType = {
   title: string;
   name: string;
   description: string;
-  about?: string;
+  liveDemo?: string;
+  mobileImgSrc?: string[];
+  desktopImgSrc?: string[];
 };
 
 const questionVault: ProjectInfoType = {
@@ -14,8 +16,21 @@ const questionVault: ProjectInfoType = {
   iconSrc: '/questionVault/logo.png',
   title: 'Question Vault',
   name: 'question-vault',
-  description: 'A full stack web app for storing all previous questions of my university.',
-  about: 'https://raw.githubusercontent.com/maopu2001/Question-Vault-Rmstu',
+  description: `A digital repository system for managing and accessing academic exam questions at RMSTU (Rangamati Science and Technology University).`,
+  liveDemo: 'https://question-vault-rmstu.vercel.app',
+  desktopImgSrc: [
+    '/questionVault/desktop1.png',
+    '/questionVault/desktop2.png',
+    '/questionVault/desktop3.png',
+    '/questionVault/desktop4.png',
+  ],
+  mobileImgSrc: [
+    '/questionVault/mobile1.jpg',
+    '/questionVault/mobile2.jpg',
+    '/questionVault/mobile3.jpg',
+    '/questionVault/mobile4.jpg',
+    '/questionVault/mobile5.jpg',
+  ],
 };
 
 const questionVaultApp: ProjectInfoType = {
@@ -24,7 +39,23 @@ const questionVaultApp: ProjectInfoType = {
   iconSrc: '/questionVaultApp/logo.png',
   title: 'Question Vault App',
   name: 'question-vault-app',
-  description: 'A simple app to search all previous questions of my university and filter them.',
+  description: `A simple app to search all previous questions of my university and filter them. It's an mobile frontend for the Question Vault website.`,
+  liveDemo:
+    'https://raw.githubusercontent.com/maopu2001/Question-Vault-Rmstu/refs/heads/master/public/ExamQuestionsRMSTU.apk',
+  desktopImgSrc: [
+    '/questionVaultApp/mobile1.jpg',
+    '/questionVaultApp/mobile2.jpg',
+    '/questionVaultApp/mobile3.jpg',
+    '/questionVaultApp/mobile4.jpg',
+    '/questionVaultApp/mobile5.jpg',
+  ],
+  mobileImgSrc: [
+    '/questionVaultApp/mobile1.jpg',
+    '/questionVaultApp/mobile2.jpg',
+    '/questionVaultApp/mobile3.jpg',
+    '/questionVaultApp/mobile4.jpg',
+    '/questionVaultApp/mobile5.jpg',
+  ],
 };
 
 const wordle: ProjectInfoType = {
@@ -34,6 +65,7 @@ const wordle: ProjectInfoType = {
   title: 'Wordle',
   name: 'wordle',
   description: `A clone of the popular game Wordle with it's own dictionary.`,
+  liveDemo: 'https://wordle-mygames.vercel.app',
 };
 
 const ticTacToe: ProjectInfoType = {
@@ -43,6 +75,7 @@ const ticTacToe: ProjectInfoType = {
   title: 'Tic Tac Toe',
   name: 'tic-tac-toe',
   description: 'A simple game of tic-tac-toe.',
+  liveDemo: 'https://tic-tac-toe-mygames.vercel.app',
 };
 
 const projects = [questionVault, questionVaultApp, wordle, ticTacToe];
