@@ -30,7 +30,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-10">
+    <header className="sticky top-0 w-full z-10">
       <div className="h-24 pt-5 md:w-[80%] w-[90%] mx-auto px-2 relative">
         <Link href="/" className="absolute left-0 font-bold text-xl hover:text-mysecondary">
           M. Aktaruzzaman Opu
@@ -50,7 +50,7 @@ export default function Header() {
           id="menu-icon"
           onClick={toggleSidebar}
         >
-          {icons['menu']}
+          {icons['menu'].icon}
         </div>
         <nav id="sidebar" className="flex md:hidden w-full sm:w-[400px]">
           <Link href="/" className="menu" onClick={toggleSidebar}>

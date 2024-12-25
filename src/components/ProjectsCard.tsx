@@ -8,10 +8,10 @@ export default function ProjectsCard({ project }: { project: ProjectInfoType }) 
   return (
     <Link
       href={`/projects/${project.name}`}
-      className="relative aspect-[0.95] sm:aspect-[1.5] p-4 rounded-2xl overflow-hidden w-full group *:text-black outline outline-myborder"
+      className="relative aspect-[0.95] sm:aspect-[1.5] min-h-[550px] p-4 rounded-2xl overflow-hidden w-full group *:text-black outline outline-myborder"
     >
       <Image
-        className="group-hover:scale-125 transform transition-transform duration-700 select-none -z-10 object-cover"
+        className="group-hover:scale-125 transform transition-transform duration-700 select-none -z-10 object-top object-cover"
         src={project.coverSrc}
         fill
         alt=""
@@ -32,16 +32,17 @@ export default function ProjectsCard({ project }: { project: ProjectInfoType }) 
                 <div
                   className="border py-1 px-2 rounded-full sm:rounded-md bg-black/30 flex gap-2 justify-center items-center aspect-square sm:aspect-auto"
                   key={i}
-                  id={tech}
                 >
-                  <div className="w-6">{info}</div>
+                  <div className="w-6">{info.icon}</div>
                   <span className="text-base text-nowrap sm:block hidden">{tech}</span>
                 </div>
               );
             })}
           </div>
           <p className="text-base sm:text-lg">{project.description}</p>
-          <button className="btn text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500">Details</button>
+          <button className="btn text-base opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            Details
+          </button>
         </div>
       </div>
     </Link>

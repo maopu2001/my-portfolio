@@ -9,24 +9,25 @@ export default async function Page({ params }: { params: Promise<{ name: string 
   if (!project) return null;
 
   return (
-    <div className="p-4 rounded-2xl w-full group">
+    <div className="w-full group">
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-4 pb-2 mx-auto">
           <Image src={project.iconSrc} width={50} height={50} alt="" />
-          <h1 className="text-2xl font-bold">{project.title}</h1>
+          <h1 className="text-3xl font-bold">{project.title}</h1>
         </div>
-        <div className="flex gap-2 flex-wrap mx-auto">
+        <div className="flex gap-2 flex-wrap mx-auto justify-center">
           {project.techStack.map((tech, i) => {
             const info = icons[tech];
             return (
-              <div
-                className="border py-1 px-2 rounded-full sm:rounded-md bg-black/30 flex gap-2 justify-center items-center aspect-square sm:aspect-auto"
+              <Link
+                href={info.link}
+                target="_blank"
+                className="border py-1 px-2 rounded-lg flex gap-2 justify-center items-center hover:bg-mysecondary transition-colors duration-300"
                 key={i}
-                id={tech}
               >
-                <div className="w-6">{info}</div>
-                <span className="text-base text-nowrap sm:block hidden">{tech}</span>
-              </div>
+                <div className="w-6">{info.icon}</div>
+                <span className="text-base text-nowrap">{tech}</span>
+              </Link>
             );
           })}
         </div>

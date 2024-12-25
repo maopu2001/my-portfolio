@@ -9,21 +9,21 @@ export default function Me() {
           href="mailto:maopu2001@gmail.com"
           className="block border border-gray-800 rounded-md p-1 w-10 hover:opacity-70"
         >
-          {icons.Email}
+          {icons.Email.icon}
         </Link>
         <Link
           href="https://www.facebook.com/ma.opu.2001/"
           className="block border border-gray-800 rounded-md p-2 w-10 hover:opacity-70"
           target="blank"
         >
-          {icons.Facebook}
+          {icons.Facebook.icon}
         </Link>
         <Link
           href="https://github.com/maopu2001"
           className="block border border-gray-800 rounded-md p-2 w-10 hover:opacity-70"
           target="blank"
         >
-          {icons.Github}
+          {icons.Github.icon}
         </Link>
       </div>
       <h1 className="text-4xl font-bold">M. Aktaruzzaman Opu</h1>
@@ -32,7 +32,7 @@ export default function Me() {
         target="blank"
         className="inline-flex items-center gap-2 text-gray-400"
       >
-        <div className="w-6">{icons.Location}</div> Alam Dockyard, Rangamati, Bangladesh
+        <div className="w-6">{icons.Location.icon}</div> Alam Dockyard, Rangamati, Bangladesh
       </Link>
       <p>
         {

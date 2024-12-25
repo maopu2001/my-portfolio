@@ -22,13 +22,13 @@ export default function WorkWith() {
         <div className="flex gap-4 animate-flow w-max hover:[animation-play-state:paused]">
           {FirstIconsArray.map((iconTag, i) => (
             <div className="flex gap-2 justify-center items-center" key={i} id={iconTag}>
-              <div className="w-8">{icons[iconTag]}</div>
+              <div className="w-8">{icons[iconTag].icon}</div>
               <span>{iconTag}</span>
             </div>
           ))}
           {FirstIconsArray.map((iconTag, i) => (
             <div className="flex gap-2 justify-center items-center" key={i} id={iconTag}>
-              <div className="w-8">{icons[iconTag]}</div>
+              <div className="w-8">{icons[iconTag].icon}</div>
               <span>{iconTag}</span>
             </div>
           ))}
@@ -37,13 +37,13 @@ export default function WorkWith() {
         <div className="flex gap-4 animate-flow w-max [--duration:20s] hover:[animation-play-state:paused]">
           {SecondIconsArray.map((iconTag, i) => (
             <div className="flex gap-2 justify-center items-center" key={i} id={iconTag}>
-              <div className="w-8">{icons[iconTag]}</div>
+              <div className="w-8">{icons[iconTag].icon}</div>
               <span>{iconTag}</span>
             </div>
           ))}
           {SecondIconsArray.map((iconTag, i) => (
             <div className="flex gap-2 justify-center items-center" key={i} id={iconTag}>
-              <div className="w-8">{icons[iconTag]}</div>
+              <div className="w-8">{icons[iconTag].icon}</div>
               <span>{iconTag}</span>
             </div>
           ))}
