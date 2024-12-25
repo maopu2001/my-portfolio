@@ -12,7 +12,7 @@ export default function page() {
           className="flex flex-col items-center justify-center hover:scale-95 transition"
           href="mailto:maopu2001@gmail.com"
         >
-          <div className="w-24">{icons.Email}</div>
+          <div className="w-24">{icons.Email.icon}</div>
           <span className="text-2xl font-bold">Email</span>
           maopu2001@gmail.com
         </Link>
@@ -20,7 +20,7 @@ export default function page() {
           className="flex flex-col items-center justify-center hover:scale-95 transition"
           href="https://www.facebook.com/ma.opu.2001/"
         >
-          <div className="w-16 m-4">{icons.Facebook}</div>
+          <div className="w-16 m-4">{icons.Facebook.icon}</div>
           <span className="text-2xl font-bold">Facebook</span>
           ma.opu.2001
         </Link>
@@ -28,7 +28,7 @@ export default function page() {
           className="flex flex-col items-center justify-center hover:scale-95 transition"
           href="https://wa.me/+8801521712539"
         >
-          <div className="w-16 m-4">{icons.Whatsapp}</div>
+          <div className="w-16 m-4">{icons.Whatsapp.icon}</div>
           <span className="text-2xl font-bold">Whatsapp</span>
           +8801521712539
         </Link>
