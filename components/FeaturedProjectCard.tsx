@@ -22,7 +22,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
     >
       <div className="grid gap-4 sm:gap-8 lg:grid-cols-12 items-start">
         {/* Project Thumbnail */}
-        <div className="lg:col-span-6 relative aspect-video w-full overflow-hidden rounded-xl border border-border bg-muted">
+        <div className="lg:col-span-5 relative aspect-video w-full overflow-hidden rounded-xl border border-border bg-muted h-full">
           {project.image ? (
             <Image
               src={project.image}
@@ -42,11 +42,13 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
         </div>
 
         {/* Project Details */}
-        <div className="lg:col-span-6 flex flex-col justify-between gap-3 sm:gap-4 h-full">
+        <div className="lg:col-span-7 flex flex-col justify-between gap-3 sm:gap-4 h-full">
           <div>
             <div className="flex items-center justify-between font-mono text-[0.7rem] sm:text-xs text-faint mb-1 sm:mb-2">
               <span>{project.year}</span>
-              <span className="text-accent-strong font-semibold">{project.status}</span>
+              <span className="text-accent-strong font-semibold">
+                {project.status}
+              </span>
             </div>
 
             <h3 className="font-serif text-xl font-bold tracking-tight text-foreground transition-colors group-hover:text-accent-strong sm:text-3xl">

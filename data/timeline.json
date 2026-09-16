@@ -1,0 +1,132 @@
+[
+  {
+    "year": 2026,
+    "title": "Research Publication, WebAssembly Systems & ITEE",
+    "headline": "IEEE PECCII conference publication, ITEE FE Level-2 passer, thesis & client-side WASM",
+    "description": "Published peer-reviewed research on MCDM sustainable energy in IEEE PECCII 2026. Passed ITEE FE (Level-2) certification under IPA Japan. Engineered Exam Studio (in-browser WebAssembly XeLaTeX compiler) and Teach Easy.",
+    "focus": "IEEE Publication, ITEE FE Passer, WebAssembly, PyTorch, Next.js 16",
+    "projects": [
+      {
+        "title": "IEEE PECCII 2026 Research Publication",
+        "category": "Peer-Reviewed Paper"
+      },
+      {
+        "title": "ITEE FE Exam — Full Passer (Level-2)",
+        "category": "Professional Certification"
+      },
+      {
+        "title": "Exam Studio",
+        "slug": "exam-ques-gen",
+        "category": "WebAssembly Studio"
+      },
+      {
+        "title": "Zero-Label Microscopy Anomaly Detection",
+        "slug": "zero-label-microscopy-thesis",
+        "category": "Vision Thesis Research"
+      },
+      {
+        "title": "Teach Easy",
+        "slug": "teach-easy",
+        "category": "E-Commerce Platform"
+      },
+      {
+        "title": "CGPA Buddy",
+        "slug": "cgpa-buddy",
+        "category": "Web Application"
+      },
+      {
+        "title": "RMSTU Notice Hub Reimagined",
+        "slug": "rmstu-notice-hub-reimagined",
+        "category": "Web Application"
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "title": "Real-Time Systems, UGC Scholarship & Contests",
+    "headline": "UGC Merit Scholarship, ICPC 2025 finals, and conference systems",
+    "description": "Awarded the UGC Merit Scholarship 2025 for academic excellence (CGPA 3.96, Rank 1st). Competed in ICPC Asia Dhaka Regional Finals 2025 (BUBT), achieved Top 10 in NUMO 2025, 5th place at CoU CSE Fest, and developed the ICBC 2025 RMSTU Conference System.",
+    "focus": "WebSockets, PWA, Docker, UGC Merit Scholarship, ICPC, ICBC Conference",
+    "projects": [
+      {
+        "title": "UGC Merit Scholarship 2025",
+        "category": "UGC Academic Award"
+      },
+      {
+        "title": "ICPC Asia Dhaka Regional Finalist 2025 (BUBT)",
+        "category": "ACM-ICPC Contest"
+      },
+      {
+        "title": "ICBC 2025 Conference Management System",
+        "slug": "icbc-conference-management-system",
+        "category": "Academic Conference Portal"
+      },
+      {
+        "title": "RMSTU Transport Management System",
+        "slug": "rmstu-bus-management-system",
+        "category": "Full-Stack Web App"
+      },
+      {
+        "title": "Offline-First News PWA",
+        "slug": "pwa-offline-news-app",
+        "category": "Web Application"
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "title": "Full-Stack Development, Teaching & ICPC Finals",
+    "headline": "University web platforms, ICPC Asia Dhaka regional contest, and college teaching",
+    "description": "Built full-stack web platforms using Next.js and MongoDB. Competed as a Regional Contestant in ICPC Asia Dhaka Regional Finals 2024 (DIU) and appointed as Higher Mathematics Instructor at Rangamati Govt. Women's College.",
+    "focus": "Next.js, MongoDB, JWT Auth, ICPC, Higher Mathematics Teaching",
+    "projects": [
+      {
+        "title": "Higher Mathematics Instructor (Rangamati Govt. Women's College)",
+        "category": "Teaching Experience"
+      },
+      {
+        "title": "ICPC Asia Dhaka Regional Finalist 2024 (DIU)",
+        "category": "ACM-ICPC Contest"
+      },
+      {
+        "title": "Question Vault RMSTU",
+        "slug": "question-vault-rmstu",
+        "category": "University App"
+      },
+      {
+        "title": "Library Management System",
+        "slug": "library-management-system",
+        "category": "Full-Stack"
+      },
+      {
+        "title": "Prize Bond Checker",
+        "slug": "price-bond-checker",
+        "category": "Utility Tool"
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "title": "Web Development Practice & Olympiads",
+    "headline": "Learning web fundamentals and competing in Mathematics Olympiad",
+    "description": "Learned modern web technologies including JavaScript, React, and backend APIs. Achieved Top 10 Finalist standing in the 14th National Undergraduate Mathematics Olympiad (NUMO 2023) Chattogram Regional Round.",
+    "focus": "JavaScript, React, REST APIs, Mathematics Olympiad",
+    "projects": [
+      { "title": "NUMO 2023 Top 10 Regional Finalist", "category": "Mathematics" },
+      { "title": "Frontend Projects & UI Practice", "category": "Web Engineering" },
+      { "title": "REST API Implementations", "category": "Backend" }
+    ]
+  },
+  {
+    "year": 2022,
+    "title": "Computer Science Foundations & Problem Solving",
+    "headline": "Building core algorithmic skills and C++ practice",
+    "description": "Started CS undergraduate studies at RMSTU. Solved problem sets on Codeforces, LightOJ, and Beecrowd to build strong algorithm and data structure fundamentals in C++.",
+    "focus": "C++, Data Structures, Algorithms, Problem Solving",
+    "projects": [
+      { "title": "Codeforces Problem Archive", "category": "Competitive Programming" },
+      { "title": "LightOJ Solutions", "category": "Algorithms" },
+      { "title": "Beecrowd Repository", "category": "C++ Practice" }
+    ]
+  }
+]

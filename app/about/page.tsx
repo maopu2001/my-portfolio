@@ -29,10 +29,24 @@ export default function AboutPage() {
                 <strong className="text-foreground">
                   Rangamati Science and Technology University (RMSTU)
                 </strong>
-                . I enjoy building software that solves practical problems while continuously deepening my understanding of underlying computer science principles.
+                , maintaining the <strong className="text-accent-strong">1st Merit Standing (Rank 1)</strong> with a <strong className="text-accent-strong">3.96 / 4.00 CGPA</strong> and recipient of the <strong className="text-foreground">2025 UGC Merit Scholarship</strong>. I enjoy building software that solves practical problems while continuously deepening my understanding of underlying computer science principles.
               </p>
               <p>
-                My practical foundation lies in full-stack web application engineering (Next.js, TypeScript, Node.js, MongoDB). Over the last several years, I have constructed utility applications used directly by students and faculty, including{" "}
+                My practical foundation lies in full-stack web application engineering and client-side systems (Next.js, TypeScript, WebAssembly, Node.js, MongoDB). Over the last several years, I have constructed platforms and utility applications used directly by students and faculty, including{" "}
+                <Link
+                  href="/projects/exam-ques-gen"
+                  className="text-accent-strong hover:underline font-medium"
+                >
+                  Exam Studio
+                </Link>
+                ,{" "}
+                <Link
+                  href="/projects/teach-easy"
+                  className="text-accent-strong hover:underline font-medium"
+                >
+                  Teach Easy
+                </Link>
+                ,{" "}
                 <Link
                   href="/projects/cgpa-buddy"
                   className="text-accent-strong hover:underline font-medium"
@@ -112,6 +126,12 @@ export default function AboutPage() {
                 <span className="text-faint block">Degree</span>
                 <span className="text-foreground font-sans font-medium">
                   {profile.education.degree}
+                </span>
+              </div>
+              <div>
+                <span className="text-faint block">Merit Standing</span>
+                <span className="text-accent-strong font-sans font-bold">
+                  Rank 1st (CGPA: {profile.education.cgpa} / {profile.education.scale})
                 </span>
               </div>
               <div>

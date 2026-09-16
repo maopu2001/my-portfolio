@@ -30,7 +30,8 @@ export function ProjectsArchive({ initialProjects }: ProjectsArchiveProps) {
         selectedCategory === "all" ||
         project.category === selectedCategory ||
         (selectedCategory === "ai" &&
-          (project.category === "ai" || project.category === "computer-vision"));
+          (project.category === "ai" ||
+            project.category === "computer-vision"));
 
       // Search match
       const query = searchQuery.toLowerCase().trim();
@@ -120,7 +121,7 @@ export function ProjectsArchive({ initialProjects }: ProjectsArchiveProps) {
             >
               {/* Thumbnail */}
               {project.image && (
-                <div className="relative aspect-video w-full shrink-0 overflow-hidden rounded-xl border border-border bg-muted lg:w-64">
+                <div className="relative aspect-video w-full shrink-0 overflow-hidden rounded-xl border border-border bg-muted lg:w-70 lg:h-full">
                   <Image
                     src={project.image}
                     alt={project.title}

@@ -1,0 +1,58 @@
+[
+  {
+    "title": "UGC Merit Scholarship 2025",
+    "category": "Award",
+    "year": 2025,
+    "organization": "University Grants Commission (UGC) of Bangladesh",
+    "description": "Awarded by the University Grants Commission of Bangladesh for outstanding undergraduate academic excellence and top merit performance."
+  },
+  {
+    "title": "ITEE FE Exam — Full Passer (Level-2)",
+    "category": "Technical",
+    "year": 2026,
+    "organization": "BD-ITEC / IPA Japan",
+    "description": "Passed the Fundamental Information Technology Engineer (FE) Examination administered by Bangladesh Information Technology Examination Committee under Information-technology Promotion Agency (IPA), Japan."
+  },
+  {
+    "title": "Department Merit Rank 1st (CGPA 3.96 / 4.00)",
+    "category": "Academic",
+    "year": 2026,
+    "organization": "Department of CSE, RMSTU",
+    "description": "Ranked 1st in the Department of Computer Science & Engineering with CGPA 3.96/4.00, securing 1st position across 7 semesters and achieving perfect 4.00 GPAs in 3 consecutive terms."
+  },
+  {
+    "title": "ICPC Asia Dhaka Regional Contest Finalist (2024 & 2025)",
+    "category": "Contest",
+    "year": "2024, 2025",
+    "organization": "BUBT / DIU (ACM-ICPC)",
+    "description": "Qualified as a Regional Contestant in the prestigious International Collegiate Programming Contest (ICPC) Asia Dhaka Regional Finals in both 2024 (DIU) and 2025 (BUBT)."
+  },
+  {
+    "title": "National Undergraduate Mathematics Olympiad — Top 10 Finalist",
+    "category": "Contest",
+    "year": "2023, 2025",
+    "organization": "Bangladesh Mathematical Society",
+    "description": "Secured Top 10 Finalist ranking in the Chattogram Regional Round of both the 14th (2023) and 16th (2025) National Undergraduate Mathematics Olympiad (NUMO)."
+  },
+  {
+    "title": "CoU CSE Fest 2025 Programming Contest — 5th Place",
+    "category": "Contest",
+    "year": 2025,
+    "organization": "Comilla University",
+    "description": "Achieved 5th Place in the Inter-University Divisional Programming Contest at CoU CSE Fest 2025 among competing university teams."
+  },
+  {
+    "title": "Undergraduate Research Thesis in Computer Vision",
+    "category": "Academic",
+    "year": 2026,
+    "organization": "Department of CSE, RMSTU",
+    "description": "Benchmarked vision transformer models (DINOv2, SQAFormer, CAE-IF) for zero-label microscopy anomaly detection on 5,239 frames of the LIVECell corpus under Asst. Prof. Md. Mynoddin."
+  },
+  {
+    "title": "Organizing Committee Lead — CSE Department Tour 2026",
+    "category": "Leadership",
+    "year": 2026,
+    "organization": "Department of CSE, RMSTU",
+    "description": "Coordinated trip logistics, participant registrations, financial records, and engineered the official bilingual web application for the department tour."
+  }
+]

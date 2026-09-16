@@ -1,32 +1,50 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Section } from "@/components/Section";
-import { projects } from "@/lib/content";
+import { projects, publications } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Computer Vision & Research Exploration",
   description:
- "Undergraduate research focus in Computer Vision, Vision Transformers (DINOv2, SQAFormer), and zero-label cell microscopy anomaly detection.",
+    "Undergraduate research in Computer Vision, Vision Transformers (DINOv2, SQAFormer), zero-label microscopy anomaly detection, and peer-reviewed IEEE publications.",
 };
 
 const researchFocusAreas = [
   {
     title: "Zero-Label Anomaly Detection",
     description:
- "Investigating latent representation distances and feature distribution shifts in unlabelled cell microscopy frames without requiring manual annotation.",
+      "Investigating latent representation distances and feature distribution shifts in unlabelled cell microscopy frames without requiring manual annotation.",
     tags: ["DINOv2", "CAE-IF", "SQAFormer", "LIVECell Corpus"],
   },
   {
     title: "Vision Foundation Models (ViTs)",
     description:
- "Evaluating self-supervised vision transformers for robust feature extraction that remains invariant to optical blur and illumination noise.",
+      "Evaluating self-supervised vision transformers for robust feature extraction that remains invariant to optical blur and illumination noise.",
     tags: ["PyTorch", "Self-Supervised Learning", "Latent Space Analysis"],
   },
   {
     title: "Medical & Biological Cell Imaging",
     description:
- "Applying computer vision techniques to phase-contrast cellular imagery to automate quality control and benchmark model failure modes.",
+      "Applying computer vision techniques to phase-contrast cellular imagery to automate quality control and benchmark model failure modes.",
     tags: ["OpenCV", "Biomedical Imaging", "Empirical Benchmarking"],
+  },
+  {
+    title: "Multi-Criteria Decision Making (MCDM)",
+    description:
+      "Benchmarking mathematical MCDM frameworks for ranking and prioritizing sustainable energy infrastructure initiatives in the Chittagong Hill Tracts.",
+    tags: ["MCDM", "Decision Systems", "IEEE PECCII 2026"],
+  },
+  {
+    title: "Client-Side Typesetting & WASM",
+    description:
+      "Engineering in-browser WebAssembly XeLaTeX compilation pipelines for high-precision mathematical formulas and multilingual typography.",
+    tags: ["WebAssembly", "XeLaTeX", "Exam Studio"],
+  },
+  {
+    title: "Database Optimization & Distributed Systems",
+    description:
+      "Designing high-reliability role-based systems, relational document schemas, and transaction integrity for academic portals.",
+    tags: ["MongoDB", "RBAC", "System Architecture"],
   },
 ];
 
@@ -38,10 +56,74 @@ export default function ResearchPage() {
   return (
     <>
       <Section
-        title="Computer Vision & AI Research"
-        subtitle="Exploring where theoretical computer science, mathematical abstraction, and computer vision converge."
+        title="Research & Academic Publications"
+        subtitle="Exploring where theoretical computer science, mathematical abstraction, computer vision, and decision systems converge."
       >
         <div className="space-y-8">
+          {/* Peer-Reviewed Publications Section */}
+          <div className="space-y-4">
+            <h2 className="font-serif text-xl font-bold text-foreground border-b border-border pb-2">
+              Peer-Reviewed Conference Publications
+            </h2>
+            <div className="space-y-4">
+              {publications.map((pub, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-2xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-sm transition-all duration-300 hover:border-accent/50"
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs text-faint">
+                    <span className="rounded-full bg-primary/10 px-3 py-1 text-accent-strong border border-border font-bold">
+                      {pub.publisher} Conference Proceedings
+                    </span>
+                    <span>{pub.year}</span>
+                  </div>
+
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground">
+                    {pub.title}
+                  </h3>
+
+                  <p className="font-mono text-xs text-accent-strong">
+                    Authors: {pub.authors.join(", ")}
+                  </p>
+
+                  <p className="text-xs text-muted-foreground font-medium">
+                    Published in: <em>{pub.venue}</em>, {pub.location}, {pub.year}
+                    {pub.pages ? `, pp. ${pub.pages}` : ""}.
+                  </p>
+
+                  {pub.abstract && (
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {pub.abstract}
+                    </p>
+                  )}
+
+                  <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
+                    {pub.ieeeXploreUrl && (
+                      <a
+                        href={pub.ieeeXploreUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-primary-foreground hover:bg-primary-hover transition-colors font-semibold shadow-sm"
+                      >
+                        IEEE Xplore Digital Library ↗
+                      </a>
+                    )}
+                    {pub.doiUrl && (
+                      <a
+                        href={pub.doiUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-foreground hover:border-accent hover:text-accent-strong transition-colors"
+                      >
+                        DOI: {pub.doi} ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Main Thesis Spotlight */}
           {thesisProject && (
             <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-sm">
@@ -91,30 +173,35 @@ export default function ResearchPage() {
           )}
 
           {/* Research Focus Grid */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {researchFocusAreas.map((area) => (
-              <div
-                key={area.title}
-                className="rounded-2xl border border-border bg-card p-6 space-y-3 shadow-sm transition-all duration-300 hover:border-accent/50"
-              >
-                <h3 className="font-serif text-lg font-bold text-foreground">
-                  {area.title}
-                </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {area.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5 pt-2">
-                  {area.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-muted px-3 py-0.5 font-mono text-[0.68rem] text-foreground border border-border"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+          <div className="space-y-4">
+            <h2 className="font-serif text-xl font-bold text-foreground border-b border-border pb-2">
+              Research & Theoretical Focus Areas
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {researchFocusAreas.map((area) => (
+                <div
+                  key={area.title}
+                  className="rounded-2xl border border-border bg-card p-6 space-y-3 shadow-sm transition-all duration-300 hover:border-accent/50"
+                >
+                  <h3 className="font-serif text-lg font-bold text-foreground">
+                    {area.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {area.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {area.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-muted px-3 py-0.5 font-mono text-[0.68rem] text-foreground border border-border"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </Section>

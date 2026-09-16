@@ -1,0 +1,56 @@
+[
+  {
+    "category": "Languages",
+    "skills": [
+      { "name": "C & C++", "usedInSlugs": ["competitive-programming-archive", "os-lab-simulations"] },
+      { "name": "Python", "usedInSlugs": ["zero-label-microscopy-thesis", "personal-ai-agent-exploration"] },
+      { "name": "TypeScript", "usedInSlugs": ["exam-ques-gen", "cgpa-buddy", "rmstu-notice-hub-reimagined", "cse-department-tour-2026", "pwa-offline-news-app"] },
+      { "name": "JavaScript (ES6+)", "usedInSlugs": ["teach-easy", "question-vault-rmstu", "rmstu-bus-management-system", "library-management-system", "price-bond-checker"] },
+      { "name": "Java", "usedInSlugs": [] }
+    ]
+  },
+  {
+    "category": "Web & Systems",
+    "skills": [
+      { "name": "Next.js (App Router, SSR, Server Actions)", "usedInSlugs": ["exam-ques-gen", "teach-easy", "cgpa-buddy", "question-vault-rmstu", "rmstu-bus-management-system", "cse-department-tour-2026"] },
+      { "name": "React 19 & React Hook Form", "usedInSlugs": ["exam-ques-gen", "teach-easy", "cgpa-buddy", "rmstu-notice-hub-reimagined", "error-detection-calculator"] },
+      { "name": "Tailwind CSS (v3 & v4)", "usedInSlugs": ["exam-ques-gen", "teach-easy", "cgpa-buddy", "question-vault-rmstu", "rmstu-bus-management-system", "cse-department-tour-2026"] },
+      { "name": "WebAssembly (XeLaTeX / WASM Engine)", "usedInSlugs": ["exam-ques-gen"] },
+      { "name": "Web Workers & Multi-threading", "usedInSlugs": ["exam-ques-gen"] },
+      { "name": "Node.js & Express / Hono", "usedInSlugs": ["teach-easy", "library-management-system", "personal-isp-iptv-server"] },
+      { "name": "TanStack Start / Query / Router", "usedInSlugs": ["rmstu-notice-hub-reimagined"] },
+      { "name": "PWA & Service Workers", "usedInSlugs": ["pwa-offline-news-app"] }
+    ]
+  },
+  {
+    "category": "Databases & Security",
+    "skills": [
+      { "name": "MongoDB & Mongoose ORM", "usedInSlugs": ["teach-easy", "icbc-conference-management-system", "question-vault-rmstu", "rmstu-bus-management-system", "library-management-system"] },
+      { "name": "PostgreSQL & MySQL / Firebase", "usedInSlugs": [] },
+      { "name": "Role-Based Access Control (RBAC) & Auth", "usedInSlugs": ["teach-easy", "question-vault-rmstu", "rmstu-bus-management-system", "library-management-system"] },
+      { "name": "REST APIs & JSON Schemas (Zod)", "usedInSlugs": ["exam-ques-gen", "cgpa-buddy", "question-vault-rmstu", "personal-ai-agent-exploration"] },
+      { "name": "PDF Generation & Imposition (pdf-lib, @react-pdf/renderer)", "usedInSlugs": ["exam-ques-gen", "cgpa-buddy", "rmstu-notice-hub-reimagined"] },
+      { "name": "IndexedDB & Browser Storage", "usedInSlugs": ["exam-ques-gen", "pwa-offline-news-app", "price-bond-checker"] }
+    ]
+  },
+  {
+    "category": "AI, Machine Learning & Vision",
+    "skills": [
+      { "name": "PyTorch & Torchvision", "usedInSlugs": ["zero-label-microscopy-thesis"] },
+      { "name": "Vision Transformers (DINOv2, SQAFormer)", "usedInSlugs": ["zero-label-microscopy-thesis"] },
+      { "name": "Computer Vision & OpenCV", "usedInSlugs": ["zero-label-microscopy-thesis"] },
+      { "name": "Scikit-learn, NumPy, Pandas, Matplotlib", "usedInSlugs": ["zero-label-microscopy-thesis"] },
+      { "name": "Zero-Shot Anomaly Detection", "usedInSlugs": ["zero-label-microscopy-thesis"] }
+    ]
+  },
+  {
+    "category": "Tools & Infrastructure",
+    "skills": [
+      { "name": "Git & GitHub", "usedInSlugs": ["exam-ques-gen", "cgpa-buddy", "question-vault-rmstu", "zero-label-microscopy-thesis"] },
+      { "name": "Docker & Containerization", "usedInSlugs": ["docker-nextjs-15"] },
+      { "name": "Linux / macOS CLI", "usedInSlugs": ["os-lab-simulations", "docker-nextjs-15"] },
+      { "name": "Typesetting (LaTeX, XeLaTeX, Beamer, BibTeX)", "usedInSlugs": ["exam-ques-gen"] },
+      { "name": "Vercel Deployment", "usedInSlugs": ["exam-ques-gen", "teach-easy", "cgpa-buddy", "rmstu-notice-hub-reimagined", "cse-department-tour-2026"] }
+    ]
+  }
+]

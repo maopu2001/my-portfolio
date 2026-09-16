@@ -17,9 +17,9 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const featuredProjects = projects.filter((p) => p.featured).slice(0, 6);
+  const featuredProjects = projects.filter((p) => p.featured);
   const featuredExperiments = experiments.slice(0, 3);
-  const recentTimeline = timeline.slice(-3).reverse();
+  const recentTimeline = timeline.slice(0, 3);
 
   const allSkills = skillGroups.flatMap((g) => g.skills);
 
@@ -245,7 +245,7 @@ export default function Home() {
 
           <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl">
             <p>
-              I am a CSE undergraduate student at Rangamati Science and Technology University (RMSTU). My practical engineering journey started in full-stack web application development, building tools like <strong>CGPA Buddy</strong>, <strong>Question Vault</strong>, and the <strong>RMSTU Transport System</strong>.
+              I am a CSE undergraduate student at Rangamati Science and Technology University (RMSTU). My practical engineering journey started in full-stack web application development and client-side systems, building tools like <strong>Exam Studio</strong>, <strong>CGPA Buddy</strong>, <strong>Question Vault</strong>, and the <strong>RMSTU Transport System</strong>.
             </p>
             <p>
               Over time, building applications led me to investigate theoretical foundations—computer vision, vision transformers (DINOv2, SQAFormer), and zero-label anomaly detection.

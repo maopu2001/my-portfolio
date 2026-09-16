@@ -1,0 +1,100 @@
+{
+  "name": "M. Aktaruzzaman Opu",
+  "shortName": "Opu",
+  "headline": "Computer Science · Software · Web Development",
+  "intro": "I enjoy building software, exploring computer science, and turning ideas into useful applications.",
+  "subIntro": "Interested in computer vision and machine learning. Long-term, I want to build a career in university teaching and academia.",
+  "statement": "I like understanding technical problems and building things that actually work.",
+  "longTermGoal": "My long-term goal is to become a university professor. I want to combine teaching, technical work, and research.",
+  "socialLinks": {
+    "github": "https://github.com/maopu2001",
+    "linkedin": "https://www.linkedin.com/in/m-aktaruzzaman-opu-81716742b",
+    "facebook": "https://facebook.com/maopu2001",
+    "email": "mailto:maopu.cse@gmail.com",
+    "rawEmail": "maopu.cse@gmail.com",
+    "secondaryEmail": "aktaruzzamanopu2001@gmail.com",
+    "phone": "(+880) 1521712539"
+  },
+  "education": {
+    "institution": "Rangamati Science and Technology University (RMSTU)",
+    "degree": "B.Sc. (Engg.) in Computer Science & Engineering",
+    "department": "Department of Computer Science and Engineering",
+    "period": "February 2022 — August 2026",
+    "location": "Rangamati, Bangladesh",
+    "status": "Undergraduate (Final Year)",
+    "cgpa": "3.96",
+    "scale": "4.00",
+    "meritStanding": "Ranked 1st (Department Top)",
+    "academicHighlights": [
+      "Secured 1st Position in 7 semesters (1st, 2nd, 3rd, 4th, 5th, 6th, and 8th Semesters)",
+      "Achieved a Perfect GPA of 4.00 / 4.00 in 3 consecutive terms (2nd - 4th Semesters)"
+    ],
+    "secondaryEducation": [
+      {
+        "degree": "Higher Secondary Certificate (HSC), Science Group",
+        "institution": "Lakers' Public School and College, Rangamati",
+        "board": "Chattogram Board",
+        "year": 2020,
+        "gpa": "5.00 / 5.00"
+      },
+      {
+        "degree": "Secondary School Certificate (SSC), Science Group",
+        "institution": "Lakers' Public School and College, Rangamati",
+        "board": "Chattogram Board",
+        "year": 2018,
+        "gpa": "5.00 / 5.00"
+      }
+    ]
+  },
+  "teachingExperience": [
+    {
+      "role": "Higher Mathematics Instructor",
+      "institution": "Rangamati Govt. Women's College",
+      "location": "Rangamati, Bangladesh",
+      "period": "November 2024 — March 2025",
+      "topics": ["Calculus", "Coordinate Geometry", "Matrices", "Trigonometry"],
+      "responsibilities": [
+        "Taught Higher Mathematics curriculum to higher secondary college students",
+        "Covered core analytical modules including Calculus, Coordinate Geometry, Matrices, and Trigonometry",
+        "Designed periodic problem-solving assessments and held mentorship sessions"
+      ]
+    }
+  ],
+  "teachingInterests": [
+    "Programming Fundamentals",
+    "Object-Oriented Programming",
+    "Data Structures & Algorithms",
+    "Database Management Systems",
+    "Software Engineering",
+    "Machine Learning",
+    "Computer Vision"
+  ],
+  "references": [
+    {
+      "name": "Md. Mynoddin",
+      "designation": "Assistant Professor",
+      "department": "Department of Computer Science and Engineering",
+      "institution": "Rangamati Science and Technology University (RMSTU)",
+      "location": "Rangamati-4500, Bangladesh",
+      "email": "mynoddin@rmstu.edu.bd",
+      "role": "Undergraduate Thesis Supervisor"
+    }
+  ],
+  "navigationItems": [
+    { "label": "Home", "href": "/" },
+    { "label": "Projects", "href": "/projects" },
+    { "label": "Research", "href": "/research" },
+    { "label": "Experiments", "href": "/experiments" },
+    { "label": "Journey", "href": "/journey" },
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "mobileNavigationItems": [
+    { "label": "Home", "href": "/", "shortLabel": "Home" },
+    { "label": "Projects", "href": "/projects", "shortLabel": "Work" },
+    { "label": "Research", "href": "/research", "shortLabel": "Research" },
+    { "label": "About", "href": "/about", "shortLabel": "About" },
+    { "label": "Contact", "href": "/contact", "shortLabel": "Contact" }
+  ],
+  "cvUrl": "/CV.pdf"
+}

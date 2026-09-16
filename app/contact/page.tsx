@@ -22,16 +22,20 @@ const contactItems = [
   },
   {
     label: "LinkedIn",
-    value: "linkedin.com/in/maopu2001",
+    value: "linkedin.com/in/m-aktaruzzaman-opu",
     href: profile.socialLinks.linkedin,
     note: "Professional profile & updates",
   },
-  {
-    label: "Facebook",
-    value: "facebook.com/maopu2001",
-    href: profile.socialLinks.facebook,
-    note: "Personal social updates",
-  },
+  ...(profile.socialLinks.facebook
+    ? [
+        {
+          label: "Facebook",
+          value: "facebook.com/maopu2001",
+          href: profile.socialLinks.facebook,
+          note: "Personal social updates",
+        },
+      ]
+    : []),
 ];
 
 export default function ContactPage() {
