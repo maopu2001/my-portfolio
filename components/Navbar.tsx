@@ -120,7 +120,7 @@ export function Navbar() {
           >
             <Search className="size-4" />
           </button>
-          <div className="flex size-8 items-center justify-center">
+          <div className="flex-1 size-8 items-center justify-center m-0 p-0">
             <ThemeToggle />
           </div>
         </div>
