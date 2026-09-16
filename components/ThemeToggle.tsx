@@ -1,35 +1,55 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState, useRef } from "react";
+import { useRef, useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 
-export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+const emptySubscribe = () => () => {};
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+/** False during SSR/hydration, true on the client — avoids hydration mismatch
+ *  without setState-in-effect (which the React lint rules reject). */
+function useMounted() {
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+}
+
+type ViewTransitionDocument = Document & {
+  startViewTransition?: (updateCallback: () => void | Promise<void>) => {
+    ready: Promise<void>;
+    finished: Promise<void>;
+  };
+};
+
+export function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
+  const mounted = useMounted();
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   if (!mounted) {
     return (
-      <div className="h-8 w-8 rounded-full border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-neutral-900" />
+      <div className="h-8 w-8 rounded-full border border-border bg-card" />
     );
   }
 
-  const isDark = theme === "dark";
+  const isDark = resolvedTheme === "dark";
 
   const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     const nextTheme = isDark ? "light" : "dark";
 
-    // Fallback if View Transitions API or prefers-reduced-motion is active
+    // Fallback if View Transitions API is unavailable or reduced motion is set
     if (
       typeof document === "undefined" ||
-      !("startViewTransition" in document) ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
+      setTheme(nextTheme);
+      return;
+    }
+
+    const doc = document as ViewTransitionDocument;
+    if (!doc.startViewTransition) {
       setTheme(nextTheme);
       return;
     }
@@ -41,14 +61,9 @@ export function ThemeToggle() {
     document.documentElement.dataset.themeTransition = nextTheme;
 
     // Get click position or button center
-    const rect = buttonRef.current?.getBoundingClientRect() || {
-      left: e.clientX,
-      top: e.clientY,
-      width: 0,
-      height: 0,
-    };
-    const x = e.clientX || rect.left + rect.width / 2;
-    const y = e.clientY || rect.top + rect.height / 2;
+    const rect = buttonRef.current?.getBoundingClientRect();
+    const x = e.clientX || (rect ? rect.left + rect.width / 2 : 0);
+    const y = e.clientY || (rect ? rect.top + rect.height / 2 : 0);
 
     // Calculate maximum radius to cover the viewport
     const endRadius = Math.hypot(
@@ -57,7 +72,7 @@ export function ThemeToggle() {
     );
 
     // Start View Transition
-    const transition = (document as any).startViewTransition(() => {
+    const transition = doc.startViewTransition(() => {
       setTheme(nextTheme);
     });
 
@@ -111,14 +126,14 @@ export function ThemeToggle() {
     <button
       ref={buttonRef}
       onClick={handleToggle}
-      className="relative flex h-8 w-8 items-center justify-center rounded-full border border-[#e8e2d2] bg-white text-neutral-800 transition-all duration-300 hover:border-[#ff4d00] hover:text-[#ff4d00] dark:border-white/10 dark:bg-neutral-900 dark:text-zinc-200 dark:hover:border-[#ff4d00] dark:hover:text-[#ff4d00] shadow-sm"
+      className="relative flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-foreground transition-all duration-300 hover:border-accent hover:text-accent-strong shadow-sm"
       aria-label="Toggle light/dark theme"
       title={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
       {isDark ? (
-        <Sun className="h-4 w-4 text-[#ff4d00] transition-transform duration-300 rotate-0 hover:rotate-45" />
+        <Sun className="h-4 w-4 text-accent-strong transition-transform duration-300 rotate-0 hover:rotate-45" />
       ) : (
-        <Moon className="h-4 w-4 text-[#ff4d00] transition-transform duration-300 rotate-0 hover:-rotate-12" />
+        <Moon className="h-4 w-4 text-accent-strong transition-transform duration-300 rotate-0 hover:-rotate-12" />
       )}
     </button>
   );

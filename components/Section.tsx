@@ -3,6 +3,9 @@ import { FadeIn } from "@/components/animations/FadeIn";
 
 type SectionProps = {
   id?: string;
+  /** Optional section number rendered as an eyebrow, e.g. "01" — part of the
+   *  Aditya Gupta design language (numbered sections). */
+  index?: number;
   title: string;
   subtitle?: string;
   action?: ReactNode;
@@ -12,6 +15,7 @@ type SectionProps = {
 
 export function Section({
   id,
+  index,
   title,
   subtitle,
   action,
@@ -21,16 +25,18 @@ export function Section({
   return (
     <section id={id} className={`my-10 sm:my-16 ${className}`}>
       <FadeIn direction="up" duration={0.4}>
-        <div className="mb-6 sm:mb-8 flex flex-col justify-between gap-2 border-b border-[#e8e2d2] dark:border-white/10 pb-3 sm:pb-4 sm:flex-row sm:items-end">
+        <div className="mb-6 sm:mb-8 flex flex-col justify-between gap-2 border-b border-border pb-3 sm:pb-4 sm:flex-row sm:items-end">
           <div>
-            <span className="font-mono text-[0.68rem] sm:text-xs font-semibold text-[#ff4d00] tracking-widest uppercase block mb-0.5 sm:mb-1">
-              Section Breakdown
-            </span>
-            <h2 className="font-serif text-xl sm:text-3xl font-bold tracking-tight text-[#1a2332] dark:text-[#fffcf3]">
+            {index !== undefined && (
+              <span className="font-mono text-[0.68rem] sm:text-xs font-semibold text-accent-strong tracking-widest block mb-1 sm:mb-1.5">
+                {String(index).padStart(2, "0")}
+              </span>
+            )}
+            <h2 className="font-serif text-xl sm:text-3xl font-bold tracking-tight text-foreground">
               {title}
             </h2>
             {subtitle && (
-              <p className="mt-1 text-xs sm:text-sm text-[#4b5563] dark:text-[#a3a3a3] max-w-2xl leading-relaxed">{subtitle}</p>
+              <p className="mt-1 text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">{subtitle}</p>
             )}
           </div>
           {action && <div className="shrink-0 pt-1 sm:pt-0">{action}</div>}

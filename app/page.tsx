@@ -23,19 +23,33 @@ export default function Home() {
 
   const allSkills = skillGroups.flatMap((g) => g.skills);
 
+  /* Skill evidence can come from projects OR experiments — experiments have no
+     detail pages, so they deep-link to their anchor on /experiments instead. */
+  const resolveUsedIn = (slug: string) => {
+    const project = projects.find((p) => p.slug === slug);
+    if (project) {
+      return { href: `/projects/${project.slug}`, label: project.title };
+    }
+    const experiment = experiments.find((e) => e.slug === slug);
+    if (experiment) {
+      return { href: `/experiments#${experiment.slug}`, label: experiment.title };
+    }
+    return null;
+  };
+
   return (
     <>
       <Hero />
 
       {/* TECH SKILLS TICKER MARQUEE (ADITYA GUPTA STYLE) */}
-      <div className="my-8 rounded-full border border-[#e8e2d2] bg-white/80 dark:border-white/10 dark:bg-[#121212]/80 py-3 backdrop-blur-md shadow-sm">
+      <div className="my-8 rounded-full border border-border bg-card/80 py-3 backdrop-blur-md shadow-sm">
         <Marquee speed={30}>
           {allSkills.map((skill) => (
             <span
               key={skill.name}
-              className="inline-flex items-center gap-2 rounded-full border border-[#e8e2d2] bg-[#f5f2e6] dark:border-white/10 dark:bg-[#1a1a1a] px-4 py-1.5 font-mono text-xs text-[#1a2332] dark:text-[#fffcf3]"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-muted px-4 py-1.5 font-mono text-xs text-foreground"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#ff4d00]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               <span>{skill.name}</span>
             </span>
           ))}
@@ -45,24 +59,21 @@ export default function Home() {
       {/* FEATURED PROJECTS SECTION */}
       <Section
         id="projects"
+        index={1}
         title="Featured Works"
         subtitle="Key software systems, campus web platforms, and computer vision research engineering."
         action={
           <Link
             href="/projects"
-            className="rounded-full border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-neutral-900 px-4 py-1.5 font-mono text-xs text-[#ff4d00] hover:border-[#ff4d00] transition-colors"
+            className="rounded-full border border-border bg-card px-4 py-1.5 font-mono text-xs text-accent-strong hover:border-accent transition-colors"
           >
             All Projects ({projects.length}) →
           </Link>
         }
       >
         <div className="space-y-8">
-          {featuredProjects.map((project, idx) => (
-            <FeaturedProjectCard
-              key={project.slug}
-              project={project}
-              isFirst={idx === 0}
-            />
+          {featuredProjects.map((project) => (
+            <FeaturedProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </Section>
@@ -70,6 +81,7 @@ export default function Home() {
       {/* WHAT I BUILD & EVIDENCE-BASED TECH */}
       <Section
         id="tech"
+        index={2}
         title="Technical Skills & Evidence"
         subtitle="Technologies applied directly across production apps and thesis research."
       >
@@ -77,32 +89,32 @@ export default function Home() {
           {skillGroups.map((group) => (
             <div
               key={group.category}
-              className="rounded-2xl border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-[#121212] p-6 transition-all duration-300 hover:border-[#ff4d00]/40 hover:-translate-y-1 shadow-sm"
+              className="rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/40 hover:-translate-y-1 shadow-sm"
             >
-              <h3 className="font-serif text-lg font-bold text-[#1a2332] dark:text-[#fffcf3] mb-4 border-b border-[#e8e2d2] dark:border-white/10 pb-2">
+              <h3 className="font-serif text-lg font-bold text-foreground mb-4 border-b border-border pb-2">
                 {group.category}
               </h3>
               <ul className="space-y-3.5 text-sm">
                 {group.skills.map((skill) => (
                   <li key={skill.name} className="flex flex-col gap-0.5">
-                    <span className="font-medium text-[#1a2332] dark:text-[#fffcf3]">{skill.name}</span>
+                    <span className="font-medium text-foreground">{skill.name}</span>
                     {skill.usedInSlugs.length > 0 && (
-                      <span className="font-mono text-[0.72rem] text-[#6b7280] dark:text-[#737373]">
+                      <span className="font-mono text-[0.72rem] text-faint">
                         Used in:{" "}
-                        {skill.usedInSlugs.map((slug, idx) => {
-                          const proj = projects.find((p) => p.slug === slug);
-                          return (
-                            <span key={slug}>
+                        {skill.usedInSlugs
+                          .map(resolveUsedIn)
+                          .filter((ref): ref is NonNullable<typeof ref> => ref !== null)
+                          .map((ref, idx) => (
+                            <span key={ref.href}>
                               {idx > 0 ? ", " : ""}
                               <Link
-                                href={`/projects/${slug}`}
-                                className="text-[#6b7280] hover:text-[#ff4d00] dark:text-[#a3a3a3] dark:hover:text-[#ff4d00] hover:underline"
+                                href={ref.href}
+                                className="text-faint hover:text-accent-strong hover:underline"
                               >
-                                {proj ? proj.title : slug}
+                                {ref.label}
                               </Link>
                             </span>
-                          );
-                        })}
+                          ))}
                       </span>
                     )}
                   </li>
@@ -116,12 +128,13 @@ export default function Home() {
       {/* EXPERIMENTS & LEARNING TEASER */}
       <Section
         id="experiments"
+        index={3}
         title="Experiments & Learning"
         subtitle="Lightweight technical explorations, infrastructure setups, and competitive problem solving."
         action={
           <Link
             href="/experiments"
-            className="rounded-full border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-neutral-900 px-4 py-1.5 font-mono text-xs text-[#ff4d00] hover:border-[#ff4d00] transition-colors"
+            className="rounded-full border border-border bg-card px-4 py-1.5 font-mono text-xs text-accent-strong hover:border-accent transition-colors"
           >
             All Experiments ({experiments.length}) →
           </Link>
@@ -131,17 +144,17 @@ export default function Home() {
           {featuredExperiments.map((exp) => (
             <div
               key={exp.slug}
-              className="flex flex-col justify-between rounded-2xl border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-[#121212] p-6 transition-all duration-300 hover:border-[#ff4d00]/40 hover:-translate-y-1 shadow-sm"
+              className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/40 hover:-translate-y-1 shadow-sm"
             >
               <div>
-                <div className="flex items-center justify-between font-mono text-[0.72rem] text-[#6b7280] dark:text-[#737373] mb-2">
-                  <span className="text-[#ff4d00] font-semibold">{exp.category}</span>
+                <div className="flex items-center justify-between font-mono text-[0.72rem] text-faint mb-2">
+                  <span className="text-accent-strong font-semibold">{exp.category}</span>
                   <span>{exp.year}</span>
                 </div>
-                <h3 className="font-serif text-base font-bold text-[#1a2332] dark:text-[#fffcf3] mb-2">
+                <h3 className="font-serif text-base font-bold text-foreground mb-2">
                   {exp.title}
                 </h3>
-                <p className="text-xs text-[#4b5563] dark:text-[#a3a3a3] leading-relaxed mb-4">
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4">
                   {exp.summary}
                 </p>
               </div>
@@ -151,7 +164,7 @@ export default function Home() {
                   {exp.technology.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full bg-[#f5f2e6] dark:bg-neutral-900 px-2.5 py-0.5 font-mono text-[0.68rem] text-[#1a2332] dark:text-[#fffcf3] border border-[#e8e2d2] dark:border-neutral-800"
+                      className="rounded-full bg-muted px-2.5 py-0.5 font-mono text-[0.68rem] text-foreground border border-border"
                     >
                       {t}
                     </span>
@@ -162,7 +175,7 @@ export default function Home() {
                     href={exp.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-mono text-xs text-[#ff4d00] hover:underline"
+                    className="font-mono text-xs text-accent-strong hover:underline"
                   >
                     View Code ↗
                   </a>
@@ -176,37 +189,38 @@ export default function Home() {
       {/* 4-YEAR JOURNEY TIMELINE PREVIEW */}
       <Section
         id="journey"
+        index={4}
         title="Things Built Over the Years"
         subtitle="Chronological progression from programming foundations to research thesis."
         action={
           <Link
             href="/journey"
-            className="rounded-full border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-neutral-900 px-4 py-1.5 font-mono text-xs text-[#ff4d00] hover:border-[#ff4d00] transition-colors"
+            className="rounded-full border border-border bg-card px-4 py-1.5 font-mono text-xs text-accent-strong hover:border-accent transition-colors"
           >
             Full Journey →
           </Link>
         }
       >
-        <div className="relative border-l border-[#e8e2d2] dark:border-neutral-800 pl-6 space-y-8 ml-3">
+        <div className="relative border-l border-border pl-6 space-y-8 ml-3">
           {recentTimeline.map((item) => (
             <div key={item.year} className="relative group">
-              <div className="absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-[#ff4d00] bg-[#fffcf3] dark:bg-[#0a0a0a] transition-transform duration-300 group-hover:scale-125" />
-              <span className="font-mono text-xs font-semibold text-[#ff4d00]">
+              <div className="absolute -left-[31px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-accent bg-background transition-transform duration-300 group-hover:scale-125" />
+              <span className="font-mono text-xs font-semibold text-accent-strong">
                 {item.year}
               </span>
-              <h3 className="font-serif text-lg font-bold text-[#1a2332] dark:text-[#fffcf3] mt-0.5">
+              <h3 className="font-serif text-lg font-bold text-foreground mt-0.5">
                 {item.title}
               </h3>
-              <p className="text-xs text-[#4b5563] dark:text-[#a3a3a3] mt-1 max-w-xl">
+              <p className="text-xs text-muted-foreground mt-1 max-w-xl">
                 {item.description}
               </p>
               <div className="flex flex-wrap gap-2 mt-3">
                 {item.projects.map((p) => (
                   <span
                     key={p.title}
-                    className="inline-flex items-center gap-1 rounded-full bg-[#f5f2e6] dark:bg-neutral-900 px-3 py-1 font-mono text-[0.72rem] text-[#1a2332] dark:text-[#fffcf3] border border-[#e8e2d2] dark:border-neutral-800"
+                    className="inline-flex items-center gap-1 rounded-full bg-muted px-3 py-1 font-mono text-[0.72rem] text-foreground border border-border"
                   >
-                    <span className="text-[#ff4d00]">#</span>
+                    <span className="text-accent-strong">#</span>
                     {p.slug ? (
                       <Link href={`/projects/${p.slug}`} className="hover:underline">
                         {p.title}
@@ -223,20 +237,20 @@ export default function Home() {
       </Section>
 
       {/* ABOUT & LONG-TERM ACADEMIC DIRECTION */}
-      <Section id="about" title="Academic Direction & Vision">
-        <div className="rounded-2xl border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-[#121212] p-6 sm:p-8 shadow-sm">
-          <blockquote className="border-l-2 border-[#ff4d00] pl-4 font-serif text-xl italic text-[#1a2332] dark:text-[#fffcf3] sm:text-2xl mb-6">
-            "{profile.statement}"
+      <Section id="about" index={5} title="Academic Direction & Vision">
+        <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm">
+          <blockquote className="border-l-2 border-accent pl-4 font-serif text-xl text-foreground sm:text-2xl mb-6">
+            “{profile.statement}”
           </blockquote>
 
-          <div className="space-y-4 text-sm sm:text-base text-[#4b5563] dark:text-[#a3a3a3] leading-relaxed max-w-3xl">
+          <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl">
             <p>
               I am a CSE undergraduate student at Rangamati Science and Technology University (RMSTU). My practical engineering journey started in full-stack web application development, building tools like <strong>CGPA Buddy</strong>, <strong>Question Vault</strong>, and the <strong>RMSTU Transport System</strong>.
             </p>
             <p>
               Over time, building applications led me to investigate theoretical foundations—computer vision, vision transformers (DINOv2, SQAFormer), and zero-label anomaly detection.
             </p>
-            <p className="text-[#6b7280] dark:text-[#a3a3a3] font-serif italic border-t border-[#e8e2d2] dark:border-white/10 pt-4">
+            <p className="text-faint font-serif border-t border-border pt-4">
               Long-term goal: {profile.longTermGoal}
             </p>
           </div>
@@ -244,13 +258,13 @@ export default function Home() {
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/about"
-              className="rounded-full border border-[#e8e2d2] bg-[#f5f2e6] dark:border-neutral-700 dark:bg-neutral-900 px-5 py-2 text-xs font-mono text-[#1a2332] dark:text-[#fffcf3] hover:border-[#ff4d00] hover:text-[#ff4d00] transition-colors"
+              className="rounded-full border border-border bg-muted px-5 py-2 text-xs font-mono text-foreground hover:border-accent hover:text-accent-strong transition-colors"
             >
               Read Full About Page →
             </Link>
             <a
               href={profile.socialLinks.email}
-              className="rounded-full border border-[#e8e2d2] bg-white dark:border-neutral-700 dark:bg-[#0a0a0a] px-5 py-2 text-xs font-mono text-[#4b5563] dark:text-[#a3a3a3] hover:text-[#ff4d00] transition-colors"
+              className="rounded-full border border-border bg-card px-5 py-2 text-xs font-mono text-muted-foreground hover:text-accent-strong transition-colors"
             >
               Get in Touch ({profile.socialLinks.rawEmail})
             </a>

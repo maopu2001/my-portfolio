@@ -35,8 +35,19 @@ export const profile = {
 export const navigationItems: NavigationItem[] = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/projects" },
+  { label: "Research", href: "/research" },
   { label: "Experiments", href: "/experiments" },
   { label: "Journey", href: "/journey" },
   { label: "About", href: "/about" },
-  { label: "CV", href: "/cv" },
+  { label: "Contact", href: "/contact" },
+];
+
+/* Bottom bar guideline: max 5 destinations. Experiments, Journey and CV stay
+   reachable via the home page sections and the footer. */
+export const mobileNavigationItems: NavigationItem[] = [
+  { label: "Home", href: "/", shortLabel: "Home" },
+  { label: "Projects", href: "/projects", shortLabel: "Work" },
+  { label: "Research", href: "/research", shortLabel: "Research" },
+  { label: "About", href: "/about", shortLabel: "About" },
+  { label: "Contact", href: "/contact", shortLabel: "Contact" },
 ];

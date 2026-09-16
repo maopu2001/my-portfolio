@@ -6,17 +6,21 @@ import type { ReactNode } from "react";
 type StaggerContainerProps = {
   children: ReactNode;
   staggerDelay?: number;
+  /** While held, children render statically (no hidden state) — used to keep
+   *  above-the-fold entrances from playing behind the session preloader. */
+  hold?: boolean;
   className?: string;
 };
 
 export function StaggerContainer({
   children,
   staggerDelay = 0.1,
+  hold = false,
   className = "",
 }: StaggerContainerProps) {
   const shouldReduceMotion = useReducedMotion();
 
-  if (shouldReduceMotion) {
+  if (shouldReduceMotion || hold) {
     return <div className={className}>{children}</div>;
   }
 

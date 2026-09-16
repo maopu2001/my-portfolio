@@ -4,22 +4,22 @@ export const projects: Project[] = [
   {
     slug: "cgpa-buddy",
     title: "CGPA Buddy",
-    tagline: "Academic GPA/CGPA calculator with department presets & PDF transcript export.",
+    tagline: "GPA/CGPA calculator tailored for university department credit structures.",
     description:
-      "A utility web application designed for university students to calculate semester GPA and overall CGPA using predefined department course structures or custom custom inputs.",
+      "I built CGPA Buddy to make semester-wise CGPA calculation easier for RMSTU students, eliminating manual course entry by providing pre-configured department course structures.",
     longDescription:
-      "CGPA Buddy was built to solve a recurring friction for university students: calculating semester GPA accurately when course credits and grading scales vary between departments. It offers three distinct workflows—predefined RMSTU department structures, a fully customizable semester/course builder, and a fast simple calculator.",
+      "I built CGPA Buddy to solve a practical issue for students at RMSTU: calculating semester GPA accurately when course credits and grading rules differ across departments. Instead of forcing users to re-type course names and credit weights every semester, it provides department presets alongside a custom structure builder and quick cumulative calculator.",
     category: "web",
     categoryLabel: "Web Application / Utility",
     year: 2026,
-    status: "Production / Active",
+    status: "Active Production",
     featured: true,
     displayOrder: 1,
     technologies: [
       "Next.js 16",
       "React 19",
       "TypeScript",
-      "Tailwind CSS 4",
+      "Tailwind CSS v4",
       "Recharts",
       "@react-pdf/renderer",
       "Zod",
@@ -29,25 +29,24 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
     problem:
-      "Students at RMSTU lacked a single reliable calculator tailored to department-specific grading criteria and semester credit weights. Generic GPA tools required manual course entry every time.",
+      "Students at RMSTU had no single tool configured for department-specific credit structures and theory/lab splits, requiring repetitive manual entry on generic calculator websites.",
     features: [
-      "Department-specific presets with pre-configured semester courses and credit breakdown",
-      "Custom calculator mode allowing arbitrary semesters, course names, and theory/lab credit split",
-      "Simple quick mode for rapid cumulative CGPA projection",
-      "Interactive analytics dashboard showing GPA trends across completed semesters using Recharts",
-      "Server-side transcript-style PDF generator with Zod payload validation and client download",
-      "LocalStorage persistence for immediate resumption without user account requirements",
+      "RMSTU department presets with pre-filled semester course lists and credit weights",
+      "Custom calculator mode for building dynamic semester and course grids",
+      "Simple calculator for quick cumulative GPA estimation",
+      "GPA trend chart visualizations built with Recharts",
+      "Server-side transcript PDF export via Next.js route handler and @react-pdf/renderer",
+      "Local browser storage persistence without requiring account registration",
     ],
     architecture:
-      "Built on Next.js 16 App Router. Client-side state managed via local storage hooks for zero-latency calculations. PDF summaries are processed via a server route POST handler (/api/pdf) that generates vector PDF buffers using @react-pdf/renderer.",
+      "Built with Next.js 16 App Router. State is maintained locally in the browser for instant calculations, while PDF generation runs on a server POST route (/api/pdf) using Zod validation schemas.",
     challenges: [
-      "Designing a state model flexible enough to handle fixed department templates alongside dynamic user-created semester grids.",
-      "Ensuring precise IEEE floating point rounding alignment for standard university 4.00 grading scales.",
-      "Optimizing PDF rendering performance for instant transcript exports across low-bandwidth mobile connections.",
+      "Structuring state to handle both fixed department templates and arbitrary user-defined semester grids.",
+      "Ensuring IEEE floating-point precision matches the university's official 4.00 grading scale.",
     ],
     lessons: [
-      "Utility apps succeed when friction is minimized—no mandatory authentication for basic tools dramatically increases adoption.",
-      "Separating client UI state from data validation schemas (Zod) makes server PDF generation reliable.",
+      "Removing mandatory user sign-up increases utility app usage.",
+      "Validating PDF payloads with Zod on the server prevents broken document renders.",
     ],
     relatedProjects: ["question-vault-rmstu", "rmstu-notice-hub-reimagined"],
   },
@@ -55,11 +54,11 @@ export const projects: Project[] = [
   {
     slug: "question-vault-rmstu",
     title: "Question Vault RMSTU",
-    tagline: "Digital repository for archiving and searching university exam question papers.",
+    tagline: "Digital archive for searching and organizing university exam question papers.",
     description:
-      "A centralized web platform for university students and faculty to archive, search, and manage semester mid-term and final examination questions.",
+      "I developed Question Vault to centralize historical mid-term and final exam question papers for RMSTU students, categorized by faculty, department, and course.",
     longDescription:
-      "Question Vault solves the problem of lost physical question papers during semester preparation. It provides structured indexing by faculty, department, degree program, course, and exam type (Mid vs. Final). Supports multi-role administrative workflows to ensure uploaded papers are reviewed.",
+      "Question Vault replaces informal chat groups and lost physical question copies with a structured digital archive. It organizes exam papers across faculties, departments, degrees, and courses, featuring search, paper bundling, and role-based access for student uploads and admin approvals.",
     category: "university",
     categoryLabel: "Web Application / University",
     year: 2024,
@@ -79,24 +78,24 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80",
     problem:
-      "Exam preparation relied on fragmented physical copies or informal chat groups, making it difficult for junior students to access historical question papers across subjects.",
+      "Students lacked a centralized repository for past examination papers, making exam revision dependent on scattered physical notes or senior students.",
     features: [
-      "Role-based access control (Super Admin, Admin, Student)",
-      "Granular classification: Faculty → Department → Degree → Course → Exam Type",
-      "Instant fuzzy search and filters by year, semester, and course code",
-      "Exam question bundling to download combined mid/final sets",
-      "Image upload integration via ImageBB API with fallback storage",
-      "JWT-authenticated administrative dashboard for approving student uploads",
+      "Role-based authorization (Super Admin, Admin, Student)",
+      "Academic hierarchy: Faculty → Department → Degree → Course → Exam Type",
+      "Search and filtering by year, semester, and course code",
+      "Exam question bundling for single-click mid/final downloads",
+      "Image upload integration using ImageBB API",
+      "Admin moderation panel for reviewing student uploads",
     ],
     architecture:
-      "Next.js App Router frontend with MongoDB document database. Document schemas represent hierarchical academic structures and question metadata. Media hosted on image CDNs with secure authorization tokens.",
+      "Built with Next.js App Router and MongoDB. Question metadata and academic hierarchy are stored in MongoDB collections, while uploaded images are hosted via ImageBB API.",
     challenges: [
-      "Structuring MongoDB schemas to handle changing academic course codes without breaking historical question links.",
-      "Implementing multi-tier role verification (Super Admin, Admin, Student) across Next.js API routes.",
+      "Designing document schemas that accommodate changing course codes without breaking historical paper links.",
+      "Securing administrative API endpoints with JWT role verification.",
     ],
     lessons: [
-      "Data modeling for academic structures needs explicit revision control.",
-      "Simple image hosting pipelines reduce database storage costs significantly.",
+      "Academic metadata needs explicit schema design for long-term consistency.",
+      "Offloading image storage to external image CDNs keeps database size low.",
     ],
     relatedProjects: ["cgpa-buddy", "rmstu-bus-management-system"],
   },
@@ -104,11 +103,11 @@ export const projects: Project[] = [
   {
     slug: "rmstu-bus-management-system",
     title: "RMSTU Transport Management System",
-    tagline: "Real-time fleet tracking, schedule management, and requisition system.",
+    tagline: "Real-time bus tracking, route schedules, and trip requisitions.",
     description:
-      "A full-stack campus transport management system featuring real-time vehicle GPS updates, trip control for drivers, and requisition approvals for university events.",
+      "I built this transport management system to provide real-time bus location tracking, driver trip logs, and administrative vehicle management for RMSTU campus transit.",
     longDescription:
-      "The RMSTU Transport System addresses campus transit uncertainty. It connects students, drivers, and transport administrators into one unified platform. Drivers broadcast GPS locations during active routes, students track bus arrival times, and admins handle vehicle assignments and trip requisitions.",
+      "Designed for students, drivers, and transport officers at RMSTU. Drivers stream live GPS coordinates during active trips, students view live bus positions on a map, and admins handle vehicle schedules and special trip requisitions.",
     category: "software",
     categoryLabel: "Full-Stack Web Application",
     year: 2025,
@@ -121,31 +120,31 @@ export const projects: Project[] = [
       "WebSockets",
       "NextAuth.js",
       "Tailwind CSS",
-      "Leaflet / Maps API",
+      "Leaflet",
     ],
     github: "https://github.com/maopu2001/rmstu-transport-management-system",
     demo: "https://rmstu-tms.vercel.app/",
     image:
       "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
     problem:
-      "Students missed university buses due to lack of visibility into vehicle schedules and live delays on hilly mountain transit routes in Rangamati.",
+      "Students frequently missed campus buses along hilly mountain routes in Rangamati due to unpredictable delays and zero schedule visibility.",
     features: [
-      "Live GPS location broadcasting from driver mobile devices",
-      "Real-time route maps with bus markers and ETA estimates for students",
-      "Admin fleet control panel for vehicle maintenance, driver assignments, and trip schedules",
-      "Special bus requisition workflow with administrative approval tracking",
-      "Status alerts (On Schedule, Delayed, Breakdown, Offline)",
-      "NextAuth.js authentication with role-based routing",
+      "Live GPS tracking broadcasted from driver mobile browsers",
+      "Interactive map with real-time bus positions and route stops",
+      "Admin dashboard for fleet allocation, schedule updates, and driver assignments",
+      "Bus requisition portal for special university events",
+      "Real-time trip status alerts (On Schedule, Delayed, Breakdown, Offline)",
+      "Role-based authentication using NextAuth.js",
     ],
     architecture:
-      "Built with Next.js and MongoDB. Uses WebSocket connections for streaming low-latency driver GPS coordinate changes to client Leaflet maps.",
+      "Full-stack Next.js application backed by MongoDB. Uses WebSocket channels to stream driver GPS coordinates directly to student map views.",
     challenges: [
-      "Handling intermittent mobile cellular data signals along mountain transport corridors without dropping location updates.",
-      "Optimizing WebSocket broadcast frequencies to prevent battery drain on mobile browser driver devices.",
+      "Managing intermittent cellular data connectivity along mountain transport routes.",
+      "Balancing WebSocket update intervals to prevent mobile battery drain.",
     ],
     lessons: [
-      "Real-time systems require fallback polling when WebSocket connections drop.",
-      "User role authorization must be verified at the database query level, not just in UI wrappers.",
+      "Real-time tracking systems require polling fallbacks for weak network conditions.",
+      "Database queries must enforce authorization checks independently of UI views.",
     ],
     relatedProjects: ["question-vault-rmstu", "pwa-offline-news-app"],
   },
@@ -153,11 +152,11 @@ export const projects: Project[] = [
   {
     slug: "zero-label-microscopy-thesis",
     title: "Zero-Label Microscopy Anomaly Detection",
-    tagline: "Benchmarking CAE-IF, SQAFormer & DINOv2 for cellular anomaly detection.",
+    tagline: "Benchmarking CAE-IF, SQAFormer & DINOv2 for cell anomaly detection.",
     description:
-      "Undergraduate research thesis evaluating vision transformers and autoencoder architectures on 5,239 frames of unlabelled phase-contrast microscopy images.",
+      "My undergraduate thesis benchmarks vision transformers and reconstruction autoencoders on 5,239 unlabelled phase-contrast cell microscopy frames from the LIVECell corpus.",
     longDescription:
-      "Traditional automated quality control in live-cell microscopy relies on pixel-reconstruction autoencoders. Our research benchmarked CAE-IF, SQAFormer, and DINOv2 models on the LIVECell dataset, uncovering a critical failure mode: catastrophic score sign inversion (AUROC = 0.0151) in standard MSE models caused by optical defocus blur.",
+      "Automated quality control in live-cell microscopy often relies on pixel-reconstruction autoencoders. My thesis benchmarked CAE-IF, SQAFormer, and DINOv2 models on LIVECell images, identifying a key limitation: pixel reconstruction models suffer from score sign inversion (AUROC = 0.0151) because optical blur corruptions are paradoxically easier to reconstruct than detailed cell structures.",
     category: "computer-vision",
     categoryLabel: "Computer Vision / AI Research",
     year: 2026,
@@ -177,23 +176,23 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=80",
     problem:
-      "Unlabelled cell microscopy anomaly detection models often fail silently when corrupted or blurry images produce lower reconstruction error than detailed, healthy cell textures.",
+      "Pixel-reconstruction autoencoders fail on microscopy anomaly detection when corrupted images yield lower reconstruction error than sharp, high-contrast healthy cell membranes.",
     features: [
-      "Benchmarking 3 core model paradigms (CAE-IF, SQAFormer, DINOv2 feature embeddings) across 5,239 LIVECell frames",
-      "Discovery and empirical validation of catastrophic score sign inversion in pixel-reconstruction loss metrics",
-      "Feature distribution extraction using self-supervised DINOv2 vision transformer backbones",
-      "Zero-shot evaluation metrics pipeline including AUROC, AUPR, and Mahalanobis distance scoring",
-      "Visualization suite for patch-level feature anomaly heatmaps",
+      "Benchmarking 3 model paradigms (CAE-IF, SQAFormer, DINOv2 ViT embeddings) across 5,239 LIVECell frames",
+      "Empirical identification of catastrophic score sign inversion in reconstruction loss metrics",
+      "Feature extraction using self-supervised DINOv2 vision transformer backbones",
+      "Zero-shot metric evaluation including AUROC, AUPR, and Mahalanobis distance scoring",
+      "Anomaly visualization maps for cell image patches",
     ],
     architecture:
-      "Modular PyTorch framework. Input phase-contrast frames are processed through DINOv2 ViT feature extractors. Anomaly scoring uses distance metrics on latent space manifolds rather than pixel MSE reconstruction.",
+      "PyTorch benchmarking pipeline. Cell frames pass through DINOv2 ViT backbones, and anomaly scoring is computed via latent feature space distances rather than pixel reconstruction error.",
     challenges: [
-      "Managing high-dimensional feature embeddings across 8 distinct cell lines without supervision.",
-      "Analyzing why traditional MSE loss favors smooth blurred corruptions over sharp cell membranes.",
+      "Handling high-dimensional embeddings across 8 distinct cell lines without supervision.",
+      "Analyzing why mean squared error favors smooth blurred artifacts over sharp cell textures.",
     ],
     lessons: [
-      "Pixel-level reconstruction error is a dangerous proxy for visual anomaly detection in complex biological domain images.",
-      "Self-supervised vision foundation models provide far higher feature invariance than task-specific trained autoencoders.",
+      "Pixel MSE reconstruction error is an unreliable metric for biological visual anomaly detection.",
+      "Self-supervised vision foundation models capture structure far better than task-specific trained autoencoders.",
     ],
     relatedProjects: ["cgpa-buddy"],
   },
@@ -201,11 +200,11 @@ export const projects: Project[] = [
   {
     slug: "rmstu-notice-hub-reimagined",
     title: "RMSTU Notice Hub Reimagined",
-    tagline: "High-speed server-rendered portal for official university notices and documents.",
+    tagline: "Server-rendered portal for official university announcements.",
     description:
-      "A fast, responsive web portal that aggregates, parses, and formats official university announcements into a searchable, dark-mode accessible reader.",
+      "I built RMSTU Notice Hub to provide a fast, searchable portal for university announcements with category filters and inline PDF viewing.",
     longDescription:
-      "RMSTU Notice Hub scrapes and structures official university notice announcements, offering instant search, category filtering (Academic, News, Events, General), embedded PDF viewing, and offline caching.",
+      "Official university notices were previously posted across scattered web pages as raw PDF links. I built Notice Hub using TanStack Start to scrape, structure, and render announcements into a clean, searchable interface.",
     category: "web",
     categoryLabel: "Web Application",
     year: 2026,
@@ -226,23 +225,22 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80",
     problem:
-      "Official university web notices were slow to load on mobile networks, lacked search capabilities, and required downloading raw PDF files manually for every update.",
+      "University notice pages loaded slowly on mobile networks, lacked search capabilities, and required opening external PDF downloads for simple updates.",
     features: [
-      "Server-side web scraping and HTML parsing using Cheerio",
-      "Category navigation across Academic, Events, News, and General notices",
-      "Integrated canvas-based inline PDF reader via react-pdf",
-      "Zero-flash dark/light mode toggle with persistent state",
-      "Route prefetching and pagination using TanStack Router",
+      "Server-side scraping and HTML parsing using Cheerio",
+      "Notice categorization across Academic, Events, News, and General",
+      "Inline PDF document viewing using react-pdf",
+      "Theme toggle with persistent local storage",
+      "Route prefetching and pagination with TanStack Router",
     ],
     architecture:
-      "Built with TanStack Start SSR architecture. Server endpoints query university notice portals, extract metadata, and cache responses via TanStack Query.",
+      "Built on TanStack Start. Server functions scrape official university notice feeds, extract titles and document attachments, and cache results with TanStack Query.",
     challenges: [
-      "Parsing inconsistent legacy HTML structures across different university department notice posts.",
-      "Ensuring fast inline PDF rendering on mobile viewports.",
+      "Parsing non-standard legacy HTML across different department posts.",
+      "Rendering inline PDFs smoothly on mobile browsers.",
     ],
     lessons: [
-      "Server-side content transformation drastically improves UX for unstructured public datasets.",
-      "TanStack Start offers precise loader control for data-heavy applications.",
+      "Server-side scraping and caching significantly improve access to unstructured public data.",
     ],
     relatedProjects: ["cgpa-buddy", "cse-department-tour-2026"],
   },
@@ -250,11 +248,11 @@ export const projects: Project[] = [
   {
     slug: "cse-department-tour-2026",
     title: "RMSTU CSE Department Tour 2026",
-    tagline: "Bilingual web portal for university tour registration, itinerary, and payments.",
+    tagline: "Bilingual web portal for tour registration and payment details.",
     description:
-      "An official event web application for the Sundarban tour organized by the Department of CSE, RMSTU.",
+      "I built this web application for the Sundarban tour organized by the CSE Department at RMSTU, featuring bilingual content, schedules, and payment info.",
     longDescription:
-      "Designed for students and faculty attending the annual CSE Department tour. Includes full bilingual support (English & Bengali), itinerary schedule, budget breakdowns, bKash/Bank payment details, and registration forms.",
+      "Coordinating the department tour required sharing schedules, guidelines, and bKash/Bank payment details. I built a dedicated bilingual web app so students and faculty could access all information and register easily.",
     category: "university",
     categoryLabel: "Web Application / University",
     year: 2026,
@@ -274,21 +272,21 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80",
     problem:
-      "Tour coordination across multiple student batches required repeating budget details, payment instructions, and scheduling across endless group chat messages.",
+      "Tour information was lost in messaging groups, leading to repetitive questions regarding budget breakdowns, bank numbers, and registration links.",
     features: [
-      "Instant English and Bengali bilingual content switcher",
-      "Detailed trip itinerary timeline and safety guidelines",
-      "Payment destination cards with one-click copy functionality for bKash and Bank accounts",
-      "Interactive promotional flyer modal",
+      "Bilingual English and Bengali content toggle",
+      "Tour itinerary timeline and travel guidelines",
+      "Payment account cards with one-click text copy for bKash and Bank accounts",
+      "Tour promotional poster modal view",
       "Google Forms pre-registration integration",
     ],
     architecture:
-      "Next.js App Router application using localized content dictionaries for zero-re-render language switching.",
+      "Next.js App Router app using lightweight client dictionary state for instant language switching.",
     challenges: [
-      "Creating a responsive layout that presents complex financial breakdowns cleanly on mobile screens.",
+      "Designing clean financial table views readable on small mobile viewports.",
     ],
     lessons: [
-      "Single-purpose event web apps dramatically reduce coordination overhead for student leadership.",
+      "A simple dedicated event page eliminates repetitive coordination questions in student groups.",
     ],
     relatedProjects: ["rmstu-notice-hub-reimagined"],
   },
@@ -296,11 +294,11 @@ export const projects: Project[] = [
   {
     slug: "pwa-offline-news-app",
     title: "Offline-First News PWA",
-    tagline: "Progressive web application with service-worker offline article caching.",
+    tagline: "Progressive web application with service-worker article caching.",
     description:
-      "A news reader application engineered with offline-first PWA architecture for low-connectivity environments.",
+      "I built an offline-first news reader PWA for Web Engineering Lab (CSE-3106) to allow reading articles without an active internet connection.",
     longDescription:
-      "Developed for Web Engineering Lab course (CSE-3106) at RMSTU. Uses custom service workers and IndexedDB storage to cache article headlines, images, and full text for offline reading.",
+      "Built using custom service workers and IndexedDB. Articles fetched online are cached locally so users can continue reading during network disconnections.",
     category: "web",
     categoryLabel: "Web Application / Lab Project",
     year: 2025,
@@ -317,29 +315,28 @@ export const projects: Project[] = [
     github: "https://github.com/maopu2001/pwa-offline-news-app",
     demo: "https://pwa-offline-news.vercel.app",
     problem:
-      "Mobile news readers fail completely in remote areas with unstable network connectivity.",
+      "Mobile web readers stop functioning completely in areas with weak cellular coverage.",
     features: [
-      "Automatic background caching of fetched news articles",
-      "Service worker interceptor for seamless offline fallback",
-      "Add to Home Screen (A2HS) PWA manifest support",
-      "Background sync when connectivity is restored",
+      "Automatic background caching of fetched news stories",
+      "Service worker network interceptor for offline fallback",
+      "PWA Web App Manifest for home screen installation",
     ],
     challenges: [
-      "Cache invalidation and state synchronization between browser Cache API and IndexedDB.",
+      "Managing cache state sync between browser Cache API and IndexedDB.",
     ],
     lessons: [
-      "Offline UX requires clear network state indicators so users know when data is cached.",
+      "Offline applications require clear visual indicators so users know content is cached.",
     ],
   },
 
   {
     slug: "students-attendance-tracker",
     title: "Students Attendance Tracker",
-    tagline: "Web utility for university course instructors to record and analyze attendance.",
+    tagline: "Web utility for logging and calculating student course attendance.",
     description:
-      "A fast frontend application for logging student attendance across course sections, calculating attendance percentages, and identifying threshold alerts.",
+      "I built a frontend attendance tracker to help instructors record class attendance, calculate eligibility percentages, and flag low attendance.",
     category: "tool",
-    categoryLabel: "Utility / Software Tool",
+    categoryLabel: "Utility Tool",
     year: 2025,
     status: "Completed",
     featured: false,
@@ -348,14 +345,14 @@ export const projects: Project[] = [
     github: "https://github.com/maopu2001/StudentsAttendanceTracker",
     demo: "https://students-attendance-tracker.vercel.app",
     problem:
-      "Manual paper-based attendance registers make calculating eligibility percentages at semester end tedious and prone to human error.",
+      "Calculating exam eligibility percentages manually from paper attendance sheets is slow and error-prone.",
     features: [
-      "Grid-based student attendance ledger",
-      "Automatic percentage calculation against minimum attendance rules",
-      "Exportable summary reports",
+      "Grid-based student attendance register",
+      "Automatic attendance percentage calculation",
+      "Exportable summary data",
     ],
-    challenges: ["Optimizing large grid inputs for fast keyboard navigation."],
-    lessons: ["Keyboard navigation shortcuts double data entry speed in utility tools."],
+    challenges: ["Optimizing data grid inputs for rapid keyboard entry."],
+    lessons: ["Keyboard shortcuts significantly improve data entry tools."],
   },
 
   {
@@ -363,9 +360,9 @@ export const projects: Project[] = [
     title: "Computer Networks Error Detection Tool",
     tagline: "Interactive simulator for Parity, CRC, and Hamming code algorithms.",
     description:
-      "An educational computer science utility developed to simulate and visualize bit-level error detection and correction algorithms.",
+      "I created an interactive simulator to visualize bit-level error detection and correction algorithms studied in Computer Networks.",
     category: "tool",
-    categoryLabel: "Utility / CS Tool",
+    categoryLabel: "CS Utility Tool",
     year: 2025,
     status: "Completed",
     featured: false,
@@ -374,22 +371,22 @@ export const projects: Project[] = [
     github: "https://github.com/maopu2001/error-detection-calculator",
     demo: "https://error-detection-calculator.vercel.app",
     problem:
-      "Students studying Computer Networks often struggle to visualize binary polynomial division (CRC) and parity bit calculations step-by-step.",
+      "Understanding binary polynomial division in CRC and parity bit calculations is easier when intermediate steps are visible.",
     features: [
-      "Single bit parity & 2D block parity calculator",
-      "Cyclic Redundancy Check (CRC) binary division step visualization",
-      "Hamming code error detection and 1-bit correction positioning",
+      "Single and 2D block parity calculator",
+      "CRC binary division step-by-step breakdown",
+      "Hamming code error location and 1-bit correction",
     ],
-    challenges: ["Displaying intermediate steps of binary arithmetic clearly."],
-    lessons: ["Visualizing step-by-step execution builds deep theoretical intuition."],
+    challenges: ["Formatting intermediate binary division steps cleanly on screen."],
+    lessons: ["Step-by-step visualizations help solidify computer science concepts."],
   },
 
   {
     slug: "price-bond-checker",
     title: "Bangladesh Prize Bond Checker",
-    tagline: "Automated tool for batch checking Bangladesh government prize bond numbers.",
+    tagline: "Web tool for batch checking government prize bond numbers.",
     description:
-      "A practical web utility that allows users to store prize bond numbers and automatically match them against official draw result lists.",
+      "I built a tool to store prize bond numbers locally and automatically check them against draw result databases.",
     category: "tool",
     categoryLabel: "Web Utility",
     year: 2024,
@@ -400,24 +397,24 @@ export const projects: Project[] = [
     github: "https://github.com/maopu2001/priceBondChecker",
     demo: "https://price-bond-checker.vercel.app",
     problem:
-      "Manually cross-referencing prize bond numbers against multi-page PDF draw results is tedious and error-prone.",
+      "Checking multi-page prize bond result lists manually line-by-line takes considerable time.",
     features: [
-      "Batch entry of prize bond series and numbers",
-      "Instant matching against historical draw databases",
+      "Batch entry of bond series and numbers",
+      "Automatic matching against official draw results",
       "Local browser storage persistence",
     ],
     challenges: ["Parsing unstructured draw result documents."],
-    lessons: ["Solving small personal utility problems builds practical frontend engineering skills."],
+    lessons: ["Building simple tools for personal tasks develops solid web fundamentals."],
   },
 
   {
     slug: "library-management-system",
     title: "Full-Stack Library Management System",
-    tagline: "Node.js & Express REST backend with MongoDB database for cataloging books.",
+    tagline: "Node.js & Express REST API with MongoDB for managing book loans.",
     description:
-      "A traditional full-stack web application built to manage book inventories, student borrowing records, and return due dates.",
+      "I built a RESTful full-stack application to track book inventory, student loans, and return dates.",
     category: "software",
-    categoryLabel: "Full-Stack Web Application",
+    categoryLabel: "Full-Stack Application",
     year: 2024,
     status: "Completed",
     featured: false,
@@ -426,13 +423,13 @@ export const projects: Project[] = [
     github: "https://github.com/maopu2001/LibraryManagementSystem",
     demo: "https://librarymanagementsystem-mauve.vercel.app",
     problem:
-      "Manual register keeping for book loans resulted in misplaced records and unknown stock availability.",
+      "Paper-based book loan registers resulted in misplaced records and unclear stock availability.",
     features: [
-      "CRUD operations for books, authors, and categories",
-      "Student account authentication and borrow request tracking",
-      "Admin panel for managing book stock and fine calculations",
+      "Book and category CRUD management",
+      "Student authentication and loan requests",
+      "Admin stock control and return date tracking",
     ],
-    challenges: ["Designing relational constraints using Mongoose object references."],
-    lessons: ["Building raw Express/MongoDB backends teaches fundamental HTTP lifecycle concepts."],
+    challenges: ["Structuring relational data using Mongoose schemas."],
+    lessons: ["Building custom REST backends clarifies HTTP request cycles."],
   },
 ];

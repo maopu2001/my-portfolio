@@ -16,6 +16,9 @@
   --text-muted: #4b5563;
   --text-faint: #6b7280;
   --accent: #ff4d00;
+  /* Accessible accent for TEXT and solid buttons (>= 4.5:1 on cream/white).
+     Raw #ff4d00 stays decorative only: dots, borders, glows, selection. */
+  --accent-strong: #b84300;
   --accent-hover: #e04400;
   --accent-soft: rgba(255, 77, 0, 0.08);
 
@@ -25,7 +28,8 @@
   --card-foreground: var(--text-main);
   --popover: var(--bg-card);
   --popover-foreground: var(--text-main);
-  --primary: #ff4d00;
+  --primary: #c2410c;
+  --primary-hover: #9a3412;
   --primary-foreground: #ffffff;
   --secondary: var(--bg-subtle);
   --secondary-foreground: var(--text-main);
@@ -49,8 +53,10 @@
   --border-subtle: rgba(255, 255, 255, 0.06);
   --text-main: #fffcf3;
   --text-muted: #a3a3a3;
-  --text-faint: #737373;
+  /* #737373 measured 4.18:1 on #0a0a0a — bumped to pass 4.5:1 */
+  --text-faint: #8f8f8f;
   --accent: #ff4d00;
+  --accent-strong: #ff8552;
   --accent-hover: #ff6a00;
   --accent-soft: rgba(255, 77, 0, 0.15);
 
@@ -61,7 +67,8 @@
   --popover: var(--bg-card);
   --popover-foreground: var(--text-main);
   --primary: #ff4d00;
-  --primary-foreground: #ffffff;
+  --primary-hover: #e04400;
+  --primary-foreground: #0a0a0a;
   --secondary: var(--bg-subtle);
   --secondary-foreground: var(--text-main);
   --muted: var(--bg-subtle);
@@ -75,15 +82,20 @@
 @theme inline {
   --color-background: var(--bg-page);
   --color-foreground: var(--text-main);
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-newsreader);
-  --font-heading: var(--font-newsreader);
+  --font-sans: var(--font-poppins);
+  /* "font-serif" classes across components now resolve to the grotesque
+     display face — Aditya Gupta's language is all-sans, no serif. */
+  --font-serif: var(--font-space-grotesk);
+  --font-heading: var(--font-space-grotesk);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-primary-hover: var(--primary-hover);
+  --color-faint: var(--text-faint);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -106,7 +118,10 @@
     @apply font-sans antialiased selection:bg-[#ff4d00]/30 selection:text-[#ff4d00];
   }
   html {
-    @apply font-sans scroll-smooth;
+    @apply font-sans;
+    /* No scroll-smooth here: it turns the router's instant scroll-to-top into
+       an animated glide that the route re-render interrupts, leaving pages
+       scrolled slightly short of the top. */
   }
 }
 
@@ -133,3 +148,87 @@ html[data-theme-transition="dark"]::view-transition-old(root) {
 html[data-theme-transition="dark"]::view-transition-new(root) {
   z-index: 1;
 }
+
+/* SESSION PRELOADER — mirrors aditya-gupta.com.np's preloader styles */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ff4d00;
+  will-change: transform;
+}
+
+/* Static cover rendered in SSR HTML so fresh tabs never see page content
+   before the animated overlay hydrates. Hidden unless the inline head
+   script decided this load should play the intro. */
+.preloader-static {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  display: none;
+  background: #ff4d00;
+}
+
+html.preloader-boot .preloader-static {
+  display: flex;
+}
+
+.preloader-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+.preloader-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.preloader-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  line-height: 1;
+}
+
+.preloader-letter {
+  display: inline-block;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 10vw, 8rem);
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  will-change: transform, opacity, filter;
+}
+
+.preloader-line {
+  width: 60px;
+  height: 2px;
+  margin: 1rem auto;
+  background: #ffffff;
+  transform-origin: 50%;
+  will-change: transform;
+}
+
+.preloader-subtitle {
+  margin: 0;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* preloader styles end */

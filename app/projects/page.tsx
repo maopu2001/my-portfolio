@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { ProjectsArchive } from "@/components/ProjectsArchive";
 import { Section } from "@/components/Section";
-import { profile, projects } from "@/lib/content";
+import { projects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Projects & Engineering Archive",
   description:
-    "Curated collection of software engineering projects, web applications, computer vision research, and developer tools built by M. Aktaruzzaman Opu.",
+ "Curated collection of software engineering projects, web applications, computer vision research, and developer tools built by M. Aktaruzzaman Opu.",
 };
 
 export default function ProjectsPage() {

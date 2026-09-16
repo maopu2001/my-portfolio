@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
 import type { ReactNode } from "react";
 
 type MarqueeProps = {
@@ -16,21 +17,44 @@ export function Marquee({
   speed = 25,
   className = "",
 }: MarqueeProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(containerRef);
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return (
+      <div
+        ref={containerRef}
+        className={`overflow-x-auto whitespace-nowrap flex ${className}`}
+      >
+        <div className="flex shrink-0 items-center gap-6">{children}</div>
+      </div>
+    );
+  }
+
   return (
-    <div className={`overflow-hidden whitespace-nowrap flex ${className}`}>
+    <div
+      ref={containerRef}
+      className={`overflow-hidden whitespace-nowrap flex ${className}`}
+    >
       <motion.div
         className="flex shrink-0 items-center gap-6"
-        animate={{
-          x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"],
-        }}
+        animate={
+          inView
+            ? { x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"] }
+            : {}
+        }
         transition={{
           repeat: Infinity,
           ease: "linear",
           duration: speed,
         }}
       >
-        {children}
-        {children}
+        <div className="flex shrink-0 items-center gap-6">{children}</div>
+        {/* Duplicate copy for the seamless loop — hidden from screen readers */}
+        <div className="flex shrink-0 items-center gap-6" aria-hidden="true">
+          {children}
+        </div>
       </motion.div>
     </div>
   );

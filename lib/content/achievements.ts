@@ -15,22 +15,22 @@ export const achievements: Achievement[] = [
     year: 2026,
     organization: "Department of CSE, RMSTU",
     description:
-      "Coordinated logistics, participant registrations, financial budgeting, and built the official bilingual web portal for the department tour.",
+      "Coordinated trip logistics, participant registrations, financial records, and built the official bilingual web application for the department tour.",
   },
   {
-    title: "Competitive Programming Problem Solver (100+ Solved)",
+    title: "Competitive Programming (100+ Solved Problems)",
     category: "Technical",
     year: 2022,
     organization: "Codeforces, LightOJ, Beecrowd",
     description:
-      "Solved over 100 competitive programming challenges focusing on graph theory, dynamic programming, combinatorics, and data structures.",
+      "Solved over 100 competitive programming problems in C++ covering graph algorithms, dynamic programming, and data structures.",
   },
   {
-    title: "Web Engineering Course Project Distinction — Offline News PWA",
+    title: "Web Engineering Course Project — Offline News PWA",
     category: "University Activity",
     year: 2025,
     organization: "RMSTU CSE-3106 Web Engineering Lab",
     description:
-      "Engineered an offline-first Progressive Web Application with background synchronization and local storage caching under Assistant Professor Md. Mynoddin.",
+      "Built an offline-first Progressive Web Application with background synchronization and local storage caching under Assistant Professor Md. Mynoddin.",
   },
 ];

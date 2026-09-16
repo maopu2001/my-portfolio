@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { navigationItems, profile } from "@/lib/content";
+import { mobileNavigationItems, navigationItems, profile } from "@/lib/content";
 
 function isLinkActive(pathname: string, href: string) {
   if (href === "/") {
@@ -17,79 +17,82 @@ export function Navbar() {
 
   return (
     <>
-      {/* Floating Pill Desktop Header Navigation */}
-      <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4 max-md:hidden">
-        <div className="flex items-center justify-between gap-6 rounded-full border border-[#e8e2d2] bg-[#fffcf3]/90 dark:border-white/10 dark:bg-[#0a0a0a]/90 px-6 py-2.5 backdrop-blur-xl shadow-sm dark:shadow-2xl transition-all duration-300 hover:border-[#ff4d00]/50">
+      {/* Floating Pill Desktop Header Navigation (lg and up) */}
+      <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4 max-lg:hidden">
+        <div className="flex items-center justify-between gap-4 rounded-full border border-border bg-background/90 px-5 py-2.5 backdrop-blur-xl shadow-sm transition-all duration-300 hover:border-accent/50">
           <Link
             href="/"
-            className="group flex items-center gap-2 font-mono text-sm tracking-tight text-[#1a2332] dark:text-[#fffcf3]"
+            className="group flex items-center gap-2 font-mono text-sm tracking-tight text-foreground"
             aria-label="M. Aktaruzzaman Opu Home"
           >
-            <span className="flex h-2 w-2 rounded-full bg-[#ff4d00] animate-pulse" />
-            <span className="font-semibold group-hover:text-[#ff4d00] transition-colors">
+            <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse" />
+            <span className="font-semibold group-hover:text-accent-strong transition-colors">
               {profile.name}
             </span>
           </Link>
 
-          <nav className="flex items-center gap-1" aria-label="Main Navigation">
-            {navigationItems.map((item) => {
+          <nav className="flex items-center gap-0.5" aria-label="Main Navigation">
+            {navigationItems.map((item, i) => {
               const active = isLinkActive(pathname, item.href);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`rounded-full px-4 py-1.5 text-xs font-medium transition-all duration-200 ${
+                  aria-current={active ? "page" : undefined}
+                  className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
                     active
-                      ? "bg-[#ff4d00] font-semibold text-white shadow-md shadow-[#ff4d00]/25"
-                      : "text-[#52525b] hover:bg-[#f5f2e6] hover:text-[#1a2332] dark:text-[#a3a3a3] dark:hover:bg-[#1f1f1f] dark:hover:text-[#fffcf3]"
+                      ? "bg-primary font-semibold text-primary-foreground shadow-md shadow-accent/25"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   }`}
                 >
+                  <span className="hidden xl:inline font-mono text-[0.6rem] opacity-60 mr-1">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   {item.label}
                 </Link>
               );
             })}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <ThemeToggle />
-            <a
-              href={profile.cvUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-[#1a1a1a] px-4 py-1.5 text-xs font-mono text-[#1a2332] dark:text-[#fffcf3] transition-all duration-200 hover:border-[#ff4d00] hover:text-[#ff4d00] dark:hover:border-[#ff4d00] dark:hover:text-[#ff4d00]"
+            <Link
+              href="/cv"
+              className="rounded-full border border-border bg-card px-4 py-1.5 text-xs font-mono text-foreground transition-all duration-200 hover:border-accent hover:text-accent-strong"
             >
               CV ↗
-            </a>
+            </Link>
           </div>
         </div>
       </header>
 
-      {/* Mobile Bottom Navigation */}
+      {/* Mobile Bottom Navigation — max 5 destinations per UX guideline */}
       <nav
-        className="fixed inset-x-0 bottom-3 z-50 flex items-center justify-around rounded-full border border-[#e8e2d2] bg-[#fffcf3]/95 dark:border-white/10 dark:bg-[#0a0a0a]/95 mx-3 px-3 py-2 backdrop-blur-xl shadow-lg dark:shadow-2xl md:hidden"
+        className="fixed inset-x-0 bottom-3 z-50 flex items-center justify-around rounded-full border border-border bg-background/95 mx-3 px-2 py-1.5 backdrop-blur-xl shadow-lg lg:hidden"
         aria-label="Mobile Navigation"
       >
-        {navigationItems.map((item) => {
+        {mobileNavigationItems.map((item) => {
           const active = isLinkActive(pathname, item.href);
 
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center px-2 py-0.5 rounded-full text-[0.7rem] font-medium transition-all ${
+              aria-current={active ? "page" : undefined}
+              className={`flex min-h-[44px] min-w-[52px] flex-col items-center justify-center gap-0.5 rounded-full px-2 py-1 text-[0.72rem] font-medium transition-all ${
                 active
-                  ? "text-[#ff4d00] font-bold"
-                  : "text-[#52525b] dark:text-[#a3a3a3] hover:text-[#1a2332] dark:hover:text-[#fffcf3]"
+                  ? "text-accent-strong font-bold"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <span>{item.shortLabel || item.label}</span>
               {active && (
-                <span className="mt-0.5 h-1 w-1 rounded-full bg-[#ff4d00]" />
+                <span className="h-1 w-1 rounded-full bg-accent" />
               )}
             </Link>
           );
         })}
-        <div className="pl-1">
+        <div className="flex min-h-[44px] items-center">
           <ThemeToggle />
         </div>
       </nav>

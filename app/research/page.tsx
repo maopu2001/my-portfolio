@@ -6,26 +6,26 @@ import { projects } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Computer Vision & Research Exploration",
   description:
-    "Undergraduate research focus in Computer Vision, Vision Transformers (DINOv2, SQAFormer), and zero-label cell microscopy anomaly detection.",
+ "Undergraduate research focus in Computer Vision, Vision Transformers (DINOv2, SQAFormer), and zero-label cell microscopy anomaly detection.",
 };
 
 const researchFocusAreas = [
   {
     title: "Zero-Label Anomaly Detection",
     description:
-      "Investigating latent representation distances and feature distribution shifts in unlabelled cell microscopy frames without requiring manual annotation.",
+ "Investigating latent representation distances and feature distribution shifts in unlabelled cell microscopy frames without requiring manual annotation.",
     tags: ["DINOv2", "CAE-IF", "SQAFormer", "LIVECell Corpus"],
   },
   {
     title: "Vision Foundation Models (ViTs)",
     description:
-      "Evaluating self-supervised vision transformers for robust feature extraction that remains invariant to optical blur and illumination noise.",
+ "Evaluating self-supervised vision transformers for robust feature extraction that remains invariant to optical blur and illumination noise.",
     tags: ["PyTorch", "Self-Supervised Learning", "Latent Space Analysis"],
   },
   {
     title: "Medical & Biological Cell Imaging",
     description:
-      "Applying computer vision techniques to phase-contrast cellular imagery to automate quality control and benchmark model failure modes.",
+ "Applying computer vision techniques to phase-contrast cellular imagery to automate quality control and benchmark model failure modes.",
     tags: ["OpenCV", "Biomedical Imaging", "Empirical Benchmarking"],
   },
 ];
@@ -44,35 +44,35 @@ export default function ResearchPage() {
         <div className="space-y-8">
           {/* Main Thesis Spotlight */}
           {thesisProject && (
-            <div className="rounded-2xl border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-[#121212] p-6 sm:p-8 space-y-4 shadow-sm">
-              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs text-[#6b7280] dark:text-[#737373]">
-                <span className="rounded-full bg-[#f5f2e6] dark:bg-[#1a1a1a] px-3 py-1 text-[#ff4d00] border border-[#e8e2d2] dark:border-white/10 font-bold">
+            <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-sm">
+              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs text-faint">
+                <span className="rounded-full bg-muted px-3 py-1 text-accent-strong border border-border font-bold">
                   Undergraduate Research Thesis
                 </span>
                 <span>{thesisProject.year}</span>
               </div>
 
-              <h2 className="font-serif text-2xl font-bold text-[#1a2332] dark:text-[#fffcf3] sm:text-3xl">
+              <h2 className="font-serif text-2xl font-bold text-foreground sm:text-3xl">
                 <Link
                   href={`/projects/${thesisProject.slug}`}
-                  className="hover:text-[#ff4d00] transition-colors"
+                  className="hover:text-accent-strong transition-colors"
                 >
                   {thesisProject.title}
                 </Link>
               </h2>
 
-              <p className="text-sm font-medium text-[#ff4d00]">
+              <p className="text-sm font-medium text-accent-strong">
                 {thesisProject.tagline}
               </p>
 
-              <p className="text-sm text-[#4b5563] dark:text-[#a3a3a3] leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 {thesisProject.description}
               </p>
 
               <div className="pt-2 flex flex-wrap gap-4 font-mono text-xs">
                 <Link
                   href={`/projects/${thesisProject.slug}`}
-                  className="inline-flex items-center gap-1 font-bold text-[#ff4d00] hover:underline"
+                  className="inline-flex items-center gap-1 font-bold text-accent-strong hover:underline"
                 >
                   Read Full Research Case Study →
                 </Link>
@@ -81,7 +81,7 @@ export default function ResearchPage() {
                     href={thesisProject.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-[#4b5563] hover:text-[#1a2332] dark:text-[#a3a3a3] dark:hover:text-[#fffcf3]"
+                    className="text-muted-foreground hover:text-foreground"
                   >
                     GitHub Code Repository ↗
                   </a>
@@ -95,19 +95,19 @@ export default function ResearchPage() {
             {researchFocusAreas.map((area) => (
               <div
                 key={area.title}
-                className="rounded-2xl border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-[#121212] p-6 space-y-3 shadow-sm transition-all duration-300 hover:border-[#ff4d00]/50"
+                className="rounded-2xl border border-border bg-card p-6 space-y-3 shadow-sm transition-all duration-300 hover:border-accent/50"
               >
-                <h3 className="font-serif text-lg font-bold text-[#1a2332] dark:text-[#fffcf3]">
+                <h3 className="font-serif text-lg font-bold text-foreground">
                   {area.title}
                 </h3>
-                <p className="text-xs text-[#4b5563] dark:text-[#a3a3a3] leading-relaxed">
+                <p className="text-xs text-muted-foreground leading-relaxed">
                   {area.description}
                 </p>
                 <div className="flex flex-wrap gap-1.5 pt-2">
                   {area.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-[#f5f2e6] dark:bg-[#1a1a1a] px-3 py-0.5 font-mono text-[0.68rem] text-[#1a2332] dark:text-[#fffcf3] border border-[#e8e2d2] dark:border-white/10"
+                      className="rounded-full bg-muted px-3 py-0.5 font-mono text-[0.68rem] text-foreground border border-border"
                     >
                       {tag}
                     </span>

@@ -3,82 +3,82 @@ import type { Experiment } from "./types";
 export const experiments: Experiment[] = [
   {
     slug: "docker-nextjs-15",
-    title: "Multi-Stage Docker Containerization for Next.js 15",
+    title: "Multi-Stage Docker Setup for Next.js 15",
     summary:
-      "Engineered an optimized production Dockerfile for Next.js 15 using multi-stage builds and standalone output.",
+      "I wrote a multi-stage Dockerfile for Next.js 15 to generate small production container images using standalone output.",
     rationale:
-      "Standard Node container images are often 1GB+ in size and include unnecessary build toolchains. I wanted to create a lightweight, reproducible container deployment pipeline.",
+      "Standard Node container images are often over 1GB because they include full build dependencies. I wanted a small container for production deployments.",
     technology: ["Docker", "Next.js 15", "Node.js", "Alpine Linux"],
     outcome:
-      "Reduced final image size from 1.2GB down to 140MB using Node-Alpine base images and standalone Next.js build output.",
+      "Reduced final image size from 1.2GB down to 140MB using Node-Alpine base images and standalone build output.",
     learned:
-      "Understanding container layering, multi-stage build targets, and standalone bundle isolation is vital for production cloud deployments.",
+      "Using multi-stage builds and standalone output keeps production container sizes minimal.",
     github: "https://github.com/maopu2001/Docker-Setup-for-a-NextJS-15",
     year: 2025,
     category: "DevOps & Infrastructure",
   },
   {
     slug: "personal-ai-agent-exploration",
-    title: "Personal AI Agent Architecture",
+    title: "Personal AI Agent Exploration",
     summary:
-      "Explored tool-calling, context memory, and structured API integration with modern LLM models in TypeScript.",
+      "I built a small CLI prototype to test tool calling, context buffers, and API execution with LLMs in TypeScript.",
     rationale:
-      "To understand how LLMs act as autonomous agents using function declarations, memory buffers, and tool interfaces.",
-    technology: ["TypeScript", "Next.js", "OpenAI / Gemini API", "Vector Embeddings"],
+      "I wanted to test how language models execute functions and parse structured JSON responses.",
+    technology: ["TypeScript", "Next.js", "OpenAI / Gemini API"],
     outcome:
-      "Built a prototype CLI and API harness that converts natural language intent into executed API calls.",
+      "Built a CLI script that parses user inputs into function calls and executes API tasks.",
     learned:
-      "Prompt engineering is insufficient; robust agent behavior requires strict JSON Schema validation and fallback handling.",
+      "Reliable agent behavior requires strict JSON Schema validation rather than relying only on system prompts.",
     github: "https://github.com/maopu2001/personal-ai-agent",
     year: 2025,
     category: "AI & Automation",
   },
   {
     slug: "os-lab-simulations",
-    title: "Operating Systems Lab & Scheduling Algorithms",
+    title: "Operating Systems Scheduling Simulations",
     summary:
-      "Implemented classical OS process scheduling algorithms (FCFS, SJF, Priority, Round Robin) and IPC mechanisms.",
+      "I wrote implementations of CPU scheduling algorithms (FCFS, SJF, Priority, Round Robin) and IPC mechanisms.",
     rationale:
-      "Coursework exploration to gain intuitive understanding of CPU scheduling overhead, turnaround time calculation, and process synchronization.",
-    technology: ["JavaScript", "C++", "Linux Systems Programming"],
+      "Coursework exercise to analyze CPU scheduler metrics, process turnaround times, and queue management.",
+    technology: ["JavaScript", "C++", "Linux"],
     outcome:
-      "Created visual execution charts and metrics comparators for process queues under varying burst time distributions.",
+      "Generated timing execution charts to compare scheduling algorithm behavior under different process loads.",
     learned:
-      "CPU scheduler trade-offs directly impact system latency and throughput under heavy concurrent workloads.",
+      "Different scheduling algorithms present direct trade-offs between turnaround time and process fairness.",
     github: "https://github.com/maopu2001/OS-Lab",
     year: 2025,
     category: "Systems & Theory",
   },
   {
     slug: "personal-isp-iptv-server",
-    title: "Personal ISP IPTV Proxy & Stream Parser",
+    title: "Local ISP IPTV Stream Proxy",
     summary:
-      "Created a lightweight local proxy server that parses M3U stream playlists and re-transmits media streams locally.",
+      "I created a small local Node.js proxy to parse M3U playlists and re-transmit video streams across my home network.",
     rationale:
-      "To solve local ISP IPTV network buffering by implementing custom header handling and playlist caching.",
-    technology: ["Node.js", "Express", "HLS Video Streaming", "Vercel"],
+      "To resolve IPTV buffering issues caused by ISP header requirements on local smart TVs.",
+    technology: ["Node.js", "Express", "HLS Video Streaming"],
     outcome:
-      "Successfully streamed local network television broadcasts to home smart devices without ISP gateway drops.",
+      "Successfully routed local network television streams to home devices without playback drops.",
     learned:
-      "Learned HLS manifest structures, HTTP chunked transfer encoding, and media stream header manipulation.",
+      "Handling HLS manifests and custom HTTP headers is essential for reliable local video streaming.",
     github: "https://github.com/maopu2001/IPTV_for_Home",
     year: 2024,
     category: "Networking & Media",
   },
   {
     slug: "competitive-programming-archive",
-    title: "Algorithm & Data Structure Solutions (Codeforces, LightOJ, Beecrowd)",
+    title: "Algorithm Problem Archive (Codeforces, LightOJ, Beecrowd)",
     summary:
-      "Archived over 100+ algorithmic problem solutions in C++ covering graph theory, dynamic programming, and math.",
+      "I solved over 100 competitive programming problems in C++ covering graph algorithms, dynamic programming, and data structures.",
     rationale:
-      "Building core computer science problem-solving discipline during early undergraduate years.",
+      "To practice core algorithms and problem-solving techniques during early undergraduate studies.",
     technology: ["C++", "Data Structures", "Algorithms", "STL"],
     outcome:
-      "Solved problems involving shortest paths, segment trees, disjoint set union (DSU), and modular arithmetic.",
+      "Implemented solutions for shortest paths, segment trees, disjoint set union, and modular arithmetic.",
     learned:
-      "Asymptotic time complexity analysis ($O(N \\log N)$ vs $O(N^2)$) becomes second nature when writing competitive solutions.",
+      "Regular problem-solving improves time complexity analysis and code correctness.",
     github: "https://github.com/maopu2001/Codeforces",
     year: 2022,
-    category: "Computer Science Foundations",
+    category: "CS Foundations",
   },
 ];

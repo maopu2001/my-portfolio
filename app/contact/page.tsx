@@ -45,30 +45,30 @@ export default function ContactPage() {
           {contactItems.map((item) => (
             <div
               key={item.label}
-              className="rounded-2xl border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-[#121212] p-6 space-y-2.5 shadow-sm transition-all duration-300 hover:border-[#ff4d00]/50"
+              className="rounded-2xl border border-border bg-card p-6 space-y-2.5 shadow-sm transition-all duration-300 hover:border-accent/50"
             >
-              <span className="font-mono text-xs text-[#ff4d00] font-semibold">
+              <span className="font-mono text-xs text-accent-strong font-semibold">
                 {item.label}
               </span>
               <div>
                 <a
                   href={item.href}
-                  target="_blank"
+                  target={item.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel="noreferrer"
-                  className="font-serif text-lg font-bold text-[#1a2332] dark:text-[#fffcf3] hover:text-[#ff4d00] transition-colors block"
+                  className="font-serif text-lg font-bold text-foreground hover:text-accent-strong transition-colors block"
                 >
                   {item.value} ↗
                 </a>
               </div>
-              <p className="text-xs text-[#6b7280] dark:text-[#737373] font-mono">{item.note}</p>
+              <p className="text-xs text-faint font-mono">{item.note}</p>
             </div>
           ))}
         </div>
       </Section>
 
       <Section title="Academic & Engineering Collaboration">
-        <div className="rounded-2xl border border-[#e8e2d2] bg-white dark:border-white/10 dark:bg-[#121212] p-6 sm:p-8 space-y-4 shadow-sm">
-          <p className="text-sm text-[#4b5563] dark:text-[#a3a3a3] leading-relaxed">
+        <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-sm">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             My primary objective is long-term growth toward university teaching and computer science research. If you are a researcher, educator, or software engineer working on meaningful open-source systems, computer vision models, or educational technology, feel free to reach out directly via email.
           </p>
         </div>

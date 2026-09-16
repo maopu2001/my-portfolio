@@ -4,35 +4,35 @@ export const timeline: TimelineItem[] = [
   {
     year: 2022,
     title: "Computer Science Foundations & Problem Solving",
-    headline: "Building core algorithmic thinking and system fundamentals",
+    headline: "Building core algorithmic skills and C++ practice",
     description:
-      "Started university studies at RMSTU. Dedicated time to fundamental data structures, C++ programming, memory management, and competitive problem solving on Codeforces, LightOJ, and Beecrowd.",
+      "Started CS undergraduate studies at RMSTU. Solved problem sets on Codeforces, LightOJ, and Beecrowd to build strong algorithm and data structure fundamentals in C++.",
     focus: "C++, Data Structures, Algorithms, Problem Solving",
     projects: [
       { title: "Codeforces Problem Archive", category: "Competitive Programming" },
-      { title: "LightOJ Problem Solutions", category: "Algorithms" },
-      { title: "Beecrowd Problem Repository", category: "C++ Foundations" },
+      { title: "LightOJ Solutions", category: "Algorithms" },
+      { title: "Beecrowd Repository", category: "C++ Practice" },
     ],
   },
   {
     year: 2023,
-    title: "Web Development & Practical Engineering",
-    headline: "Transitioning theoretical concepts into functional web applications",
+    title: "Web Development Practice",
+    headline: "Learning web fundamentals and building utility tools",
     description:
-      "Explored modern web development with JavaScript, React, and backend API design. Began crafting custom tools and learning how frontend state interacts with backend database models.",
+      "Learned modern web technologies including JavaScript, React, and backend API basics. Focused on understanding how frontend user interfaces interact with database APIs.",
     focus: "JavaScript, React, HTML/CSS, REST APIs",
     projects: [
-      { title: "Web Frontend Fundamentals", category: "Web Development" },
-      { title: "REST API Design Exercises", category: "Backend" },
+      { title: "Frontend Projects & UI Practice", category: "Web Engineering" },
+      { title: "REST API Implementations", category: "Backend" },
     ],
   },
   {
     year: 2024,
-    title: "Full-Stack Software & University Applications",
-    headline: "Building production software for real campus problems",
+    title: "Full-Stack Software Development",
+    headline: "Building web applications for university needs",
     description:
-      "Shifted to building complete full-stack web applications using Next.js, Node.js, MongoDB, and authentication protocols. Focused on real campus utility needs such as exam question archiving.",
-    focus: "Next.js, MongoDB, Express, JWT Auth, Utility Tools",
+      "Built full-stack applications using Next.js, Node.js, MongoDB, and authentication protocols. Focused on campus utilities such as archiving past examination question papers.",
+    focus: "Next.js, MongoDB, Express, JWT Auth",
     projects: [
       {
         title: "Question Vault RMSTU",
@@ -58,16 +58,16 @@ export const timeline: TimelineItem[] = [
   },
   {
     year: 2025,
-    title: "Real-Time Systems, PWA & Infrastructure",
-    headline: "Engineering scalable real-time systems, PWAs, and DevOps containers",
+    title: "Real-Time Web & Containerization",
+    headline: "Real-time transport tracking, PWAs, and Docker containers",
     description:
-      "Investigated real-time communication protocols (WebSockets), progressive web applications with offline capabilities, containerization using Docker, and operating system scheduling principles.",
-    focus: "WebSockets, PWA, Docker, Operating Systems, Real-Time Fleet Tracking",
+      "Built real-time web applications using WebSockets, offline-first news PWAs, Docker containerization, and operating system scheduling implementations.",
+    focus: "WebSockets, PWA, Docker, Operating Systems",
     projects: [
       {
         title: "RMSTU Transport Management System",
         slug: "rmstu-bus-management-system",
-        category: "Full-Stack Software",
+        category: "Full-Stack Web App",
       },
       {
         title: "Offline-First News PWA",
@@ -88,21 +88,21 @@ export const timeline: TimelineItem[] = [
   },
   {
     year: 2026,
-    title: "Computer Vision Research, Thesis & Advanced Applications",
-    headline: "Integrating machine learning research with production-grade engineering",
+    title: "Computer Vision Research & Web Utilities",
+    headline: "Undergraduate thesis in computer vision and active web platforms",
     description:
-      "Conducted undergraduate thesis research benchmarking vision transformers and autoencoder models for zero-label cell microscopy anomaly detection. Simultaneously built production web platforms like CGPA Buddy and Notice Hub.",
-    focus: "PyTorch, Computer Vision, DINOv2, Vision Transformers, Next.js 16",
+      "Conducted thesis research benchmarking vision transformers for zero-label cell microscopy anomaly detection. Simultaneously built production platforms like CGPA Buddy and Notice Hub.",
+    focus: "PyTorch, Computer Vision, DINOv2, Next.js 16",
     projects: [
       {
         title: "Zero-Label Microscopy Anomaly Detection",
         slug: "zero-label-microscopy-thesis",
-        category: "AI / Vision Research",
+        category: "Vision Thesis Research",
       },
       {
         title: "CGPA Buddy",
         slug: "cgpa-buddy",
-        category: "Web Utility",
+        category: "Web Application",
       },
       {
         title: "RMSTU Notice Hub Reimagined",
