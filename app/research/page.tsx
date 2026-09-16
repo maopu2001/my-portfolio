@@ -3,12 +3,42 @@ import Link from "next/link";
 import { BibtexCopyButton } from "@/components/BibtexCopyButton";
 import { GithubIcon } from "@/components/icons/BrandIcons";
 import { Section } from "@/components/Section";
-import { projects, publications } from "@/lib/content";
+import { ResearchStructuredData } from "@/components/StructuredData";
+import { profile, projects, publications } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Computer Vision & Research Exploration",
   description:
-    "Undergraduate research in Computer Vision, Vision Transformers (DINOv2, SQAFormer), zero-label microscopy anomaly detection, and peer-reviewed IEEE publications.",
+    "Undergraduate research in Computer Vision, Vision Transformers (DINOv2, SQAFormer), zero-label microscopy anomaly detection, and peer-reviewed IEEE publications by M. Aktaruzzaman Opu.",
+  keywords: [
+    "Computer Vision Research",
+    "Vision Transformers",
+    "DINOv2",
+    "Zero-Label Anomaly Detection",
+    "IEEE Publications",
+    "SQAFormer",
+    "LIVECell",
+    profile.name,
+  ],
+  alternates: {
+    canonical: "/research",
+  },
+  openGraph: {
+    title: `Research & Publications | ${profile.name}`,
+    description:
+      "Peer-reviewed IEEE publications, Vision Transformer thesis research, and zero-label anomaly detection.",
+    url: "https://maopu.com.bd/research",
+    siteName: profile.name,
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Research & Publications | ${profile.name}`,
+    description:
+      "Peer-reviewed IEEE publications and Vision Transformer anomaly detection research.",
+    creator: "@maopu2001",
+  },
 };
 
 const researchFocusAreas = [
@@ -57,6 +87,7 @@ export default function ResearchPage() {
 
   return (
     <>
+      <ResearchStructuredData />
       <Section
         title="Research & Academic Publications"
         subtitle="Exploring where theoretical computer science, mathematical abstraction, computer vision, and decision systems converge."

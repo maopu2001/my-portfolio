@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { CommandPalette } from "@/components/CommandPalette";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { Preloader } from "@/components/Preloader";
 import { ScrollManager } from "@/components/ScrollManager";
+import { RootStructuredData } from "@/components/StructuredData";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { profile } from "@/lib/content";
 import "./globals.css";
@@ -28,6 +29,15 @@ const mono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fffcf3" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0d0e" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://maopu.com.bd"),
   title: {
@@ -43,12 +53,37 @@ export const metadata: Metadata = {
     "Web Developer",
     "Next.js",
     "React",
+    "TypeScript",
     "Computer Vision",
+    "Vision Transformers",
+    "DINOv2",
     "Machine Learning",
     "RMSTU",
     "Bangladesh",
   ],
-  authors: [{ name: profile.name }],
+  authors: [{ name: profile.name, url: "https://maopu.com.bd" }],
+  creator: profile.name,
+  publisher: profile.name,
+  category: "technology",
+  alternates: {
+    canonical: "/",
+  },
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: `${profile.name} — Computer Science & Software`,
     description: profile.intro,
@@ -56,6 +91,17 @@ export const metadata: Metadata = {
     siteName: profile.name,
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${profile.name} — Computer Science & Software`,
+    description: profile.intro,
+    creator: "@maopu2001",
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
 };
 
@@ -76,6 +122,7 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: preloaderBootScript }} />
+        <RootStructuredData />
       </head>
       <body className="min-h-screen font-sans antialiased">
         {/* Skip to Content Link for Keyboard / Screen Reader Accessibility */}

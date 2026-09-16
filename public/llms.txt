@@ -1,0 +1,35 @@
+# M. Aktaruzzaman Opu — Portfolio & Technical Profile
+
+> Software Engineer, Computer Science Undergraduate (Rank 1st, CGPA 3.96/4.00, UGC Merit Scholar 2025), and Computer Vision Researcher at Rangamati Science and Technology University (RMSTU), Bangladesh.
+
+## Core Navigation & URLs
+- Canonical Website: https://maopu.com.bd
+- Projects Inventory: https://maopu.com.bd/projects
+- Research & Academic Publications: https://maopu.com.bd/research
+- Technical Experiments: https://maopu.com.bd/experiments
+- 4-Year Engineering Journey: https://maopu.com.bd/journey
+- About & Academic Direction: https://maopu.com.bd/about
+- Contact Information: https://maopu.com.bd/contact
+- Full Curriculum Vitae (CV): https://maopu.com.bd/cv
+
+## Verified Profiles & Social Links
+- GitHub: https://github.com/maopu2001
+- LinkedIn: https://www.linkedin.com/in/m-aktaruzzaman-opu-81716742b
+- Facebook: https://facebook.com/maopu2001
+- Primary Email: maopu.cse@gmail.com
+- Academic Email: aktaruzzaman_2001011002@student.rmstu.ac.bd
+
+## Academic & Research Profile
+- Institution: Rangamati Science and Technology University (RMSTU)
+- Department: Department of Computer Science and Engineering (CSE)
+- Merit Standing: 1st Position (Rank 1st), CGPA 3.96 / 4.00
+- Research Focus: Vision Transformers (ViTs, DINOv2, SQAFormer), Zero-Label Cell Microscopy Anomaly Detection, Multi-Criteria Decision Making (MCDM)
+- Publications: IEEE PECCII 2026 conference publication on sustainable energy infrastructure evaluation using MCDM frameworks.
+- Long-term Vision: University professor combining teaching, technical work, and machine learning research.
+
+## Core Technical Projects
+- Exam Studio: Next-generation in-browser XeLaTeX question generation system with WebAssembly compilation and live typography preview (React, TypeScript, WebAssembly).
+- Teach Easy: Offline-first student assessment and attendance tracking platform tailored for classroom educators.
+- CGPA Buddy: University grading policy forecaster and academic goal calculation manager.
+- Question Vault RMSTU: Open-access repository indexing previous semester exam questions for university departments.
+- RMSTU Transport System: Fleet vehicle tracking, bus route management, and schedule notification portal.

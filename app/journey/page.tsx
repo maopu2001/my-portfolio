@@ -6,7 +6,16 @@ import { timeline } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Journey — Things I Built Over the Years",
   description:
- "Chronological engineering history of M. Aktaruzzaman Opu from 2022 to 2026, documenting foundational programming, full-stack software development, and computer vision research.",
+    "Chronological engineering history of M. Aktaruzzaman Opu from 2022 to 2026, documenting foundational programming, full-stack software development, and computer vision research.",
+  alternates: {
+    canonical: "/journey",
+  },
+  openGraph: {
+    title: "Engineering Journey & Milestones | M. Aktaruzzaman Opu",
+    description:
+      "Chronological timeline from competitive programming and campus web platforms to vision transformer thesis research.",
+    url: "https://maopu.com.bd/journey",
+  },
 };
 
 export default function JourneyPage() {

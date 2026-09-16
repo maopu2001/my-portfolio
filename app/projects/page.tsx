@@ -6,7 +6,16 @@ import { projects } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Projects & Engineering Archive",
   description:
- "Curated collection of software engineering projects, web applications, computer vision research, and developer tools built by M. Aktaruzzaman Opu.",
+    "Curated collection of software engineering projects, web applications, computer vision research, and developer tools built by M. Aktaruzzaman Opu.",
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Projects & Engineering Archive | M. Aktaruzzaman Opu",
+    description:
+      "Curated collection of software engineering projects, web applications, computer vision research, and developer tools.",
+    url: "https://maopu.com.bd/projects",
+  },
 };
 
 export default function ProjectsPage() {

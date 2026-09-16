@@ -8,7 +8,16 @@ import { achievements, profile } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About Me & Future Direction",
   description:
- "Learn about M. Aktaruzzaman Opu — software builder, computer science undergraduate, machine learning explorer, and aspiring university professor.",
+    "Learn about M. Aktaruzzaman Opu — software builder, computer science undergraduate (Rank 1st, CGPA 3.96/4.00), machine learning explorer, and aspiring university professor at RMSTU.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: `About ${profile.name} — Profile & Direction`,
+    description:
+      "Software engineer, undergraduate researcher (Rank 1st, CGPA 3.96/4.00), and aspiring university professor.",
+    url: "https://maopu.com.bd/about",
+  },
 };
 
 export default function AboutPage() {

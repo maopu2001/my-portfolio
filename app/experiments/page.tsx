@@ -6,7 +6,16 @@ import { experiments } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Experiments & Learning",
   description:
- "Technical experiments, prototypes, containerization benchmarks, operating system lab work, and competitive programming archives by M. Aktaruzzaman Opu.",
+    "Technical experiments, prototypes, containerization benchmarks, operating system lab work, and competitive programming archives by M. Aktaruzzaman Opu.",
+  alternates: {
+    canonical: "/experiments",
+  },
+  openGraph: {
+    title: "Experiments & Learning Archive | M. Aktaruzzaman Opu",
+    description:
+      "Technical experiments, prototypes, containerization benchmarks, and algorithms exploration.",
+    url: "https://maopu.com.bd/experiments",
+  },
 };
 
 export default function ExperimentsPage() {

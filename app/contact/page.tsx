@@ -7,6 +7,14 @@ import { profile } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Contact",
   description: `Contact information for ${profile.name}. Open to engineering projects, research discussions, and academic opportunities.`,
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: `Contact | ${profile.name}`,
+    description: `Contact ${profile.name} — open to engineering collaboration and computer vision research discussions.`,
+    url: "https://maopu.com.bd/contact",
+  },
 };
 
 const contactItems = [

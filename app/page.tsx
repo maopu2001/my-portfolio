@@ -16,6 +16,10 @@ import {
 
 export const metadata: Metadata = {
   title: `${profile.name} — Computer Science & Software Builder`,
+  description: `${profile.name} — ${profile.headline}. Undergraduate researcher in Computer Vision and full-stack software engineer at RMSTU.`,
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function Home() {

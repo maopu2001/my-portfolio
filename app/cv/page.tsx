@@ -13,12 +13,20 @@ import {
   publications,
   skillGroups,
 } from "@/lib/content";
-import { span } from "framer-motion/m";
 
 export const metadata: Metadata = {
   title: "Curriculum Vitae (CV)",
   description:
     "Curriculum Vitae and summary resume of M. Aktaruzzaman Opu — Computer Science undergraduate (Rank 1st, CGPA 3.96/4.00), software engineer, and research explorer.",
+  alternates: {
+    canonical: "/cv",
+  },
+  openGraph: {
+    title: `Curriculum Vitae (CV) | ${profile.name}`,
+    description:
+      "Academic summary (Rank 1st, CGPA 3.96/4.00), IEEE publications, software projects, and technical skills.",
+    url: "https://maopu.com.bd/cv",
+  },
 };
 
 export default function CVPage() {
