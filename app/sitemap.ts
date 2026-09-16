@@ -1,16 +1,7 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/lib/content";
-import { getCdnUrl } from "@/lib/cdn";
 
 const BASE_URL = "https://maopu.com.bd";
-
-function resolveAbsoluteUrl(pathOrUrl: string): string {
-  if (pathOrUrl.startsWith("http://") || pathOrUrl.startsWith("https://")) {
-    return pathOrUrl;
-  }
-  const cleanPath = pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`;
-  return `${BASE_URL}${cleanPath}`;
-}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -69,9 +60,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "monthly",
     priority: project.featured ? 0.85 : 0.75,
-    images: project.image
-      ? [resolveAbsoluteUrl(getCdnUrl(project.image))]
-      : undefined,
   }));
 
   return [...staticRoutes, ...projectRoutes];
