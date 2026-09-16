@@ -116,7 +116,6 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   return (
     <>
-      <ProjectStructuredData project={project} />
       <article className="space-y-10 pb-8">
         {/* Back Link */}
         <div>
@@ -384,6 +383,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
         </div>
       </article>
+      <ProjectStructuredData project={project} />
     </>
   );
 }

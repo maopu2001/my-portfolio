@@ -1,8 +1,7 @@
 "use client";
 
+import { useRef, type ReactNode } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef } from "react";
-import type { ReactNode } from "react";
 
 type MarqueeProps = {
   children: ReactNode;

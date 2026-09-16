@@ -82,12 +82,11 @@ const researchFocusAreas = [
 
 export default function ResearchPage() {
   const thesisProject = projects.find(
-    (p) => p.slug === "zero-label-microscopy-thesis"
+    (p) => p.slug === "zero-label-microscopy-thesis",
   );
 
   return (
     <>
-      <ResearchStructuredData />
       <Section
         title="Research & Academic Publications"
         subtitle="Exploring where theoretical computer science, mathematical abstraction, computer vision, and decision systems converge."
@@ -120,7 +119,8 @@ export default function ResearchPage() {
                   </p>
 
                   <p className="text-xs text-muted-foreground font-medium">
-                    Published in: <em>{pub.venue}</em>, {pub.location}, {pub.year}
+                    Published in: <em>{pub.venue}</em>, {pub.location},{" "}
+                    {pub.year}
                     {pub.pages ? `, pp. ${pub.pages}` : ""}.
                   </p>
 
@@ -244,6 +244,7 @@ export default function ResearchPage() {
           </div>
         </div>
       </Section>
+      <ResearchStructuredData />
     </>
   );
 }

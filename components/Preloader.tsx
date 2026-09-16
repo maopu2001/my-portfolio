@@ -26,7 +26,7 @@ declare global {
   }
 }
 
-export function notifyPreloaderDone() {
+function notifyPreloaderDone() {
   window.__preloaderDone = true;
   window.dispatchEvent(new Event("preloader:done"));
 }

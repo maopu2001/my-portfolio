@@ -8,7 +8,7 @@ type BibtexCopyButtonProps = {
   publication: Publication;
 };
 
-export function formatBibtex(pub: Publication): string {
+function formatBibtex(pub: Publication): string {
   const firstAuthorLast = (pub.authors[0] || "Author").split(" ").pop()?.toLowerCase() || "author";
   const citeKey = `${firstAuthorLast}${pub.year}${pub.publisher ? pub.publisher.toLowerCase() : "conf"}`;
   const authorList = pub.authors.join(" and ");

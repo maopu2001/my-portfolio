@@ -52,7 +52,7 @@ export const PublicationSchema = z.object({
 
 export const PublicationsSchema = z.array(PublicationSchema);
 
-export const AchievementCategorySchema = z.enum([
+const AchievementCategorySchema = z.enum([
   "Academic",
   "Technical",
   "Leadership",
@@ -72,7 +72,7 @@ export const AchievementSchema = z.object({
 
 export const AchievementsSchema = z.array(AchievementSchema);
 
-export const TimelineProjectRefSchema = z.object({
+const TimelineProjectRefSchema = z.object({
   title: z.string().min(1),
   slug: z.string().optional(),
   category: z.string().min(1),
@@ -89,7 +89,7 @@ export const TimelineItemSchema = z.object({
 
 export const TimelineSchema = z.array(TimelineItemSchema);
 
-export const SkillSchema = z.object({
+const SkillSchema = z.object({
   name: z.string().min(1),
   usedInSlugs: z.array(z.string()),
 });
@@ -116,7 +116,7 @@ export const ExperimentSchema = z.object({
 
 export const ExperimentsSchema = z.array(ExperimentSchema);
 
-export const SecondaryEducationSchema = z.object({
+const SecondaryEducationSchema = z.object({
   degree: z.string().min(1),
   group: z.string().min(1),
   institution: z.string().min(1),
@@ -125,7 +125,7 @@ export const SecondaryEducationSchema = z.object({
   gpa: z.string().min(1),
 });
 
-export const EducationSchema = z.object({
+const EducationSchema = z.object({
   institution: z.string().min(1),
   degree: z.string().min(1),
   department: z.string().min(1),
@@ -164,7 +164,7 @@ export const NavigationItemSchema = z.object({
   shortLabel: z.string().optional(),
 });
 
-export const SocialLinksSchema = z.object({
+const SocialLinksSchema = z.object({
   github: z.string().url(),
   linkedin: z.string().url(),
   facebook: z.string().url().optional(),

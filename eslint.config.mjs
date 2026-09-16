@@ -5,12 +5,46 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  // Override default ignores of eslint-config-next.
+  {
+    rules: {
+      // Core safety & cleanliness
+      "no-console": ["warn", { allow: ["warn", "error"] }],
+      "no-debugger": "error",
+      "no-var": "error",
+      "prefer-const": "error",
+      "eqeqeq": ["error", "always", { null: "ignore" }],
+      "no-duplicate-imports": "error",
+
+      // TypeScript strictness
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          prefer: "type-imports",
+          fixStyle: "inline-type-imports",
+        },
+      ],
+      "@typescript-eslint/no-explicit-any": "warn",
+
+      // Next.js & React rules
+      "@next/next/no-img-element": "error",
+      "@next/next/no-html-link-for-pages": "error",
+    },
+  },
   globalIgnores([
-    // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
     "build/**",
+    "dist/**",
+    "node_modules/**",
+    "graphify-out/**",
     "next-env.d.ts",
   ]),
 ]);

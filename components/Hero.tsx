@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { GithubIcon } from "@/components/icons/BrandIcons";
 import {
   StaggerContainer,
   StaggerItem,
@@ -83,15 +82,6 @@ export function Hero() {
             >
               CV ↗
             </Link>
-            <a
-              href={profile.socialLinks.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-border px-3.5 py-2 sm:px-4 sm:py-2.5 font-mono text-[0.72rem] sm:text-xs text-muted-foreground hover:border-accent hover:text-foreground transition-colors active:scale-95"
-            >
-              <GithubIcon className="size-3.5" />
-              <span>GitHub</span>
-            </a>
           </div>
         </StaggerItem>
       </StaggerContainer>

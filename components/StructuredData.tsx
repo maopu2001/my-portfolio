@@ -8,7 +8,11 @@ export function RootStructuredData() {
     "@type": "Person",
     "@id": "https://maopu.com.bd/#person",
     name: profile.name,
-    alternateName: [profile.shortName, "Aktaruzzaman Opu", "M. Aktaruzzaman Opu"],
+    alternateName: [
+      profile.shortName,
+      "Aktaruzzaman Opu",
+      "M. Aktaruzzaman Opu",
+    ],
     url: "https://maopu.com.bd",
     image: "https://maopu.com.bd/opengraph-image",
     jobTitle: "Software Engineer & Computer Science Researcher",

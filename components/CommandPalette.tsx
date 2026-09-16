@@ -65,11 +65,6 @@ export function CommandPalette() {
     };
   }, [isOpen]);
 
-  // Reset index when query changes
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [query]);
-
   // Build searchable index
   const items: SearchItem[] = useMemo(() => {
     const pageItems: SearchItem[] = [
@@ -151,29 +146,28 @@ export function CommandPalette() {
       },
     ];
 
-    return [...pageItems, ...actionItems, ...projectItems, ...researchItems, ...experimentItems, ...linkItems];
+    return [...pageItems, ...projectItems, ...researchItems, ...experimentItems, ...actionItems, ...linkItems];
   }, [theme, setTheme]);
 
   // Filter items based on query
   const filtered = useMemo(() => {
+    if (!query.trim()) return items;
     const q = query.toLowerCase().trim();
-    if (!q) return items.slice(0, 14);
 
-    return items
-      .filter(
-        (item) =>
-          item.title.toLowerCase().includes(q) ||
-          item.subtitle?.toLowerCase().includes(q) ||
-          item.category.toLowerCase().includes(q)
-      )
-      .slice(0, 20);
+    return items.filter((item) => {
+      const matchTitle = item.title.toLowerCase().includes(q);
+      const matchSubtitle = item.subtitle?.toLowerCase().includes(q);
+      const matchCategory = item.category.toLowerCase().includes(q);
+      return matchTitle || matchSubtitle || matchCategory;
+    });
   }, [items, query]);
 
-  // Handle select action
   const handleSelect = useCallback(
     (item: SearchItem) => {
       setIsOpen(false);
       setQuery("");
+      setSelectedIndex(0);
+
       if (item.action) {
         item.action();
       } else if (item.href) {
@@ -223,14 +217,20 @@ export function CommandPalette() {
             autoFocus
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setSelectedIndex(0);
+            }}
             placeholder="Search projects, research, pages, actions..."
             aria-label="Search command palette"
             className="flex-1 bg-transparent font-sans text-sm text-foreground placeholder-muted-foreground outline-none"
           />
           {query && (
             <button
-              onClick={() => setQuery("")}
+              onClick={() => {
+                setQuery("");
+                setSelectedIndex(0);
+              }}
               aria-label="Clear search query"
               className="rounded p-1 text-muted-foreground hover:text-foreground cursor-pointer"
             >
@@ -243,7 +243,11 @@ export function CommandPalette() {
         </div>
 
         {/* Results List */}
-        <div className="max-h-[60vh] overflow-y-auto p-2">
+        <div
+          role="listbox"
+          aria-label="Search results"
+          className="max-h-[60vh] overflow-y-auto p-2"
+        >
           {filtered.length === 0 ? (
             <div className="py-12 text-center font-mono text-xs text-muted-foreground">
               No results found for &ldquo;{query}&rdquo;
@@ -257,9 +261,10 @@ export function CommandPalette() {
                   <button
                     key={item.id}
                     type="button"
+                    role="option"
+                    aria-selected={isSelected}
                     onClick={() => handleSelect(item)}
                     onMouseEnter={() => setSelectedIndex(idx)}
-                    aria-selected={isSelected}
                     className={`flex w-full cursor-pointer items-center justify-between rounded-xl px-3.5 py-2.5 text-left transition-all ${
                       isSelected
                         ? "bg-primary text-primary-foreground shadow-sm"
@@ -292,9 +297,9 @@ export function CommandPalette() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-1.5 shrink-0 pl-2">
+                    <div className="flex items-center gap-2 shrink-0 font-mono text-[0.68rem]">
                       <span
-                        className={`rounded-full px-2 py-0.5 font-mono text-[0.65rem] border ${
+                        className={`rounded-full px-2 py-0.5 border ${
                           isSelected
                             ? "border-primary-foreground/30 bg-primary-foreground/20 text-primary-foreground"
                             : "border-border bg-muted text-muted-foreground"
@@ -303,9 +308,17 @@ export function CommandPalette() {
                         {item.category}
                       </span>
                       {item.external ? (
-                        <ExternalLink className="size-3 opacity-60" />
+                        <ExternalLink
+                          className={`size-3.5 ${
+                            isSelected ? "text-primary-foreground" : "text-muted-foreground"
+                          }`}
+                        />
                       ) : (
-                        <ArrowRight className="size-3 opacity-60" />
+                        <ArrowRight
+                          className={`size-3.5 ${
+                            isSelected ? "text-primary-foreground" : "text-muted-foreground"
+                          }`}
+                        />
                       )}
                     </div>
                   </button>
@@ -316,22 +329,22 @@ export function CommandPalette() {
         </div>
 
         {/* Footer Hint */}
-        <div className="flex items-center justify-between border-t border-border bg-muted/40 px-4 py-2 font-mono text-[0.68rem] text-muted-foreground">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between border-t border-border bg-muted/40 px-4 py-2.5 font-mono text-[0.68rem] text-muted-foreground sm:px-5">
+          <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1">
-              <kbd className="rounded border border-border bg-card px-1 py-0.5 text-[0.62rem]">↑</kbd>
-              <kbd className="rounded border border-border bg-card px-1 py-0.5 text-[0.62rem]">↓</kbd>
-              Navigate
+              <kbd className="rounded border border-border bg-card px-1 py-0.5">↑</kbd>
+              <kbd className="rounded border border-border bg-card px-1 py-0.5">↓</kbd>
+              <span>to navigate</span>
             </span>
+            <span className="text-border">•</span>
             <span className="inline-flex items-center gap-1">
-              <kbd className="rounded border border-border bg-card px-1.5 py-0.5 text-[0.62rem]">↵</kbd>
-              Select
+              <kbd className="rounded border border-border bg-card px-1.5 py-0.5">↵</kbd>
+              <span>to select</span>
             </span>
           </div>
-          <div className="inline-flex items-center gap-1">
-            <Command className="size-3" />
-            <span>K anytime</span>
-          </div>
+          <span className="hidden sm:inline">
+            <Command className="inline size-3 mr-0.5" /> + K anywhere
+          </span>
         </div>
       </div>
     </div>
