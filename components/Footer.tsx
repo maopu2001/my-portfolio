@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { CopyEmail } from "@/components/CopyEmail";
 import { FadeIn } from "@/components/animations/FadeIn";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  FacebookIcon,
+} from "@/components/icons/BrandIcons";
 import { profile } from "@/lib/content";
 
 export function Footer() {
@@ -34,54 +39,91 @@ export function Footer() {
             <p className="font-serif text-base font-semibold text-foreground">
               {profile.name}
             </p>
-            <p className="text-xs text-faint">
-              {profile.headline}
-            </p>
+            <p className="text-xs text-faint">{profile.headline}</p>
           </div>
 
           <nav
-            className="flex flex-wrap items-center justify-center gap-5 text-xs text-muted-foreground"
+            className="flex flex-col items-center justify-center gap-2 text-xs text-muted-foreground"
             aria-label="Footer"
           >
-            <Link href="/projects" className="hover:text-accent-strong transition-colors">
-              Projects
-            </Link>
-            <Link href="/research" className="hover:text-accent-strong transition-colors">
-              Research
-            </Link>
-            <Link href="/experiments" className="hover:text-accent-strong transition-colors">
-              Experiments
-            </Link>
-            <Link href="/journey" className="hover:text-accent-strong transition-colors">
-              Journey
-            </Link>
-            <Link href="/about" className="hover:text-accent-strong transition-colors">
-              About
-            </Link>
-            <Link href="/cv" className="hover:text-accent-strong transition-colors">
-              CV
-            </Link>
-            <a
-              href={profile.socialLinks.github}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-accent-strong transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href={profile.socialLinks.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-accent-strong transition-colors"
-            >
-              LinkedIn
-            </a>
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
+              <Link
+                href="/projects"
+                className="hover:text-accent-strong transition-colors"
+              >
+                Projects
+              </Link>
+              <Link
+                href="/research"
+                className="hover:text-accent-strong transition-colors"
+              >
+                Research
+              </Link>
+              <Link
+                href="/experiments"
+                className="hover:text-accent-strong transition-colors"
+              >
+                Experiments
+              </Link>
+              <Link
+                href="/journey"
+                className="hover:text-accent-strong transition-colors"
+              >
+                Journey
+              </Link>
+              <Link
+                href="/about"
+                className="hover:text-accent-strong transition-colors"
+              >
+                About
+              </Link>
+              <Link
+                href="/cv"
+                className="hover:text-accent-strong transition-colors"
+              >
+                CV
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-5">
+              <a
+                href={profile.socialLinks.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-accent-strong transition-colors"
+              >
+                <GithubIcon className="size-3.5" />
+                <span>GitHub</span>
+              </a>
+              <a
+                href={profile.socialLinks.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-accent-strong transition-colors"
+              >
+                <LinkedinIcon className="size-3.5" />
+                <span>LinkedIn</span>
+              </a>
+              {profile.socialLinks.facebook && (
+                <a
+                  href={profile.socialLinks.facebook}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 hover:text-accent-strong transition-colors"
+                >
+                  <FacebookIcon className="size-3.5" />
+                  <span>Facebook</span>
+                </a>
+              )}
+            </div>
           </nav>
         </div>
 
         <div className="mx-auto mt-8 max-w-4xl border-t border-border pt-6 text-xs text-faint text-center">
-          <p>© {new Date().getFullYear()} {profile.name}. Personal Engineering Portfolio.</p>
+          <p>
+            © {new Date().getFullYear()} {profile.name}. Personal Engineering
+            Portfolio.
+          </p>
         </div>
       </div>
     </footer>

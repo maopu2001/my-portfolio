@@ -118,6 +118,7 @@ export const ExperimentsSchema = z.array(ExperimentSchema);
 
 export const SecondaryEducationSchema = z.object({
   degree: z.string().min(1),
+  group: z.string().min(1),
   institution: z.string().min(1),
   board: z.string().min(1),
   year: z.number().int(),
@@ -191,7 +192,11 @@ export const ProfileSchema = z.object({
   cvUrl: z.string().min(1),
 });
 
-export function parseWithZod<T>(schema: z.ZodType<T>, data: unknown, name: string): T {
+export function parseWithZod<T>(
+  schema: z.ZodType<T>,
+  data: unknown,
+  name: string,
+): T {
   const result = schema.safeParse(data);
   if (!result.success) {
     const errorDetails = result.error.issues

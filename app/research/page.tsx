@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BibtexCopyButton } from "@/components/BibtexCopyButton";
+import { GithubIcon } from "@/components/icons/BrandIcons";
 import { Section } from "@/components/Section";
 import { projects, publications } from "@/lib/content";
 
@@ -103,7 +105,7 @@ export default function ResearchPage() {
                         href={pub.ieeeXploreUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-primary-foreground hover:bg-primary-hover transition-colors font-semibold shadow-sm"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-primary-foreground hover:bg-primary-hover transition-colors font-semibold shadow-sm active:scale-95"
                       >
                         IEEE Xplore Digital Library ↗
                       </a>
@@ -113,11 +115,16 @@ export default function ResearchPage() {
                         href={pub.doiUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-foreground hover:border-accent hover:text-accent-strong transition-colors"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-foreground hover:border-accent hover:text-accent-strong transition-colors active:scale-95"
                       >
                         DOI: {pub.doi} ↗
                       </a>
                     )}
+                  </div>
+
+                  {/* One-Click BibTeX Citation Tool */}
+                  <div className="pt-2 border-t border-border/60">
+                    <BibtexCopyButton publication={pub} />
                   </div>
                 </div>
               ))}
@@ -163,9 +170,10 @@ export default function ResearchPage() {
                     href={thesisProject.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-muted-foreground hover:text-foreground"
+                    className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground active:scale-95 transition-transform"
                   >
-                    GitHub Code Repository ↗
+                    <GithubIcon className="size-3.5" />
+                    <span>GitHub Code Repository</span>
                   </a>
                 )}
               </div>

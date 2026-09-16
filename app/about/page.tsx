@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/icons/BrandIcons";
 import { Section } from "@/components/Section";
 import { achievements, profile } from "@/lib/content";
 
@@ -154,34 +156,34 @@ export default function AboutPage() {
               <h3 className="font-serif text-sm font-bold text-foreground border-b border-border pb-2">
                 Direct Contact
               </h3>
-              <div className="space-y-2 font-mono text-xs">
-                <p className="text-muted-foreground">
-                  Email:{" "}
+              <div className="space-y-2.5 font-mono text-xs">
+                <p className="flex items-center gap-2 text-muted-foreground">
+                  <Mail className="size-3.5 text-accent-strong shrink-0" />
                   <a
                     href={profile.socialLinks.email}
-                    className="text-accent-strong hover:underline"
+                    className="text-foreground hover:text-accent-strong hover:underline truncate"
                   >
                     {profile.socialLinks.rawEmail}
                   </a>
                 </p>
-                <p className="text-muted-foreground">
-                  GitHub:{" "}
+                <p className="flex items-center gap-2 text-muted-foreground">
+                  <GithubIcon className="size-3.5 text-accent-strong shrink-0" />
                   <a
                     href={profile.socialLinks.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-accent-strong hover:underline"
+                    className="text-foreground hover:text-accent-strong hover:underline"
                   >
                     @maopu2001 ↗
                   </a>
                 </p>
-                <p className="text-muted-foreground">
-                  LinkedIn:{" "}
+                <p className="flex items-center gap-2 text-muted-foreground">
+                  <LinkedinIcon className="size-3.5 text-accent-strong shrink-0" />
                   <a
                     href={profile.socialLinks.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-accent-strong hover:underline"
+                    className="text-foreground hover:text-accent-strong hover:underline"
                   >
                     in/maopu2001 ↗
                   </a>

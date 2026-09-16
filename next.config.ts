@@ -2,16 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "scontent.fcgp3-1.fna.fbcdn.net",
-      },
-    ],
+    // Disable Next.js server-side image optimization proxy globally.
+    // Images are served directly as-is from their original CDN / static source.
+    unoptimized: true,
   },
 };
 

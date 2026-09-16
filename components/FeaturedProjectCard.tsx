@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { GithubIcon } from "@/components/icons/BrandIcons";
+import { getCdnUrl } from "@/lib/cdn";
 import type { Project } from "@/lib/content/types";
 
 type FeaturedProjectCardProps = {
@@ -25,9 +27,10 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
         <div className="lg:col-span-5 relative aspect-video w-full overflow-hidden rounded-xl border border-border bg-muted h-full">
           {project.image ? (
             <Image
-              src={project.image}
+              src={getCdnUrl(project.image)}
               alt={project.title}
               fill
+              unoptimized
               sizes="(max-width: 1024px) 100vw, 600px"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
@@ -90,9 +93,10 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
                   href={project.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-muted-foreground hover:text-foreground"
+                  className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground active:scale-95 transition-transform"
                 >
-                  GitHub ↗
+                  <GithubIcon className="size-3.5" />
+                  <span>GitHub</span>
                 </a>
               )}
               {project.demo && (

@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { existsSync } from "fs";
 import path from "path";
 import Link from "next/link";
+import { Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/icons/BrandIcons";
+import { getCdnUrl } from "@/lib/cdn";
 import { Section } from "@/components/Section";
 import {
   achievements,
@@ -10,6 +13,7 @@ import {
   publications,
   skillGroups,
 } from "@/lib/content";
+import { span } from "framer-motion/m";
 
 export const metadata: Metadata = {
   title: "Curriculum Vitae (CV)",
@@ -31,7 +35,7 @@ export default function CVPage() {
         action={
           pdfExists ? (
             <a
-              href={profile.cvUrl}
+              href={getCdnUrl(profile.cvUrl)}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-xs font-mono text-primary-foreground hover:bg-primary-hover transition-colors shadow-md shadow-accent/20 font-semibold"
@@ -55,9 +59,12 @@ export default function CVPage() {
                 {profile.intro} {profile.subIntro}
               </p>
             </div>
-            <div className="font-mono text-xs text-muted-foreground space-y-1 sm:text-right shrink-0">
-              <p className="text-foreground font-semibold">{profile.education.location}</p>
-              <p>
+            <div className="font-mono text-xs text-muted-foreground space-y-1.5 sm:text-right shrink-0">
+              <p className="text-foreground font-semibold">
+                {profile.education.location}
+              </p>
+              <p className="flex sm:justify-end items-center gap-1.5">
+                <Mail className="size-3 text-accent-strong" />
                 <a
                   href={profile.socialLinks.email}
                   className="text-accent-strong hover:underline"
@@ -65,22 +72,24 @@ export default function CVPage() {
                   {profile.socialLinks.rawEmail}
                 </a>
               </p>
-              <p>
+              <p className="flex sm:justify-end items-center gap-1.5">
+                <GithubIcon className="size-3 text-foreground" />
                 <a
                   href={profile.socialLinks.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-foreground"
+                  className="hover:text-foreground hover:underline"
                 >
                   github.com/maopu2001
                 </a>
               </p>
-              <p>
+              <p className="flex sm:justify-end items-center gap-1.5">
+                <LinkedinIcon className="size-3 text-foreground" />
                 <a
                   href={profile.socialLinks.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-foreground"
+                  className="hover:text-foreground hover:underline"
                 >
                   linkedin.com/in/m-aktaruzzaman-opu
                 </a>
@@ -101,7 +110,8 @@ export default function CVPage() {
                       {profile.education.degree}
                     </h3>
                     <p className="text-sm text-accent-strong font-medium">
-                      {profile.education.department}, {profile.education.institution}
+                      {profile.education.department},{" "}
+                      {profile.education.institution}
                     </p>
                   </div>
                   <div className="font-mono text-xs text-muted-foreground sm:text-right">
@@ -123,13 +133,34 @@ export default function CVPage() {
 
               <div className="grid gap-3 sm:grid-cols-2 font-mono text-xs">
                 {profile.education.secondaryEducation.map((sec, idx) => (
-                  <div key={idx} className="rounded-xl border border-border bg-card p-3.5 space-y-1">
-                    <div className="flex justify-between items-start">
-                      <span className="font-bold text-foreground">{sec.degree}</span>
-                      <span className="text-accent-strong font-semibold">GPA: {sec.gpa}</span>
+                  <div
+                    key={idx}
+                    className="rounded-xl border border-border bg-card p-3.5 space-y-1"
+                  >
+                    <div className="flex justify-between items-start relative">
+                      <div className="flex flex-col gap-0.5">
+                        <span className="font-bold text-foreground">
+                          {sec.degree}
+                        </span>
+                        <p className="font-semibold text-foreground">
+                          Group: {sec.group}
+                        </p>
+                      </div>
+
+                      {/* for Desktop */}
+                      <span className="text-accent-strong font-semibold hidden lg:block">
+                        GPA: {sec.gpa}
+                      </span>
+                      {/* for Mobile */}
+                      <span className="text-accent-strong font-semibold lg:hidden flex flex-col items-end">
+                        <span>GPA</span>
+                        <span>{sec.gpa}</span>
+                      </span>
                     </div>
                     <p className="text-faint">{sec.institution}</p>
-                    <p className="text-faint">{sec.board} • {sec.year}</p>
+                    <p className="text-faint">
+                      {sec.board} • {sec.year}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -143,7 +174,10 @@ export default function CVPage() {
             </h2>
             <div className="space-y-4">
               {publications.map((pub, idx) => (
-                <div key={idx} className="rounded-xl border border-border bg-card p-5 space-y-2.5">
+                <div
+                  key={idx}
+                  className="rounded-xl border border-border bg-card p-5 space-y-2.5"
+                >
                   <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-start">
                     <h3 className="font-sans font-bold text-foreground text-base">
                       {pub.title}
@@ -156,7 +190,8 @@ export default function CVPage() {
                     Authors: {pub.authors.join(", ")}
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    Published in: <em>{pub.venue}</em>, {pub.location}, {pub.year}
+                    Published in: <em>{pub.venue}</em>, {pub.location},{" "}
+                    {pub.year}
                     {pub.pages ? `, pp. ${pub.pages}` : ""}.
                   </p>
                   <div className="flex flex-wrap gap-3 pt-1 font-mono text-xs">
@@ -193,7 +228,10 @@ export default function CVPage() {
             </h2>
             <div className="space-y-4">
               {profile.teachingExperience.map((exp, idx) => (
-                <div key={idx} className="rounded-xl border border-border bg-card p-5 space-y-2">
+                <div
+                  key={idx}
+                  className="rounded-xl border border-border bg-card p-5 space-y-2"
+                >
                   <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-start">
                     <div>
                       <h3 className="font-sans font-bold text-foreground text-base">
@@ -213,14 +251,18 @@ export default function CVPage() {
                     ))}
                   </ul>
                   <div className="pt-2 font-mono text-xs text-faint">
-                    <span className="text-foreground font-semibold">Modules Covered:</span>{" "}
+                    <span className="text-foreground font-semibold">
+                      Modules Covered:
+                    </span>{" "}
                     {exp.topics.join(" • ")}
                   </div>
                 </div>
               ))}
 
               <div className="rounded-xl border border-dashed border-border p-4 font-mono text-xs">
-                <span className="text-foreground font-semibold">Teaching & Curriculum Interests:</span>
+                <span className="text-foreground font-semibold">
+                  Teaching & Curriculum Interests:
+                </span>
                 <p className="text-muted-foreground mt-1">
                   {profile.teachingInterests.join(" • ")}
                 </p>
@@ -236,17 +278,23 @@ export default function CVPage() {
             <div className="rounded-xl border border-border bg-card p-5 space-y-2">
               <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-start">
                 <h3 className="font-sans font-bold text-foreground text-base">
-                  Zero-Label Cell Microscopy: Anomaly Detection Using Vision Transformers and DINOv2
+                  Zero-Label Cell Microscopy: Anomaly Detection Using Vision
+                  Transformers and DINOv2
                 </h3>
                 <span className="font-mono text-xs text-faint shrink-0">
                   Nov 2025 — Aug 2026
                 </span>
               </div>
               <p className="text-xs text-accent-strong font-mono font-medium">
-                Supervisor: Assistant Professor Md. Mynoddin, Dept. of CSE, RMSTU
+                Supervisor: Assistant Professor Md. Mynoddin, Dept. of CSE,
+                RMSTU
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Benchmarked vision transformer models (CAE-IF, SQAFormer, DINOv2 ViT embeddings) on 5,239 unlabelled phase-contrast cell microscopy frames from the LIVECell corpus. Identified score sign inversion in standard pixel MSE loss metrics during phase-contrast defocus corruptions.
+                Benchmarked vision transformer models (CAE-IF, SQAFormer, DINOv2
+                ViT embeddings) on 5,239 unlabelled phase-contrast cell
+                microscopy frames from the LIVECell corpus. Identified score
+                sign inversion in standard pixel MSE loss metrics during
+                phase-contrast defocus corruptions.
               </p>
             </div>
           </section>
@@ -291,7 +339,10 @@ export default function CVPage() {
             </h2>
             <div className="space-y-4">
               {featuredWork.map((proj) => (
-                <div key={proj.slug} className="rounded-xl border border-border bg-card p-4 sm:p-5 space-y-1.5">
+                <div
+                  key={proj.slug}
+                  className="rounded-xl border border-border bg-card p-4 sm:p-5 space-y-1.5"
+                >
                   <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-start">
                     <h3 className="font-sans font-bold text-foreground text-base">
                       <Link
@@ -326,7 +377,10 @@ export default function CVPage() {
             </h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {skillGroups.map((group) => (
-                <div key={group.category} className="rounded-xl border border-border bg-card p-4 space-y-1">
+                <div
+                  key={group.category}
+                  className="rounded-xl border border-border bg-card p-4 space-y-1"
+                >
                   <h3 className="font-mono text-xs font-bold text-accent-strong uppercase tracking-wider">
                     {group.category}
                   </h3>
@@ -345,13 +399,20 @@ export default function CVPage() {
             </h2>
             <div className="grid gap-4 sm:grid-cols-2">
               {profile.references.map((ref, idx) => (
-                <div key={idx} className="rounded-xl border border-border bg-card p-5 space-y-1.5 font-mono text-xs shadow-sm">
+                <div
+                  key={idx}
+                  className="rounded-xl border border-border bg-card p-5 space-y-1.5 font-mono text-xs shadow-sm"
+                >
                   <h3 className="font-sans font-bold text-foreground text-sm">
                     {ref.name}
                   </h3>
-                  <p className="text-accent-strong font-medium">{ref.designation}</p>
+                  <p className="text-accent-strong font-medium">
+                    {ref.designation}
+                  </p>
                   <p className="text-muted-foreground">{ref.department}</p>
-                  <p className="text-muted-foreground">{ref.institution}, {ref.location}</p>
+                  <p className="text-muted-foreground">
+                    {ref.institution}, {ref.location}
+                  </p>
                   <p className="pt-1">
                     Email:{" "}
                     <a

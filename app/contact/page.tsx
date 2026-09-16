@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Mail, ArrowUpRight } from "lucide-react";
+import { GithubIcon, LinkedinIcon, FacebookIcon } from "@/components/icons/BrandIcons";
 import { Section } from "@/components/Section";
 import { profile } from "@/lib/content";
 
@@ -13,18 +15,21 @@ const contactItems = [
     value: profile.socialLinks.rawEmail,
     href: profile.socialLinks.email,
     note: "Primary communication channel",
+    icon: Mail,
   },
   {
     label: "GitHub",
     value: "github.com/maopu2001",
     href: profile.socialLinks.github,
     note: "Public code repositories & experiments",
+    icon: GithubIcon,
   },
   {
     label: "LinkedIn",
     value: "linkedin.com/in/m-aktaruzzaman-opu",
     href: profile.socialLinks.linkedin,
     note: "Professional profile & updates",
+    icon: LinkedinIcon,
   },
   ...(profile.socialLinks.facebook
     ? [
@@ -33,6 +38,7 @@ const contactItems = [
           value: "facebook.com/maopu2001",
           href: profile.socialLinks.facebook,
           note: "Personal social updates",
+          icon: FacebookIcon,
         },
       ]
     : []),
@@ -46,27 +52,38 @@ export default function ContactPage() {
         subtitle="Open to engineering collaboration, research discussions in computer vision, and academic opportunities."
       >
         <div className="grid gap-4 sm:grid-cols-2">
-          {contactItems.map((item) => (
-            <div
-              key={item.label}
-              className="rounded-2xl border border-border bg-card p-6 space-y-2.5 shadow-sm transition-all duration-300 hover:border-accent/50"
-            >
-              <span className="font-mono text-xs text-accent-strong font-semibold">
-                {item.label}
-              </span>
-              <div>
-                <a
-                  href={item.href}
-                  target={item.href.startsWith("mailto:") ? undefined : "_blank"}
-                  rel="noreferrer"
-                  className="font-serif text-lg font-bold text-foreground hover:text-accent-strong transition-colors block"
-                >
-                  {item.value} ↗
-                </a>
-              </div>
-              <p className="text-xs text-faint font-mono">{item.note}</p>
-            </div>
-          ))}
+          {contactItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel="noreferrer"
+                className="group rounded-2xl border border-border bg-card p-6 space-y-3 shadow-sm transition-all duration-300 hover:border-accent/50 hover:shadow-md hover:shadow-accent/5 hover:-translate-y-0.5 active:scale-[0.99] block cursor-pointer"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex size-8 items-center justify-center rounded-xl border border-border bg-muted/60 text-foreground group-hover:border-accent/40 group-hover:text-accent-strong transition-colors">
+                      <Icon className="size-4" />
+                    </div>
+                    <span className="font-mono text-xs text-accent-strong font-semibold">
+                      {item.label}
+                    </span>
+                  </div>
+                  <ArrowUpRight className="size-4 text-muted-foreground group-hover:text-accent-strong group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </div>
+
+                <div>
+                  <span className="font-serif text-lg font-bold text-foreground group-hover:text-accent-strong transition-colors block">
+                    {item.value}
+                  </span>
+                </div>
+
+                <p className="text-xs text-muted-foreground font-mono">{item.note}</p>
+              </a>
+            );
+          })}
         </div>
       </Section>
 

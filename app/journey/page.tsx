@@ -16,7 +16,7 @@ export default function JourneyPage() {
         title="Engineering & Learning Journey"
         subtitle="A chronological timeline recording how my technical interests developed—from core algorithms and competitive programming to full-stack web applications and computer vision thesis research."
       >
-        <div className="relative border-l border-border pl-8 space-y-12 ml-4 py-4">
+        <div className="relative border-l border-border pl-8 space-y-12 ml-4 pb-4">
           {timeline.map((item) => (
             <div key={item.year} className="relative group">
               {/* Timeline Node Dot */}

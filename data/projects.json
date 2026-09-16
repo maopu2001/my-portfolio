@@ -27,7 +27,7 @@
     "github": "https://github.com/maopu2001/exam-ques-gen",
     "demo": "https://exam-ques-gen.vercel.app",
     "image": "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&w=1200&q=80",
-    "problem": "Formatting NCTB-standard examination papers with complex Bengali typography, mathematical formulas, and folded 2x1 booklet imposition traditionally requires cumbersome desktop TeX Live installations or high-latency backend compilation servers with privacy and hosting cost concerns.",
+    "problem": "NCTB-standard exam papers with complex Bengali typography, formulas, and 2×1 booklet imposition often require bulky TeX Live installations or costly, privacy-sensitive backend compilation.",
     "features": [
       "100% client-side XeLaTeX compilation in WebAssembly using texlyre-busytex with zero server latency or hosting costs",
       "Bengali OpenType font shaping with Kalpurush.ttf via fontspec and polyglossia packages",
@@ -92,7 +92,11 @@
       "Removing mandatory user sign-up increases utility app usage.",
       "Validating PDF payloads with Zod on the server prevents broken document renders."
     ],
-    "relatedProjects": ["exam-ques-gen", "question-vault-rmstu", "rmstu-notice-hub-reimagined"]
+    "relatedProjects": [
+      "exam-ques-gen",
+      "question-vault-rmstu",
+      "rmstu-notice-hub-reimagined"
+    ]
   },
   {
     "slug": "question-vault-rmstu",
@@ -135,7 +139,11 @@
       "Academic metadata needs explicit schema design for long-term consistency.",
       "Offloading image storage to external image CDNs keeps database size low."
     ],
-    "relatedProjects": ["exam-ques-gen", "cgpa-buddy", "rmstu-bus-management-system"]
+    "relatedProjects": [
+      "exam-ques-gen",
+      "cgpa-buddy",
+      "rmstu-bus-management-system"
+    ]
   },
   {
     "slug": "rmstu-bus-management-system",
@@ -455,8 +463,12 @@
       "CRC binary division step-by-step breakdown",
       "Hamming code error location and 1-bit correction"
     ],
-    "challenges": ["Formatting intermediate binary division steps cleanly on screen."],
-    "lessons": ["Step-by-step visualizations help solidify computer science concepts."]
+    "challenges": [
+      "Formatting intermediate binary division steps cleanly on screen."
+    ],
+    "lessons": [
+      "Step-by-step visualizations help solidify computer science concepts."
+    ]
   },
   {
     "slug": "price-bond-checker",
@@ -479,7 +491,9 @@
       "Local browser storage persistence"
     ],
     "challenges": ["Parsing unstructured draw result documents."],
-    "lessons": ["Building simple tools for personal tasks develops solid web fundamentals."]
+    "lessons": [
+      "Building simple tools for personal tasks develops solid web fundamentals."
+    ]
   },
   {
     "slug": "library-management-system",
@@ -492,7 +506,14 @@
     "status": "Completed",
     "featured": false,
     "displayOrder": 14,
-    "technologies": ["Node.js", "Express", "MongoDB", "Mongoose", "JWT", "HTML/CSS"],
+    "technologies": [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "JWT",
+      "HTML/CSS"
+    ],
     "github": "https://github.com/maopu2001/LibraryManagementSystem",
     "demo": "https://librarymanagementsystem-mauve.vercel.app",
     "problem": "Paper-based book loan registers resulted in misplaced records and unclear stock availability.",

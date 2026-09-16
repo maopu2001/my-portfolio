@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GithubIcon } from "@/components/icons/BrandIcons";
 import { Section } from "@/components/Section";
 import { experiments } from "@/lib/content";
 
@@ -40,9 +41,10 @@ export default function ExperimentsPage() {
                     href={exp.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 font-mono text-xs text-accent-strong hover:underline shrink-0 font-semibold"
+                    className="inline-flex items-center gap-1.5 font-mono text-xs text-accent-strong hover:underline shrink-0 font-semibold active:scale-95 transition-transform"
                   >
-                    View Code on GitHub ↗
+                    <GithubIcon className="size-3.5" />
+                    <span>View Code</span>
                   </a>
                 )}
               </div>

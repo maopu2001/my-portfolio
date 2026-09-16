@@ -1,7 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { StaggerContainer, StaggerItem } from "@/components/animations/StaggerContainer";
+import { GithubIcon } from "@/components/icons/BrandIcons";
+import {
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/animations/StaggerContainer";
 import { usePreloaderDone } from "@/components/Preloader";
 import { profile } from "@/lib/content";
 
@@ -9,7 +13,7 @@ export function Hero() {
   const revealed = usePreloaderDone();
 
   return (
-    <section className="mb-10 sm:mb-16 pt-2 sm:pt-6">
+    <section className="mb-10 sm:mb-16">
       {/* key forces a remount on reveal so the stagger replays after the preloader */}
       <StaggerContainer
         key={revealed ? "live" : "hold"}
@@ -21,7 +25,9 @@ export function Hero() {
         <StaggerItem>
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card/90 px-3.5 py-1 sm:px-4 sm:py-1.5 font-mono text-[0.7rem] sm:text-xs font-medium text-muted-foreground backdrop-blur-md shadow-sm transition-transform duration-300 hover:scale-105">
             <span className="h-2 w-2 rounded-full bg-accent animate-ping shrink-0" />
-            <span className="text-accent-strong font-semibold">CSE Undergraduate</span>
+            <span className="text-accent-strong font-semibold">
+              CSE Undergraduate
+            </span>
             <span className="text-faint">|</span>
             <span className="truncate">Software &amp; Vision</span>
           </div>
@@ -50,7 +56,9 @@ export function Hero() {
         <StaggerItem>
           <div className="max-w-2xl space-y-2 sm:space-y-3 text-sm sm:text-lg text-muted-foreground leading-relaxed">
             <p>{profile.intro}</p>
-            <p className="text-xs sm:text-sm text-faint font-mono">{profile.subIntro}</p>
+            <p className="text-xs sm:text-sm text-faint font-mono">
+              {profile.subIntro}
+            </p>
           </div>
         </StaggerItem>
 
@@ -71,7 +79,7 @@ export function Hero() {
             </Link>
             <Link
               href="/cv"
-              className="inline-flex items-center gap-1 rounded-full border border-border px-3.5 py-2 sm:px-4 sm:py-2.5 font-mono text-[0.72rem] sm:text-xs text-muted-foreground hover:border-accent hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-1 rounded-full border border-border px-3.5 py-2 sm:px-4 sm:py-2.5 font-mono text-[0.72rem] sm:text-xs text-muted-foreground hover:border-accent hover:text-foreground transition-colors active:scale-95"
             >
               CV ↗
             </Link>
@@ -79,9 +87,10 @@ export function Hero() {
               href={profile.socialLinks.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 rounded-full border border-border px-3.5 py-2 sm:px-4 sm:py-2.5 font-mono text-[0.72rem] sm:text-xs text-muted-foreground hover:border-accent hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border px-3.5 py-2 sm:px-4 sm:py-2.5 font-mono text-[0.72rem] sm:text-xs text-muted-foreground hover:border-accent hover:text-foreground transition-colors active:scale-95"
             >
-              GitHub ↗
+              <GithubIcon className="size-3.5" />
+              <span>GitHub</span>
             </a>
           </div>
         </StaggerItem>

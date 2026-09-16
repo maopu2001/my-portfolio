@@ -23,7 +23,7 @@ export function Section({
   className = "",
 }: SectionProps) {
   return (
-    <section id={id} className={`my-10 sm:my-16 ${className}`}>
+    <section id={id} className={`mb-12 sm:mb-16 mt-8 sm:mt-12 first:mt-0 ${className}`}>
       <FadeIn direction="up" duration={0.4}>
         <div className="mb-6 sm:mb-8 flex flex-col justify-between gap-2 border-b border-border pb-3 sm:pb-4 sm:flex-row sm:items-end">
           <div>

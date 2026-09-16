@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { CommandPalette } from "@/components/CommandPalette";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { Preloader } from "@/components/Preloader";
@@ -35,17 +36,17 @@ export const metadata: Metadata = {
   },
   description: `${profile.name} — ${profile.headline}. ${profile.intro}`,
   keywords: [
- "M. Aktaruzzaman Opu",
- "Aktaruzzaman Opu",
- "Computer Science",
- "Software Engineer",
- "Web Developer",
- "Next.js",
- "React",
- "Computer Vision",
- "Machine Learning",
- "RMSTU",
- "Bangladesh",
+    "M. Aktaruzzaman Opu",
+    "Aktaruzzaman Opu",
+    "Computer Science",
+    "Software Engineer",
+    "Web Developer",
+    "Next.js",
+    "React",
+    "Computer Vision",
+    "Machine Learning",
+    "RMSTU",
+    "Bangladesh",
   ],
   authors: [{ name: profile.name }],
   openGraph: {
@@ -77,6 +78,14 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: preloaderBootScript }} />
       </head>
       <body className="min-h-screen font-sans antialiased">
+        {/* Skip to Content Link for Keyboard / Screen Reader Accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[99999] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-xs focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none"
+        >
+          Skip to main content
+        </a>
+
         {/* Painted with the initial HTML so content never flashes first */}
         <div className="preloader-static" aria-hidden="true">
           <div className="preloader-grain" />
@@ -84,9 +93,14 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Preloader />
           <ScrollManager />
+          <CommandPalette />
           <div className="flex min-h-screen flex-col">
             <Navbar />
-            <main className="mx-auto w-full max-w-5xl flex-1 px-4 sm:px-6 pt-6 sm:pt-28 pb-28 sm:pb-20">
+            <main
+              id="main-content"
+              tabIndex={-1}
+              className="mx-auto w-full max-w-5xl flex-1 px-4 sm:px-6 pt-20 lg:pt-24 focus:outline-none"
+            >
               {children}
             </main>
             <Footer />

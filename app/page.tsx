@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Mail } from "lucide-react";
 import { Marquee } from "@/components/animations/Marquee";
 import { FeaturedProjectCard } from "@/components/FeaturedProjectCard";
 import { Hero } from "@/components/Hero";
+import { GithubIcon } from "@/components/icons/BrandIcons";
 import { Section } from "@/components/Section";
 import {
   experiments,
@@ -32,7 +34,10 @@ export default function Home() {
     }
     const experiment = experiments.find((e) => e.slug === slug);
     if (experiment) {
-      return { href: `/experiments#${experiment.slug}`, label: experiment.title };
+      return {
+        href: `/experiments#${experiment.slug}`,
+        label: experiment.title,
+      };
     }
     return null;
   };
@@ -42,8 +47,8 @@ export default function Home() {
       <Hero />
 
       {/* TECH SKILLS TICKER MARQUEE (ADITYA GUPTA STYLE) */}
-      <div className="my-8 rounded-full border border-border bg-card/80 py-3 backdrop-blur-md shadow-sm">
-        <Marquee speed={30}>
+      <div className="my-8 rounded-full border border-border bg-card/80 p-3 backdrop-blur-md shadow-sm overflow-hidden">
+        <Marquee speed={100} className="rounded-full">
           {allSkills.map((skill) => (
             <span
               key={skill.name}
@@ -97,13 +102,18 @@ export default function Home() {
               <ul className="space-y-3.5 text-sm">
                 {group.skills.map((skill) => (
                   <li key={skill.name} className="flex flex-col gap-0.5">
-                    <span className="font-medium text-foreground">{skill.name}</span>
+                    <span className="font-medium text-foreground">
+                      {skill.name}
+                    </span>
                     {skill.usedInSlugs.length > 0 && (
                       <span className="font-mono text-[0.72rem] text-faint">
                         Used in:{" "}
                         {skill.usedInSlugs
                           .map(resolveUsedIn)
-                          .filter((ref): ref is NonNullable<typeof ref> => ref !== null)
+                          .filter(
+                            (ref): ref is NonNullable<typeof ref> =>
+                              ref !== null,
+                          )
                           .map((ref, idx) => (
                             <span key={ref.href}>
                               {idx > 0 ? ", " : ""}
@@ -148,7 +158,9 @@ export default function Home() {
             >
               <div>
                 <div className="flex items-center justify-between font-mono text-[0.72rem] text-faint mb-2">
-                  <span className="text-accent-strong font-semibold">{exp.category}</span>
+                  <span className="text-accent-strong font-semibold">
+                    {exp.category}
+                  </span>
                   <span>{exp.year}</span>
                 </div>
                 <h3 className="font-serif text-base font-bold text-foreground mb-2">
@@ -175,9 +187,10 @@ export default function Home() {
                     href={exp.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-mono text-xs text-accent-strong hover:underline"
+                    className="inline-flex items-center gap-1.5 font-mono text-xs text-accent-strong hover:underline active:scale-95 transition-transform"
                   >
-                    View Code ↗
+                    <GithubIcon className="size-3.5" />
+                    <span>View Code</span>
                   </a>
                 )}
               </div>
@@ -222,7 +235,10 @@ export default function Home() {
                   >
                     <span className="text-accent-strong">#</span>
                     {p.slug ? (
-                      <Link href={`/projects/${p.slug}`} className="hover:underline">
+                      <Link
+                        href={`/projects/${p.slug}`}
+                        className="hover:underline"
+                      >
                         {p.title}
                       </Link>
                     ) : (
@@ -245,10 +261,17 @@ export default function Home() {
 
           <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl">
             <p>
-              I am a CSE undergraduate student at Rangamati Science and Technology University (RMSTU). My practical engineering journey started in full-stack web application development and client-side systems, building tools like <strong>Exam Studio</strong>, <strong>CGPA Buddy</strong>, <strong>Question Vault</strong>, and the <strong>RMSTU Transport System</strong>.
+              I am a CSE undergraduate student at Rangamati Science and
+              Technology University (RMSTU). My practical engineering journey
+              started in full-stack web application development and client-side
+              systems, building tools like <strong>Exam Studio</strong>,{" "}
+              <strong>CGPA Buddy</strong>, <strong>Question Vault</strong>, and
+              the <strong>RMSTU Transport System</strong>.
             </p>
             <p>
-              Over time, building applications led me to investigate theoretical foundations—computer vision, vision transformers (DINOv2, SQAFormer), and zero-label anomaly detection.
+              Over time, building applications led me to investigate theoretical
+              foundations—computer vision, vision transformers (DINOv2,
+              SQAFormer), and zero-label anomaly detection.
             </p>
             <p className="text-faint font-serif border-t border-border pt-4">
               Long-term goal: {profile.longTermGoal}
@@ -264,9 +287,10 @@ export default function Home() {
             </Link>
             <a
               href={profile.socialLinks.email}
-              className="rounded-full border border-border bg-card px-5 py-2 text-xs font-mono text-muted-foreground hover:text-accent-strong transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-5 py-2 text-xs font-mono text-muted-foreground hover:text-accent-strong transition-colors active:scale-95"
             >
-              Get in Touch ({profile.socialLinks.rawEmail})
+              <Mail className="size-3.5" />
+              <span>Get in Touch ({profile.socialLinks.rawEmail})</span>
             </a>
           </div>
         </div>
