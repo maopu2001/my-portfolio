@@ -35,6 +35,11 @@
         "category": "Web Application"
       },
       {
+        "title": "VoltCalc",
+        "slug": "voltcalc",
+        "category": "Web Application"
+      },
+      {
         "title": "RMSTU Notice Hub Reimagined",
         "slug": "rmstu-notice-hub-reimagined",
         "category": "Web Application"

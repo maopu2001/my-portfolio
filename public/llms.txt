@@ -31,5 +31,6 @@
 - Exam Studio: Next-generation in-browser XeLaTeX question generation system with WebAssembly compilation and live typography preview (React, TypeScript, WebAssembly).
 - Teach Easy: Offline-first student assessment and attendance tracking platform tailored for classroom educators.
 - CGPA Buddy: University grading policy forecaster and academic goal calculation manager.
+- VoltCalc: Bangladesh electricity bill calculator and household appliance energy auditor with official BERC LT-A tariff slabs, reverse prepaid meter estimation, and duty-cycle modeling (Next.js 16, React 19, TypeScript, Tailwind CSS v4, Recharts).
 - Question Vault RMSTU: Open-access repository indexing previous semester exam questions for university departments.
 - RMSTU Transport System: Fleet vehicle tracking, bus route management, and schedule notification portal.

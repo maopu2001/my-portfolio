@@ -95,7 +95,58 @@
     "relatedProjects": [
       "exam-ques-gen",
       "question-vault-rmstu",
-      "rmstu-notice-hub-reimagined"
+      "rmstu-notice-hub-reimagined",
+      "voltcalc"
+    ]
+  },
+  {
+    "slug": "voltcalc",
+    "title": "VoltCalc",
+    "tagline": "Bangladesh electricity bill calculator and household load auditor under BERC LT-A tariff.",
+    "description": "I built VoltCalc to calculate, simulate, and analyze residential electricity bills under official BERC LT-A stepped tariffs, including reverse prepaid estimation and appliance duty-cycle auditing.",
+    "longDescription": "VoltCalc is a high-precision, client-side web application designed for Bangladeshi consumers across DPDC, DESCO, BPDB, NESCO, WZPDCL, and BREB meters. It implements official Bangladesh Energy Regulatory Commission (BERC) LT-A domestic stepped tariff slabs (including Life Line 0–50 kWh, stepped rates up to >600 kWh, ৳42/kW demand charges, 0.5% timely payment rebates, and 5.0% statutory VAT). Features forward bill calculation, reverse prepaid meter simulation (Taka to units), and an appliance-level household load auditor with compressor duty-cycle modeling, phantom load tracking, diversity-factored sanctioned load estimation, and what-if scenario forecasting.",
+    "category": "web",
+    "categoryLabel": "Web Application / Utility",
+    "year": 2026,
+    "status": "Active Production",
+    "featured": true,
+    "displayOrder": 3,
+    "technologies": [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Recharts",
+      "shadcn/ui",
+      "Lucide React",
+      "useSyncExternalStore"
+    ],
+    "github": "https://github.com/maopu2001/electricity-bill-calculator",
+    "demo": "https://voltcalc.maopu.com.bd",
+    "image": "/images/voltcalc.webp",
+    "problem": "Bangladeshi consumers struggle to predict stepped-tier electricity bills, decode complex statutory adjustments (demand charge, 0.5% rebate, 5% VAT), reverse-engineer prepaid meter recharges, or audit household appliance power consumption.",
+    "features": [
+      "Official BERC LT-A domestic tariff matrix with Life Line (0–50 units) and progressive tiers up to >600 units",
+      "Statutory charge calculations: ৳42.00/kW demand charge, 0.5% rebate, and 5.0% post-rebate VAT",
+      "Reverse prepaid calculator inverting VAT, rebate, and fixed charges to compute exact kWh units from Taka recharge",
+      "Household appliance load auditor with Bangladeshi wattage defaults, compressor duty cycles, and vampire standby tracking",
+      "Sanctioned demand load estimator applying ~65% diversity factor on connected peak load",
+      "Interactive what-if simulator testing runtime adjustments and visualizing instant monthly kWh/Taka savings",
+      "100% client-side zero-latency architecture with persistent state synchronization using useSyncExternalStore and localStorage"
+    ],
+    "architecture": "Built with Next.js 16 App Router and React 19. Forward and reverse tariff calculation algorithms run entirely client-side with zero external latency. State management synchronizes form inputs, custom appliance configurations, and pre-built household templates across tabs using useSyncExternalStore and localStorage.",
+    "challenges": [
+      "Designing exact inverted math engine to reverse-engineer progressive stepped tariff slabs from gross recharge amounts including VAT and rebate deductions.",
+      "Accurately modeling non-linear appliance duty cycles (compressor/thermostat cycling) and standby vampire power."
+    ],
+    "lessons": [
+      "Client-side pure mathematical models provide instant feedback with zero server costs and total user data privacy.",
+      "Decoupling calculation engines from UI components enables seamless forward, reverse, and appliance load synchronization."
+    ],
+    "relatedProjects": [
+      "cgpa-buddy",
+      "exam-ques-gen",
+      "error-detection-calculator"
     ]
   },
   {
@@ -109,7 +160,7 @@
     "year": 2024,
     "status": "Production",
     "featured": true,
-    "displayOrder": 3,
+    "displayOrder": 4,
     "technologies": [
       "Next.js",
       "MongoDB",
@@ -156,7 +207,7 @@
     "year": 2025,
     "status": "Completed",
     "featured": true,
-    "displayOrder": 4,
+    "displayOrder": 5,
     "technologies": [
       "Next.js",
       "MongoDB",
@@ -199,7 +250,7 @@
     "year": 2026,
     "status": "Undergraduate Thesis",
     "featured": true,
-    "displayOrder": 5,
+    "displayOrder": 6,
     "technologies": [
       "PyTorch 2.2",
       "Python 3.12",
@@ -241,7 +292,7 @@
     "year": 2026,
     "status": "Completed",
     "featured": true,
-    "displayOrder": 6,
+    "displayOrder": 7,
     "technologies": [
       "React 19",
       "TanStack Start",
@@ -283,7 +334,7 @@
     "year": 2026,
     "status": "Completed",
     "featured": true,
-    "displayOrder": 7,
+    "displayOrder": 8,
     "technologies": [
       "Next.js 16",
       "TypeScript",
@@ -323,7 +374,7 @@
     "year": 2026,
     "status": "Active Production",
     "featured": false,
-    "displayOrder": 8,
+    "displayOrder": 9,
     "technologies": [
       "Next.js",
       "React.js",
@@ -361,7 +412,7 @@
     "year": 2025,
     "status": "Completed",
     "featured": false,
-    "displayOrder": 9,
+    "displayOrder": 10,
     "technologies": [
       "Next.js",
       "React.js",
@@ -399,7 +450,7 @@
     "year": 2025,
     "status": "Completed",
     "featured": false,
-    "displayOrder": 10,
+    "displayOrder": 11,
     "technologies": [
       "Next.js 15",
       "TypeScript",
@@ -433,7 +484,7 @@
     "year": 2025,
     "status": "Completed",
     "featured": false,
-    "displayOrder": 11,
+    "displayOrder": 12,
     "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
     "github": "https://github.com/maopu2001/StudentsAttendanceTracker",
     "problem": "Calculating exam eligibility percentages manually from paper attendance sheets is slow and error-prone.",
@@ -455,7 +506,7 @@
     "year": 2025,
     "status": "Completed",
     "featured": false,
-    "displayOrder": 12,
+    "displayOrder": 13,
     "technologies": ["React", "TypeScript", "Tailwind CSS"],
     "github": "https://github.com/maopu2001/error-detection-calculator",
     "demo": "https://error-detection-calculator.vercel.app",
@@ -483,7 +534,7 @@
     "year": 2024,
     "status": "Completed",
     "featured": false,
-    "displayOrder": 13,
+    "displayOrder": 14,
     "technologies": ["JavaScript", "Web Storage API", "Tailwind CSS"],
     "github": "https://github.com/maopu2001/priceBondChecker",
     "demo": "https://price-bond-checker.vercel.app",
@@ -508,7 +559,7 @@
     "year": 2024,
     "status": "Completed",
     "featured": false,
-    "displayOrder": 14,
+    "displayOrder": 15,
     "technologies": [
       "Node.js",
       "Express",
