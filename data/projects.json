@@ -25,8 +25,8 @@
       "Zod"
     ],
     "github": "https://github.com/maopu2001/exam-ques-gen",
-    "demo": "https://exam-ques-gen.vercel.app",
-    "image": "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&w=1200&q=80",
+    "demo": "https://examstudio.maopu.com.bd/",
+    "image": "/images/exam-ques-gen.webp",
     "problem": "NCTB-standard exam papers with complex Bengali typography, formulas, and 2×1 booklet imposition often require bulky TeX Live installations or costly, privacy-sensitive backend compilation.",
     "features": [
       "100% client-side XeLaTeX compilation in WebAssembly using texlyre-busytex with zero server latency or hosting costs",
@@ -73,7 +73,7 @@
     ],
     "github": "https://github.com/maopu2001/cgpa_buddy",
     "demo": "https://cgpa-buddy.maopu.com.bd",
-    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    "image": "/images/cgpa-buddy.webp",
     "problem": "Students at RMSTU had no single tool configured for department-specific credit structures and theory/lab splits, requiring repetitive manual entry on generic calculator websites.",
     "features": [
       "RMSTU department presets with pre-filled semester course lists and credit weights",
@@ -120,7 +120,7 @@
     ],
     "github": "https://github.com/maopu2001/Question-Vault-Rmstu",
     "demo": "https://question-vault-rmstu.vercel.app/",
-    "image": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80",
+    "image": "/images/question-vault-rmstu.webp",
     "problem": "Students lacked a centralized repository for past examination papers, making exam revision dependent on scattered physical notes or senior students.",
     "features": [
       "Role-based authorization (Super Admin, Admin, Student)",
@@ -167,7 +167,7 @@
     ],
     "github": "https://github.com/maopu2001/rmstu-transport-management-system",
     "demo": "https://rmstu-tms.vercel.app/",
-    "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+    "image": "/images/rmstu-bus-management-system.webp",
     "problem": "Students frequently missed campus buses along hilly mountain routes in Rangamati due to unpredictable delays and zero schedule visibility.",
     "features": [
       "Live GPS tracking broadcasted from driver mobile browsers",
@@ -210,7 +210,7 @@
       "LIVECell Dataset"
     ],
     "github": "https://github.com/maopu2001/zero-label-microscopy-thesis",
-    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=80",
+    "image": "/images/zero-label-microscopy-thesis.webp",
     "problem": "Pixel-reconstruction autoencoders fail on microscopy anomaly detection when corrupted images yield lower reconstruction error than sharp, high-contrast healthy cell membranes.",
     "features": [
       "Benchmarking 3 model paradigms (CAE-IF, SQAFormer, DINOv2 ViT embeddings) across 5,239 LIVECell frames",
@@ -252,8 +252,8 @@
       "react-pdf"
     ],
     "github": "https://github.com/maopu2001/rmstu_notice_hub_reimagined",
-    "demo": "https://rmstu-notice-hub-reimagined.vercel.app",
-    "image": "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80",
+    "demo": "https://rmstu-notice-hub.maopu.com.bd/",
+    "image": "/images/rmstu-notice-hub-reimagined.webp",
     "problem": "University notice pages loaded slowly on mobile networks, lacked search capabilities, and required opening external PDF downloads for simple updates.",
     "features": [
       "Server-side scraping and HTML parsing using Cheerio",
@@ -293,8 +293,8 @@
       "next-themes"
     ],
     "github": "https://github.com/maopu2001/CSE_Department_Tour_2026",
-    "demo": "https://cse-department-tour-2026.vercel.app",
-    "image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80",
+    "demo": "https://sundarban-tour-2026.vercel.app/",
+    "image": "/images/cse-department-tour-2026.webp",
     "problem": "Tour information was lost in messaging groups, leading to repetitive questions regarding budget breakdowns, bank numbers, and registration links.",
     "features": [
       "Bilingual English and Bengali content toggle",
@@ -333,6 +333,7 @@
       "Role-Based Access Control (RBAC)"
     ],
     "demo": "https://teacheasy.com.bd",
+    "image": "/images/teach-easy.webp",
     "problem": "Educational platforms require scalable data schemas, distinct permission tiers for instructors and students, and robust transactional security against injection attacks.",
     "features": [
       "Scalable database schemas and query indexing in MongoDB",
@@ -369,6 +370,7 @@
       "Tailwind CSS"
     ],
     "demo": "https://icbc.rmstu-conf.ac.bd",
+    "image": "/images/icbc-conference-management-system.webp",
     "problem": "Academic conferences need an organized portal to manage research paper submissions, author anonymization for double-blind reviews, and reliable database transactions without data loss.",
     "features": [
       "Research paper submission workflow with document attachments",
@@ -407,6 +409,7 @@
     ],
     "github": "https://github.com/maopu2001/pwa-offline-news-app",
     "demo": "https://pwa-offline-news.vercel.app",
+    "image": "/images/pwa-offline-news-app.webp",
     "problem": "Mobile web readers stop functioning completely in areas with weak cellular coverage.",
     "features": [
       "Automatic background caching of fetched news stories",
@@ -433,7 +436,6 @@
     "displayOrder": 11,
     "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
     "github": "https://github.com/maopu2001/StudentsAttendanceTracker",
-    "demo": "https://students-attendance-tracker.vercel.app",
     "problem": "Calculating exam eligibility percentages manually from paper attendance sheets is slow and error-prone.",
     "features": [
       "Grid-based student attendance register",
@@ -457,6 +459,7 @@
     "technologies": ["React", "TypeScript", "Tailwind CSS"],
     "github": "https://github.com/maopu2001/error-detection-calculator",
     "demo": "https://error-detection-calculator.vercel.app",
+    "image": "/images/error-detection-calculator.webp",
     "problem": "Understanding binary polynomial division in CRC and parity bit calculations is easier when intermediate steps are visible.",
     "features": [
       "Single and 2D block parity calculator",
@@ -515,7 +518,8 @@
       "HTML/CSS"
     ],
     "github": "https://github.com/maopu2001/LibraryManagementSystem",
-    "demo": "https://librarymanagementsystem-mauve.vercel.app",
+    "demo": "https://rmstulibrary.vercel.app",
+    "image": "/images/library-management-system.webp",
     "problem": "Paper-based book loan registers resulted in misplaced records and unclear stock availability.",
     "features": [
       "Book and category CRUD management",
