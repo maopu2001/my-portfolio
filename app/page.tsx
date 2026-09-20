@@ -68,7 +68,6 @@ export default function Home() {
       {/* FEATURED PROJECTS SECTION */}
       <Section
         id="projects"
-        index={1}
         title="Featured Works"
         subtitle="Key software systems, campus web platforms, and computer vision research engineering."
         action={
@@ -90,7 +89,6 @@ export default function Home() {
       {/* WHAT I BUILD & EVIDENCE-BASED TECH */}
       <Section
         id="tech"
-        index={2}
         title="Technical Skills & Evidence"
         subtitle="Technologies applied directly across production apps and thesis research."
       >
@@ -142,7 +140,6 @@ export default function Home() {
       {/* EXPERIMENTS & LEARNING TEASER */}
       <Section
         id="experiments"
-        index={3}
         title="Experiments & Learning"
         subtitle="Lightweight technical explorations, infrastructure setups, and competitive problem solving."
         action={
@@ -206,7 +203,6 @@ export default function Home() {
       {/* 4-YEAR JOURNEY TIMELINE PREVIEW */}
       <Section
         id="journey"
-        index={4}
         title="Things Built Over the Years"
         subtitle="Chronological progression from programming foundations to research thesis."
         action={
@@ -257,7 +253,7 @@ export default function Home() {
       </Section>
 
       {/* ABOUT & LONG-TERM ACADEMIC DIRECTION */}
-      <Section id="about" index={5} title="Academic Direction & Vision">
+      <Section id="about" title="Academic Direction & Vision">
         <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-sm">
           <blockquote className="border-l-2 border-accent pl-4 font-serif text-xl text-foreground sm:text-2xl mb-6">
             “{profile.statement}”

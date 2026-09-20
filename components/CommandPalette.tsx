@@ -13,6 +13,7 @@ import {
   Mail,
   Sun,
   Moon,
+  Palette,
   ExternalLink,
   Command,
   ArrowRight,
@@ -20,6 +21,7 @@ import {
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/BrandIcons";
 import { projects, experiments, publications, profile } from "@/lib/content";
+import { usePalette, PALETTES } from "@/lib/themes";
 
 type SearchItem = {
   id: string;
@@ -38,6 +40,7 @@ export function CommandPalette() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
   const { theme, setTheme } = useTheme();
+  const [currentPalette, setPalette] = usePalette();
 
   // Open/close keyboard listeners
   useEffect(() => {
@@ -108,13 +111,37 @@ export function CommandPalette() {
 
     const actionItems: SearchItem[] = [
       {
-        id: "act-theme",
+        id: "act-theme-toggle",
         title: "Toggle Dark / Light Theme",
-        subtitle: `Currently: ${theme || "system"}`,
+        subtitle: `Current mode: ${theme || "system"}`,
         category: "Actions",
         action: () => setTheme(theme === "dark" ? "light" : "dark"),
         icon: theme === "dark" ? Sun : Moon,
       },
+      {
+        id: "act-theme-light",
+        title: "Set Theme: Light Mode",
+        subtitle: "Switch to clean daylight mode",
+        category: "Actions",
+        action: () => setTheme("light"),
+        icon: Sun,
+      },
+      {
+        id: "act-theme-dark",
+        title: "Set Theme: Dark Mode",
+        subtitle: "Switch to sleek nighttime mode",
+        category: "Actions",
+        action: () => setTheme("dark"),
+        icon: Moon,
+      },
+      ...PALETTES.map((p) => ({
+        id: `act-palette-${p.id}`,
+        title: `Palette: ${p.name}`,
+        subtitle: `${p.description}${currentPalette === p.id ? " (Active)" : ""}`,
+        category: "Actions" as const,
+        action: () => setPalette(p.id),
+        icon: Palette,
+      })),
       {
         id: "act-copy-email",
         title: `Copy Email (${profile.socialLinks.rawEmail})`,
@@ -147,7 +174,7 @@ export function CommandPalette() {
     ];
 
     return [...pageItems, ...projectItems, ...researchItems, ...experimentItems, ...actionItems, ...linkItems];
-  }, [theme, setTheme]);
+  }, [theme, setTheme, currentPalette, setPalette]);
 
   // Filter items based on query
   const filtered = useMemo(() => {
@@ -199,7 +226,7 @@ export function CommandPalette() {
 
   return (
     <div
-      className="fixed inset-0 z-[1000] flex items-start justify-center p-4 sm:p-6 md:p-20 bg-black/60 backdrop-blur-sm animate-in fade-in duration-150"
+      className="fixed inset-0 z-1000 flex items-start justify-center p-4 sm:p-6 md:p-20 bg-black/60 backdrop-blur-sm animate-in fade-in duration-150"
       onClick={() => setIsOpen(false)}
       role="dialog"
       aria-modal="true"

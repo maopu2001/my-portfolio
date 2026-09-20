@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, FolderGit2, BookOpen, User, Mail, Search } from "lucide-react";
 import { openCommandPalette } from "@/components/CommandPalette";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { ThemeCustomizer } from "@/components/ThemeCustomizer";
 import { profile } from "@/lib/content";
 
 // Complete desktop navigation items (Home is represented by brand logo)
@@ -88,7 +88,7 @@ export function Navbar() {
               </kbd>
             </button>
 
-            <ThemeToggle />
+            <ThemeCustomizer />
 
             <Link
               href="/cv"
@@ -121,7 +121,7 @@ export function Navbar() {
             <Search className="size-4" />
           </button>
           <div className="flex-1 size-8 items-center justify-center m-0 p-0">
-            <ThemeToggle />
+            <ThemeCustomizer />
           </div>
         </div>
       </header>

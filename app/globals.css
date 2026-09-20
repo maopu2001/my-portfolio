@@ -1,127 +1,352 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  /* LIGHT THEME (Aditya Gupta Signature Warm Cream Style) */
-  --bg-page: #fffcf3;
-  --bg-card: #ffffff;
-  --bg-subtle: #f5f2e6;
-  --bg-pill: #ffffff;
-  --border-card: #e8e2d2;
-  --border-subtle: #f0eae0;
-  --text-main: #1a2332;
-  --text-muted: #4b5563;
-  --text-faint: #6b7280;
-  --accent: #ff4d00;
-  /* Accessible accent for TEXT and solid buttons (>= 4.5:1 on cream/white).
-     Raw #ff4d00 stays decorative only: dots, borders, glows, selection. */
-  --accent-strong: #b84300;
-  --accent-hover: #e04400;
-  --accent-soft: rgba(255, 77, 0, 0.08);
-
-  --background: var(--bg-page);
-  --foreground: var(--text-main);
-  --card: var(--bg-card);
-  --card-foreground: var(--text-main);
-  --popover: var(--bg-card);
-  --popover-foreground: var(--text-main);
-  --primary: #c2410c;
-  --primary-hover: #9a3412;
-  --primary-foreground: #ffffff;
-  --secondary: var(--bg-subtle);
-  --secondary-foreground: var(--text-main);
-  --muted: var(--bg-subtle);
-  --muted-foreground: var(--text-muted);
-  --accent-foreground: #ffffff;
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: var(--border-card);
-  --input: var(--border-card);
-  --ring: #ff4d00;
-  --radius: 1rem;
-}
-
-.dark {
-  /* DARK THEME (Aditya Gupta Sleek Dark Onyx Style) */
-  --bg-page: #0a0a0a;
-  --bg-card: #121212;
-  --bg-subtle: #181818;
-  --bg-pill: #1a1a1a;
-  --border-card: rgba(255, 255, 255, 0.1);
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --text-main: #fffcf3;
-  --text-muted: #a3a3a3;
-  /* #737373 measured 4.18:1 on #0a0a0a — bumped to pass 4.5:1 */
-  --text-faint: #8f8f8f;
-  --accent: #ff4d00;
-  --accent-strong: #ff8552;
-  --accent-hover: #ff6a00;
-  --accent-soft: rgba(255, 77, 0, 0.15);
-
-  --background: var(--bg-page);
-  --foreground: var(--text-main);
-  --card: var(--bg-card);
-  --card-foreground: var(--text-main);
-  --popover: var(--bg-card);
-  --popover-foreground: var(--text-main);
-  --primary: #ff4d00;
-  --primary-hover: #e04400;
-  --primary-foreground: #0a0a0a;
-  --secondary: var(--bg-subtle);
-  --secondary-foreground: var(--text-main);
-  --muted: var(--bg-subtle);
-  --muted-foreground: var(--text-muted);
-  --accent-foreground: #ffffff;
-  --border: var(--border-card);
-  --input: var(--border-card);
-  --ring: #ff4d00;
-}
-
 @theme inline {
-  --color-background: var(--bg-page);
-  --color-foreground: var(--text-main);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-strong: var(--accent-strong);
+  --color-faint: var(--text-faint);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
   --font-sans: var(--font-poppins);
-  /* "font-serif" classes across components now resolve to the grotesque
-     display face — Aditya Gupta's language is all-sans, no serif. */
   --font-serif: var(--font-space-grotesk);
   --font-heading: var(--font-space-grotesk);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-accent-strong: var(--accent-strong);
-  --color-primary-hover: var(--primary-hover);
-  --color-faint: var(--text-faint);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
+  --font-mono: var(--font-mono);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
 @layer base {
+  /* PALETTE 1: OCEANIC AZURE (DEFAULT) - LIGHT */
+  :root,
+  [data-palette="oceanic"] {
+    --background: hsl(200 20% 98%);
+    --foreground: hsl(210 50% 10%);
+
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(210 50% 10%);
+
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(210 50% 10%);
+
+    --primary: hsl(199 89% 38%);
+    --primary-hover: hsl(199 89% 30%);
+    --primary-foreground: hsl(0 0% 100%);
+
+    --secondary: hsl(170 50% 45%);
+    --secondary-foreground: hsl(0 0% 100%);
+
+    --muted: hsl(200 20% 94%);
+    --muted-foreground: hsl(210 15% 45%);
+
+    --accent: hsl(199 70% 92%);
+    --accent-foreground: hsl(199 89% 25%);
+    --accent-strong: hsl(199 89% 32%);
+    --text-faint: hsl(210 15% 55%);
+
+    --destructive: hsl(0 84% 60%);
+    --destructive-foreground: hsl(0 0% 100%);
+
+    --border: hsl(200 20% 88%);
+    --input: hsl(200 20% 88%);
+    --ring: hsl(199 89% 38%);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: hsl(0 0% 98%);
+    --sidebar-foreground: hsl(240 5.3% 26.1%);
+    --sidebar-primary: hsl(240 5.9% 10%);
+    --sidebar-primary-foreground: hsl(0 0% 98%);
+    --sidebar-accent: hsl(240 4.8% 95.9%);
+    --sidebar-accent-foreground: hsl(240 5.9% 10%);
+    --sidebar-border: hsl(220 13% 91%);
+    --sidebar-ring: hsl(217.2 91.2% 59.8%);
+
+    --bg-page: var(--background);
+    --text-main: var(--foreground);
+    --bg-card: var(--card);
+    --border-card: var(--border);
+    --bg-subtle: var(--muted);
+  }
+
+  /* PALETTE 1: OCEANIC AZURE (DEFAULT) - DARK */
+  .dark,
+  [data-palette="oceanic"].dark,
+  .dark[data-palette="oceanic"] {
+    --background: hsl(210 40% 7%);
+    --foreground: hsl(200 20% 95%);
+
+    --card: hsl(210 40% 10%);
+    --card-foreground: hsl(200 20% 95%);
+
+    --popover: hsl(210 40% 10%);
+    --popover-foreground: hsl(200 20% 95%);
+
+    --primary: hsl(199 89% 48%);
+    --primary-hover: hsl(199 89% 56%);
+    --primary-foreground: hsl(0 0% 100%);
+
+    --secondary: hsl(170 50% 40%);
+    --secondary-foreground: hsl(0 0% 100%);
+
+    --muted: hsl(210 30% 15%);
+    --muted-foreground: hsl(200 15% 60%);
+
+    --accent: hsl(199 50% 18%);
+    --accent-foreground: hsl(199 89% 70%);
+    --accent-strong: hsl(199 89% 65%);
+    --text-faint: hsl(200 15% 50%);
+
+    --destructive: hsl(0 62% 30%);
+    --destructive-foreground: hsl(0 0% 100%);
+
+    --border: hsl(210 30% 18%);
+    --input: hsl(210 30% 18%);
+    --ring: hsl(199 89% 48%);
+
+    --sidebar-background: hsl(240 5.9% 10%);
+    --sidebar-foreground: hsl(240 4.8% 95.9%);
+    --sidebar-primary: hsl(224.3 76.3% 48%);
+    --sidebar-primary-foreground: hsl(0 0% 100%);
+    --sidebar-accent: hsl(240 3.7% 15.9%);
+    --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+    --sidebar-border: hsl(240 3.7% 15.9%);
+    --sidebar-ring: hsl(217.2 91.2% 59.8%);
+
+    --bg-page: var(--background);
+    --text-main: var(--foreground);
+    --bg-card: var(--card);
+    --border-card: var(--border);
+    --bg-subtle: var(--muted);
+  }
+
+  /* PALETTE 2: WARM STUDIO (SIGNATURE) - LIGHT */
+  [data-palette="warm"] {
+    --background: hsl(44 100% 98%);
+    --foreground: hsl(218 32% 15%);
+
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(218 32% 15%);
+
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(218 32% 15%);
+
+    --primary: hsl(18 89% 40%);
+    --primary-hover: hsl(18 83% 34%);
+    --primary-foreground: hsl(0 0% 100%);
+
+    --secondary: hsl(44 32% 93%);
+    --secondary-foreground: hsl(218 32% 15%);
+
+    --muted: hsl(44 32% 93%);
+    --muted-foreground: hsl(218 13% 34%);
+
+    --accent: hsl(18 100% 50%);
+    --accent-foreground: hsl(0 0% 100%);
+    --accent-strong: hsl(22 100% 36%);
+    --text-faint: hsl(220 9% 46%);
+
+    --destructive: hsl(0 84% 60%);
+    --destructive-foreground: hsl(0 0% 100%);
+
+    --border: hsl(41 33% 87%);
+    --input: hsl(41 33% 87%);
+    --ring: hsl(18 100% 50%);
+
+    --radius: 1rem;
+
+    --bg-page: var(--background);
+    --text-main: var(--foreground);
+    --bg-card: var(--card);
+    --border-card: var(--border);
+    --bg-subtle: var(--muted);
+  }
+
+  /* PALETTE 2: WARM STUDIO (SIGNATURE) - DARK */
+  [data-palette="warm"].dark,
+  .dark[data-palette="warm"] {
+    --background: hsl(0 0% 4%);
+    --foreground: hsl(44 100% 98%);
+
+    --card: hsl(0 0% 7%);
+    --card-foreground: hsl(44 100% 98%);
+
+    --popover: hsl(0 0% 7%);
+    --popover-foreground: hsl(44 100% 98%);
+
+    --primary: hsl(18 100% 50%);
+    --primary-hover: hsl(18 100% 44%);
+    --primary-foreground: hsl(0 0% 4%);
+
+    --secondary: hsl(0 0% 9%);
+    --secondary-foreground: hsl(44 100% 98%);
+
+    --muted: hsl(0 0% 9%);
+    --muted-foreground: hsl(0 0% 64%);
+
+    --accent: hsl(18 100% 50%);
+    --accent-foreground: hsl(0 0% 100%);
+    --accent-strong: hsl(18 100% 66%);
+    --text-faint: hsl(0 0% 56%);
+
+    --destructive: hsl(0 62% 30%);
+    --destructive-foreground: hsl(0 0% 100%);
+
+    --border: hsl(0 0% 20%);
+    --input: hsl(0 0% 20%);
+    --ring: hsl(18 100% 50%);
+
+    --bg-page: var(--background);
+    --text-main: var(--foreground);
+    --bg-card: var(--card);
+    --border-card: var(--border);
+    --bg-subtle: var(--muted);
+  }
+
+  /* PALETTE 3: HERITAGE PINE (OKLCH) - LIGHT */
+  [data-palette="heritage"] {
+    --background: oklch(97% 0.01 40);
+    --foreground: oklch(12% 0.03 160);
+
+    --card: oklch(100% 0 0);
+    --card-foreground: oklch(12% 0.03 160);
+
+    --popover: oklch(100% 0 0);
+    --popover-foreground: oklch(12% 0.03 160);
+
+    --primary: oklch(22% 0.04 160);
+    --primary-hover: oklch(18% 0.04 160);
+    --primary-foreground: oklch(97% 0.01 40);
+
+    --secondary: oklch(55% 0.06 38);
+    --secondary-foreground: oklch(100% 0 0);
+
+    --muted: oklch(92% 0.02 40);
+    --muted-foreground: oklch(45% 0.01 160);
+
+    --accent: oklch(55% 0.06 38);
+    --accent-foreground: oklch(100% 0 0);
+    --accent-strong: oklch(40% 0.07 38);
+    --text-faint: oklch(50% 0.02 160);
+
+    --destructive: oklch(60% 0.08 0);
+    --destructive-foreground: oklch(98% 0.04 210);
+
+    --border: oklch(88% 0.015 40);
+    --input: oklch(88% 0.015 40);
+    --ring: oklch(22% 0.04 160);
+
+    --radius: 0.75rem;
+
+    --bg-page: var(--background);
+    --text-main: var(--foreground);
+    --bg-card: var(--card);
+    --border-card: var(--border);
+    --bg-subtle: var(--muted);
+  }
+
+  /* PALETTE 3: HERITAGE PINE (OKLCH) - DARK */
+  [data-palette="heritage"].dark,
+  .dark[data-palette="heritage"] {
+    --background: oklch(17.928% 0.03546 157.254);
+    --foreground: oklch(96% 0.01 40);
+
+    --card: oklch(16% 0.02 160);
+    --card-foreground: oklch(96% 0.01 40);
+
+    --popover: oklch(16% 0.02 160);
+    --popover-foreground: oklch(96% 0.01 40);
+
+    --primary: oklch(72% 0.08 160);
+    --primary-hover: oklch(78% 0.08 160);
+    --primary-foreground: oklch(14% 0.02 160);
+
+    --secondary: oklch(62% 0.08 38);
+    --secondary-foreground: oklch(14% 0.02 160);
+
+    --muted: oklch(22% 0.02 160);
+    --muted-foreground: oklch(70% 0.02 40);
+
+    --accent: oklch(62% 0.08 38);
+    --accent-foreground: oklch(14% 0.02 160);
+    --accent-strong: oklch(75% 0.09 38);
+    --text-faint: oklch(60% 0.02 40);
+
+    --destructive: oklch(65% 0.12 25);
+    --destructive-foreground: oklch(98% 0.02 40);
+
+    --border: oklch(28% 0.02 160);
+    --input: oklch(28% 0.02 160);
+    --ring: oklch(72% 0.08 160);
+
+    --bg-page: var(--background);
+    --text-main: var(--foreground);
+    --bg-card: var(--card);
+    --border-card: var(--border);
+    --bg-subtle: var(--muted);
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    background-color: var(--bg-page);
-    color: var(--text-main);
-    @apply font-sans antialiased selection:bg-[#ff4d00]/30 selection:text-[#ff4d00];
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply font-sans antialiased selection:bg-primary/25 selection:text-primary;
   }
   html {
     @apply font-sans;
-    /* No scroll-smooth here: it turns the router's instant scroll-to-top into
-       an animated glide that the route re-render interrupts, leaving pages
-       scrolled slightly short of the top. */
   }
 }
 
@@ -149,7 +374,15 @@ html[data-theme-transition="dark"]::view-transition-new(root) {
   z-index: 1;
 }
 
-/* SESSION PRELOADER — mirrors aditya-gupta.com.np's preloader styles */
+/* Switching Palette Transition */
+html[data-theme-transition="palette"]::view-transition-old(root) {
+  z-index: 1;
+}
+html[data-theme-transition="palette"]::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* SESSION PRELOADER */
 .preloader-overlay {
   position: fixed;
   inset: 0;
@@ -157,19 +390,17 @@ html[data-theme-transition="dark"]::view-transition-new(root) {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ff4d00;
+  background: var(--primary);
   will-change: transform;
 }
 
-/* Static cover rendered in SSR HTML so fresh tabs never see page content
-   before the animated overlay hydrates. Hidden unless the inline head
-   script decided this load should play the intro. */
+/* Static cover rendered in SSR HTML */
 .preloader-static {
   position: fixed;
   inset: 0;
   z-index: 99998;
   display: none;
-  background: #ff4d00;
+  background: var(--primary);
 }
 
 html.preloader-boot .preloader-static {
@@ -228,7 +459,5 @@ html.preloader-boot .preloader-static {
   font-size: clamp(0.75rem, 2vw, 1rem);
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
 }
-
-/* preloader styles end */

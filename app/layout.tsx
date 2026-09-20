@@ -31,8 +31,8 @@ const mono = JetBrains_Mono({
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fffcf3" },
-    { media: "(prefers-color-scheme: dark)", color: "#0c0d0e" },
+    { media: "(prefers-color-scheme: light)", color: "#f8fafb" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1319" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -110,9 +110,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  /* Runs before first paint: shows the static orange cover only when this
-     load will play the intro (not seen this session, not a reload, motion OK). */
-  const preloaderBootScript = `try{var s=sessionStorage.getItem("preloaderSeen");var n=performance.getEntriesByType("navigation")[0];var r=!!(n&&n.type==="reload");var m=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!(s||r||m)){document.documentElement.classList.add("preloader-boot")}}catch(e){}`;
+  /* Runs before first paint: sets palette and shows the static cover only when intro plays */
+  const themeBootScript = `try{var p=localStorage.getItem("theme-palette")||"oceanic";document.documentElement.dataset.palette=p;var s=sessionStorage.getItem("preloaderSeen");var n=performance.getEntriesByType("navigation")[0];var r=!!(n&&n.type==="reload");var m=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!(s||r||m)){document.documentElement.classList.add("preloader-boot")}}catch(e){}`;
 
   return (
     <html
@@ -121,14 +120,14 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: preloaderBootScript }} />
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
         <RootStructuredData />
       </head>
       <body className="min-h-screen font-sans antialiased">
         {/* Skip to Content Link for Keyboard / Screen Reader Accessibility */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[99999] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-xs focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-99999 focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-xs focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none"
         >
           Skip to main content
         </a>
@@ -137,7 +136,7 @@ export default function RootLayout({
         <div className="preloader-static" aria-hidden="true">
           <div className="preloader-grain" />
         </div>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <Preloader />
           <ScrollManager />
           <CommandPalette />
